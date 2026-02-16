@@ -8,10 +8,10 @@
 
   <style>
     :root{
-      /* ✅ Fondo MÁS CLARO (azul) */
-      --bg0:#2a3566;
-      --bg1:#35509a;
-      --bg2:#3f63b5;
+      /* ✅ Fondo un poco MÁS CLARO (azul médico/pro) */
+      --bg0:#2a3a74;
+      --bg1:#33458a;
+      --bg2:#3a4f9a;
 
       --text:#eef2ff;
       --muted:rgba(238,242,255,.74);
@@ -24,19 +24,22 @@
       --gold2:#f3df9b;
 
       --shadow: 0 20px 60px rgba(0,0,0,.38);
-      --shadow2: 0 18px 45px rgba(0,0,0,.28);
+      --shadow2: 0 16px 42px rgba(0,0,0,.28);
 
       --radius2: 22px;
       --max:1100px;
 
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      --line: rgba(255,255,255,.14);
+      --panel: rgba(255,255,255,.08);   /* cards */
+      --panel2: rgba(255,255,255,.06);  /* items */
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
 
-    /* ✅ Mejor UX en móviles: sin highlight feo al tocar */
     a, button, .btn, .pill, .cta{
       -webkit-tap-highlight-color: transparent;
       tap-highlight-color: transparent;
@@ -48,10 +51,10 @@
       font-size:16.5px;
       color:var(--text);
       background:
-        radial-gradient(980px 560px at 15% 0%, rgba(255,62,165,.26), transparent 62%),
-        radial-gradient(1100px 680px at 90% 10%, rgba(255,42,42,.22), transparent 64%),
-        radial-gradient(980px 560px at 40% 110%, rgba(216,178,90,.12), transparent 64%),
-        radial-gradient(980px 560px at 75% 115%, rgba(255,106,0,.12), transparent 67%),
+        radial-gradient(980px 560px at 15% 0%, rgba(255,62,165,.22), transparent 62%),
+        radial-gradient(1100px 680px at 90% 10%, rgba(255,42,42,.18), transparent 64%),
+        radial-gradient(980px 560px at 40% 110%, rgba(243,223,155,.10), transparent 64%),
+        radial-gradient(980px 560px at 75% 115%, rgba(255,106,0,.10), transparent 67%),
         linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
       min-height:100vh;
     }
@@ -62,30 +65,19 @@
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(22,30,64,.56);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(20,28,60,.58);
       border-bottom:1px solid rgba(255,255,255,.10);
     }
-    .nav:before{
-      content:"";
-      position:absolute;
-      left:0; right:0; top:0;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
-      pointer-events:none;
-    }
-
     .nav-inner{
       max-width:var(--max);
       margin:0 auto;
       padding:16px 18px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
-      position:relative;
     }
 
     .brand{display:flex; align-items:center; gap:12px}
-
     .badge{
       width:46px; height:46px;
       border-radius:16px;
@@ -95,24 +87,10 @@
       font-size:11px;
       letter-spacing:.6px;
       color:#fff;
-      background:
-        linear-gradient(135deg, rgba(255,62,165,.95), rgba(255,42,42,.85) 45%, rgba(255,106,0,.85));
-      box-shadow:
-        0 18px 35px rgba(255,62,165,.14),
-        0 14px 30px rgba(255,42,42,.12);
-      border:1px solid rgba(255,255,255,.14);
-      position:relative;
+      background: linear-gradient(135deg, rgba(255,62,165,.95), rgba(255,42,42,.85) 45%, rgba(255,106,0,.85));
+      box-shadow: 0 18px 35px rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.16);
     }
-    .badge:after{
-      content:"";
-      position:absolute; inset:-1px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      pointer-events:none;
-      opacity:.9;
-      filter: blur(.15px);
-    }
-
     .brand h1{font-size:16px; margin:0; letter-spacing:.2px}
     .brand p{margin:0; font-size:13px; color:var(--muted)}
 
@@ -122,23 +100,20 @@
       gap:12px;
       align-items:center;
       justify-content:flex-end;
-      margin-top: 0;
     }
 
     .pill{
       padding:11px 14px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color:var(--text);
       font-size:14px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, background .14s ease, filter .14s ease;
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, background .14s ease;
     }
     .pill:hover{
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 16px 34px rgba(0,0,0,.28);
+      border-color: rgba(255,255,255,.26);
+      box-shadow: 0 14px 28px rgba(0,0,0,.20);
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
     }
@@ -146,178 +121,73 @@
     .cta{
       padding:11px 16px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background:
-        linear-gradient(135deg, rgba(255,62,165,.18), rgba(255,42,42,.12), rgba(255,106,0,.10));
-      box-shadow:
-        0 18px 40px rgba(0,0,0,.22),
-        0 14px 28px rgba(255,62,165,.10);
+      border:1px solid rgba(255,255,255,.20);
+      background: linear-gradient(135deg, rgba(255,62,165,.22), rgba(255,42,42,.16), rgba(255,106,0,.14));
+      box-shadow: 0 16px 34px rgba(0,0,0,.22);
       font-weight:900;
       font-size:14px;
       transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, filter .14s ease;
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
     }
     .cta:hover{
-      border-color: rgba(255,255,255,.26);
+      border-color: rgba(255,255,255,.30);
       transform: translateY(-1px);
       filter: saturate(1.05);
     }
 
+    /* Tipografía premium (sin bordes dorados) */
     .gold-stroke{
-      text-shadow:
-        0 0 0.6px rgba(216,178,90,.25),
-        0 0 14px rgba(216,178,90,.08),
-        0 12px 28px rgba(0,0,0,.48);
+      text-shadow: 0 12px 28px rgba(0,0,0,.55);
     }
     .gold-stroke-outline{
       text-shadow:
-        -0.5px 0 rgba(216,178,90,.14),
-         0.5px 0 rgba(216,178,90,.14),
-         0 -0.5px rgba(216,178,90,.10),
-         0  0.5px rgba(216,178,90,.10),
-         0 0 18px rgba(216,178,90,.08),
-         0 12px 28px rgba(0,0,0,.48);
+        0 0 18px rgba(0,0,0,.25),
+        0 12px 28px rgba(0,0,0,.55);
     }
 
-    /* ======================================================
-       ✅ BASE (SIN EFECTO VIDRIO DORADO) PARA CARDS/RECUADROS
-       ====================================================== */
+    /* ✅ Cards y recuadros: SIN vidrio dorado, SIN shimmer */
     .card{
-      position:relative;
-      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.07));
+      background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
       border-radius: var(--radius2);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       box-shadow: var(--shadow2);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
-      will-change: transform;
+      transition: transform .18s ease, box-shadow .18s ease;
       overflow:hidden;
     }
     .card:hover{
-      transform: translateY(-10px) scale(1.008);
-      border-color: rgba(255,255,255,.20);
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
-      box-shadow: 0 34px 96px rgba(0,0,0,.42);
-      filter: saturate(1.04);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
     }
 
     .item{
-      position:relative;
-      padding:14px;
-      border-radius:16px;
-      background: rgba(255,255,255,.08);
+      padding:14px; border-radius:16px;
+      background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 26px rgba(0,0,0,.20);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
-      will-change: transform;
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
     }
     .item:hover{
-      transform: translateY(-7px) scale(1.008);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      box-shadow: 0 28px 78px rgba(0,0,0,.38);
-      filter: saturate(1.04);
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 18px 34px rgba(0,0,0,.24);
     }
 
     .mini{
-      position:relative;
       padding:16px;
       border-radius:18px;
       background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 14px 26px rgba(0,0,0,.20);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
-      will-change: transform;
-      overflow:hidden;
-    }
-    .mini:hover{
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      box-shadow: 0 30px 86px rgba(0,0,0,.40);
-      filter: saturate(1.04);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
     }
     .mini .t{font-size:12px; color:var(--muted); margin:0}
     .mini .v{margin:10px 0 0; font-weight:900; line-height:1.35}
 
-    /* ======================================================
-       ✅ EFECTO DORADO SOLO PARA: IMÁGENES + CADA SERVICIO
-       (photo, photo-img, service-card)
-       ====================================================== */
-    @keyframes goldGlowPulse {
-      0%   { filter: saturate(1.00); }
-      50%  { filter: saturate(1.08); }
-      100% { filter: saturate(1.00); }
-    }
-    @keyframes goldShimmer {
-      0%   { transform: translateX(-55%) rotate(18deg); opacity: .00; }
-      12%  { opacity: .55; }
-      50%  { opacity: .75; }
-      88%  { opacity: .55; }
-      100% { transform: translateX(155%) rotate(18deg); opacity: .00; }
-    }
-
-    .service-card, .photo, .photo-img{
-      position:relative;
-      border:1px solid rgba(216,178,90,.34);
-      box-shadow:
-        0 24px 70px rgba(0,0,0,.46),
-        0 0 0 1px rgba(216,178,90,.14),
-        0 0 30px rgba(216,178,90,.12);
-      animation: goldGlowPulse 3.1s ease-in-out infinite;
-      overflow:hidden;
-    }
-    .service-card:before, .photo:before, .photo-img:before{
-      content:"";
-      position:absolute;
-      top:-45%;
-      left:-80%;
-      width:65%;
-      height:220%;
-      background: linear-gradient(
-        110deg,
-        transparent 0%,
-        rgba(243,223,155,.00) 25%,
-        rgba(243,223,155,.16) 45%,
-        rgba(216,178,90,.28) 55%,
-        rgba(243,223,155,.16) 65%,
-        rgba(243,223,155,.00) 85%,
-        transparent 100%
-      );
-      transform: rotate(18deg);
-      pointer-events:none;
-      z-index: 1;
-      opacity: 0;
-      animation: goldShimmer 5.2s ease-in-out infinite;
-    }
-    .service-card:after, .photo:after, .photo-img:after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius: inherit;
-      border:1px solid rgba(216,178,90,.40);
-      pointer-events:none;
-      opacity:.92;
-      mix-blend-mode: screen;
-      box-shadow: 0 0 34px rgba(216,178,90,.12);
-      z-index: 2;
-    }
-    .service-card > *, .photo > *, .photo-img > *{ position:relative; z-index:3; }
-
-    /* Hero layout */
+    /* HERO */
     .hero{
       padding:30px 0 16px;
       display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;
       align-items:stretch;
     }
     @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
-
     .hero-main{padding:26px}
 
     .kicker{
@@ -330,13 +200,11 @@
       border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
     .kicker .dot{
       width:8px; height:8px; border-radius:99px;
       background: linear-gradient(135deg, var(--gold2), var(--pink), var(--fire));
-      box-shadow: 0 0 0 4px rgba(216,178,90,.10);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.10);
     }
 
     .hero h2{
@@ -365,53 +233,25 @@
       font-weight:900;
       display:inline-flex; gap:10px; align-items:center;
       cursor:pointer;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease, filter .16s ease;
-      position:relative;
-      overflow:hidden;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;
     }
     .btn:hover{
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 16px 34px rgba(0,0,0,.28);
+      border-color: rgba(255,255,255,.26);
+      box-shadow: var(--shadow2);
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
     }
     .btn.primary{
-      border-color: rgba(255,255,255,.22);
-      background:
-        linear-gradient(135deg, rgba(255,62,165,.18), rgba(255,42,42,.12), rgba(255,106,0,.10));
-      box-shadow:
-        0 18px 40px rgba(0,0,0,.22),
-        0 14px 28px rgba(255,62,165,.10);
+      border-color: rgba(255,255,255,.24);
+      background: linear-gradient(135deg, rgba(255,62,165,.22), rgba(255,42,42,.16), rgba(255,106,0,.14));
     }
-
-    .btn.gold{
-      border-color: rgba(216,178,90,.60);
-      background:
-        linear-gradient(135deg,
-          rgba(216,178,90,.18),
-          rgba(243,223,155,.10),
-          rgba(255,62,165,.06)
-        );
-      box-shadow:
-        0 18px 44px rgba(0,0,0,.30),
-        0 0 0 1px rgba(216,178,90,.10),
-        0 0 22px rgba(216,178,90,.08);
-    }
-
     .btn.green{
       border-color: rgba(37,211,102,.55);
-      background:
-        linear-gradient(135deg,
-          rgba(37,211,102,.18),
-          rgba(18,140,126,.10),
-          rgba(255,255,255,.06)
-        );
-      box-shadow:
-        0 18px 44px rgba(0,0,0,.28),
-        0 0 0 1px rgba(37,211,102,.10),
-        0 0 22px rgba(37,211,102,.08);
+      background: linear-gradient(135deg, rgba(37,211,102,.18), rgba(18,140,126,.10), rgba(255,255,255,.06));
+    }
+    .btn.gold{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
     }
 
     .small{font-size:12px; color:var(--muted)}
@@ -419,14 +259,55 @@
 
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
-    /* FOTO COMPLETA */
+    /* ✅ SOLO AQUÍ dejamos el look premium (IMÁGENES) */
+    @keyframes goldShimmer {
+      0%   { transform: translateX(-55%) rotate(18deg); opacity: .00; }
+      12%  { opacity: .55; }
+      50%  { opacity: .75; }
+      88%  { opacity: .55; }
+      100% { transform: translateX(155%) rotate(18deg); opacity: .00; }
+    }
+    .photo, .photo-img, .shot{
+      position:relative;
+      border:1px solid rgba(216,178,90,.34);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.42),
+        0 0 0 1px rgba(216,178,90,.14),
+        0 0 28px rgba(216,178,90,.10);
+      overflow:hidden;
+    }
+    .photo:before, .photo-img:before, .shot:before{
+      content:"";
+      position:absolute;
+      top:-45%;
+      left:-80%;
+      width:65%;
+      height:220%;
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(243,223,155,.00) 25%,
+        rgba(243,223,155,.16) 45%,
+        rgba(216,178,90,.26) 55%,
+        rgba(243,223,155,.16) 65%,
+        rgba(243,223,155,.00) 85%,
+        transparent 100%
+      );
+      transform: rotate(18deg);
+      pointer-events:none;
+      z-index: 1;
+      opacity: 0;
+      animation: goldShimmer 5.2s ease-in-out infinite;
+    }
+    .photo > *, .photo-img > *, .shot > *{ position:relative; z-index:2; }
+
     .photo{
       border-radius: 18px;
       background:
         radial-gradient(800px 320px at 15% 20%, rgba(255,62,165,.18), transparent 55%),
         radial-gradient(800px 320px at 85% 10%, rgba(255,42,42,.14), transparent 55%),
         radial-gradient(700px 280px at 70% 85%, rgba(216,178,90,.12), transparent 60%),
-        linear-gradient(135deg, rgba(22,30,64,.58), rgba(30,44,94,.86));
+        linear-gradient(135deg, rgba(14,22,52,.55), rgba(22,34,78,.88));
       display:flex;
       flex-direction:column;
       gap:12px;
@@ -441,8 +322,8 @@
       display:grid;
       place-items:center;
       background:
-        radial-gradient(420px 160px at 25% 30%, rgba(216,178,90,.10), transparent 60%),
-        radial-gradient(420px 160px at 75% 80%, rgba(255,106,0,.08), transparent 60%),
+        radial-gradient(420px 160px at 25% 30%, rgba(216,178,90,.12), transparent 60%),
+        radial-gradient(420px 160px at 75% 80%, rgba(255,106,0,.10), transparent 60%),
         rgba(255,255,255,.04);
     }
 
@@ -464,37 +345,30 @@
     }
 
     .ghost{
-      position:static;
-      display:block;
-      padding:0;
-      z-index:3;
-      color: rgba(255,255,255,.92);
+      color: rgba(255,255,255,.94);
       font-weight:900;
       letter-spacing:.4px;
     }
     .ghost .big{
       font-size:18px;
-      opacity:.95;
-      text-shadow: 0 10px 24px rgba(0,0,0,.48);
+      opacity:.96;
+      text-shadow: 0 10px 24px rgba(0,0,0,.55);
     }
     .ghost .sub{
       margin-top:8px;
       font-size:12px;
-      opacity:.85;
+      opacity:.86;
       font-family: var(--mono);
       color: rgba(255,255,255,.82);
     }
 
     .cap{
-      position:static;
       padding:10px 12px;
       border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.09);
+      border:1px solid rgba(216,178,90,.26);
+      background: rgba(255,255,255,.10);
       font-weight:900;
       box-shadow: 0 14px 26px rgba(0,0,0,.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
 
     section{padding-top:26px}
@@ -509,10 +383,11 @@
     .section-title h3 .mark{
       width:10px; height:10px; border-radius:99px;
       background: linear-gradient(135deg, var(--gold2), var(--pink), var(--fire));
-      box-shadow: 0 0 0 5px rgba(216,178,90,.10);
+      box-shadow: 0 0 0 5px rgba(255,255,255,.10);
     }
     .section-title p{margin:0; color:var(--muted); font-size:13px}
 
+    /* GRID */
     .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; margin-top:14px}
     .span-12{grid-column: span 12}
     .span-8{grid-column: span 8}
@@ -530,43 +405,34 @@
       font-size: 14px;
     }
     .bullets li{ margin: 8px 0; }
-    .bullets li::marker{
-      color: rgba(216,178,90,.90);
-      text-shadow: 0 0 14px rgba(216,178,90,.18);
-    }
+    .bullets li::marker{ color: rgba(243,223,155,.95); }
 
     .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
     .tag{
       font-size:12px;
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
       padding:6px 10px; border-radius:999px;
       background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.90);
       font-family:var(--mono);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ✅ SERVICIOS (mantienen marco dorado) */
+    /* SERVICE CARDS */
     .service-card{
       padding:18px;
       border-radius: var(--radius2);
       background: rgba(255,255,255,.08);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow2);
       display:flex;
       flex-direction:column;
       gap:12px;
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease;
       will-change: transform;
     }
     .service-card:hover{
-      transform: translateY(-12px) scale(1.015);
-      filter: saturate(1.05);
-      box-shadow:
-        0 38px 110px rgba(0,0,0,.50),
-        0 0 0 1px rgba(216,178,90,.18),
-        0 0 46px rgba(216,178,90,.14);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
     }
 
     .service-head{
@@ -587,7 +453,7 @@
       font-size:12px;
       font-weight:900;
       font-family: var(--mono);
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color: rgba(255,255,255,.92);
       white-space:nowrap;
@@ -600,34 +466,19 @@
     }
     .divider{
       height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
       margin: 6px 0;
     }
-
-    /* ✅ Sub-cards dentro de servicios: SIN dorado */
     .service-sub{
       padding:14px;
       border-radius:16px;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 12px 22px rgba(0,0,0,.18);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
-      will-change: transform;
-      position:relative;
-      overflow:hidden;
-    }
-    .service-sub:hover{
-      transform: translateY(-7px) scale(1.008);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      box-shadow: 0 26px 74px rgba(0,0,0,.36);
-      filter: saturate(1.04);
     }
     .service-sub h5{ margin:0 0 6px; font-size:13px; letter-spacing:.1px; }
     .service-sub p{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
 
+    /* FORM */
     .form{display:grid; gap:10px}
     input, textarea{
       width:100%;
@@ -638,25 +489,59 @@
       color: var(--text);
       outline:none;
       font: inherit;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
     textarea{min-height:120px; resize:vertical}
     input::placeholder, textarea::placeholder{color:rgba(238,242,255,.55)}
     input:focus, textarea:focus{
-      border-color: rgba(255,255,255,.24);
+      border-color: rgba(255,255,255,.26);
       box-shadow: 0 0 0 4px rgba(255,255,255,.10);
     }
 
     .footer{
       margin-top:30px;
       padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.10);
+      border-top:1px solid rgba(255,255,255,.12);
       color:var(--muted);
       font-size:13px;
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
+    /* RESULTADOS (IMÁGENES) */
+    .results-card{ padding:18px; }
+    .results-wrap{ display:flex; flex-direction:column; gap:14px; }
+    .results-row{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .shot{
+      border-radius:18px;
+      background:
+        radial-gradient(520px 220px at 30% 20%, rgba(255,62,165,.14), transparent 60%),
+        radial-gradient(520px 220px at 80% 80%, rgba(216,178,90,.10), transparent 60%),
+        rgba(255,255,255,.04);
+      padding:10px;
+      flex: 1 1 260px;   /* responsive */
+      max-width: 340px;  /* evita gigantes */
+    }
+    .shot img{
+      width:100%;
+      height:280px;
+      object-fit: cover;
+      border-radius:14px;
+      display:block;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .shot .cap2{
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(238,242,255,.78);
+      font-family: var(--mono);
+      text-align:center;
+    }
+
+    /* FLOAT BUTTONS */
     .ig-float{
       position: fixed;
       right: 18px;
@@ -668,9 +553,7 @@
       place-items: center;
       z-index: 9999;
       background: linear-gradient(135deg, var(--gold2), var(--pink), var(--fire2));
-      box-shadow:
-        0 16px 30px rgba(0,0,0,.26),
-        0 0 0 6px rgba(255,255,255,.08);
+      box-shadow: 0 16px 30px rgba(0,0,0,.30), 0 0 0 6px rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.12);
     }
     .ig-float svg{ width:28px; height:28px; fill:white; }
@@ -686,64 +569,10 @@
       place-items: center;
       z-index: 9999;
       background: linear-gradient(135deg, #25D366, #128C7E);
-      box-shadow:
-        0 16px 30px rgba(0,0,0,.26),
-        0 0 0 6px rgba(37,211,102,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.30), 0 0 0 6px rgba(37,211,102,.10);
       border:1px solid rgba(255,255,255,.10);
     }
     .wa-float svg{ width: 28px; height: 28px; fill: #fff; }
-
-    /* ✅ NUEVO: GRID DE TESTIMONIOS (3 imágenes) */
-    .testi-wrap{
-      padding: 20px;
-    }
-    .testi-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
-    @media (max-width: 900px){
-      .testi-grid{ grid-template-columns: 1fr; }
-    }
-    .testi{
-      border-radius: 18px;
-      overflow:hidden;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 16px 34px rgba(0,0,0,.24);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position:relative;
-    }
-    .testi:hover{
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(255,255,255,.20);
-      background: rgba(255,255,255,.09);
-      box-shadow: 0 30px 86px rgba(0,0,0,.36);
-      filter: saturate(1.04);
-    }
-    .testi img{
-      width:100%;
-      height: 340px;
-      object-fit: cover;
-      display:block;
-    }
-    @media (max-width: 520px){
-      .testi img{ height: 300px; }
-    }
-
-    /* ✅ MOBILE: efecto “press” premium al TOCAR (touch devices) */
-    @media (hover: none) and (pointer: coarse){
-      .card:active{ transform: translateY(-7px) scale(1.01); box-shadow: 0 28px 78px rgba(0,0,0,.40); }
-      .service-card:active{ transform: translateY(-9px) scale(1.015); box-shadow: 0 32px 98px rgba(0,0,0,.46); }
-      .item:active{ transform: translateY(-5px) scale(1.01); box-shadow: 0 24px 70px rgba(0,0,0,.34); }
-      .mini:active{ transform: translateY(-6px) scale(1.01); box-shadow: 0 26px 74px rgba(0,0,0,.36); }
-      .service-sub:active{ transform: translateY(-5px) scale(1.01); box-shadow: 0 24px 70px rgba(0,0,0,.34); }
-      .testi:active{ transform: translateY(-6px) scale(1.01); box-shadow: 0 26px 74px rgba(0,0,0,.36); }
-      .btn:active, .pill:active, .cta:active{ transform: translateY(1px) scale(0.99); filter: saturate(1.02); }
-    }
 
     /* NAV MOBILE */
     @media (max-width: 780px){
@@ -777,14 +606,13 @@
         padding: 10px 10px;
       }
       .photo-img{ height: 300px; }
+      .shot img{ height: 240px; }
     }
 
     @media (prefers-reduced-motion: reduce){
-      .service-card, .photo, .photo-img{ animation:none !important; }
-      .service-card:before, .photo:before, .photo-img:before{ animation:none !important; }
-      .service-card, .card, .item, .mini, .service-sub, .photo, .photo-img, .testi{ transition:none !important; }
-      .service-card:hover, .card:hover, .item:hover, .mini:hover, .service-sub:hover, .testi:hover{ transform:none !important; }
-      .btn:active, .pill:active, .cta:active{ transform:none !important; }
+      .photo:before, .photo-img:before, .shot:before{ animation:none !important; }
+      .card, .service-card, .item, .pill, .btn, .cta{ transition:none !important; }
+      .card:hover, .service-card:hover, .item:hover{ transform:none !important; }
     }
   </style>
 </head>
@@ -804,6 +632,7 @@
         <a class="pill" href="#sobre">Sobre mí</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#pago">Forma de pago</a>
+        <a class="pill" href="#resultados">Resultados</a>
         <a class="pill" href="#contacto">Contacto</a>
         <a class="pill" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
         <a class="cta" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
@@ -894,16 +723,16 @@
         <div class="card span-4">
           <div style="padding:20px">
             <div class="item">
-              <h4>Qué vas a notar</h4>
-              <p>Claridad, estructura y progreso real (sin improvisación).</p>
+              <h4 style="margin:0 0 6px">Qué vas a notar</h4>
+              <p style="margin:0; color:var(--muted); line-height:1.6">Claridad, estructura y progreso real (sin improvisación).</p>
             </div>
             <div class="item" style="margin-top:10px">
-              <h4>¿Cómo medimos?</h4>
-              <p>Fuerza, RPE/RIR, medidas, tallas, peso y ajustes precisos según respuesta.</p>
+              <h4 style="margin:0 0 6px">¿Cómo medimos?</h4>
+              <p style="margin:0; color:var(--muted); line-height:1.6">Fuerza, RPE/RIR, medidas, tallas, peso y ajustes precisos según respuesta.</p>
             </div>
             <div class="item" style="margin-top:10px">
-              <h4>Objetivo</h4>
-              <p>Resultados sostenibles con rendimiento y estética.</p>
+              <h4 style="margin:0 0 6px">Objetivo</h4>
+              <p style="margin:0; color:var(--muted); line-height:1.6">Resultados sostenibles con rendimiento y estética.</p>
             </div>
           </div>
         </div>
@@ -987,7 +816,7 @@
           <div class="card">
             <div style="padding:20px">
               <div class="item">
-                <h4 class="gold-stroke">OTROS SERVICIOS</h4>
+                <h4 class="gold-stroke" style="margin:0 0 8px">OTROS SERVICIOS</h4>
                 <ul class="bullets">
                   <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular/ pérdida de grasa</li>
                   <li>Mejora en la salud hormonal, salud intestinal</li>
@@ -1012,8 +841,8 @@
         <div class="card span-12">
           <div style="padding:20px">
             <div class="item">
-              <h4 class="gold-stroke">Solicita la mecánica y datos de pago por WhatsApp</h4>
-              <p>Te los envío directo por WhatsApp para que el proceso sea rápido y claro.</p>
+              <h4 class="gold-stroke" style="margin:0 0 8px">Solicita la mecánica y datos de pago por WhatsApp</h4>
+              <p style="margin:0; color:var(--muted); line-height:1.6">Te los envío directo por WhatsApp para que el proceso sea rápido y claro.</p>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
                 <a class="btn gold"
@@ -1030,8 +859,54 @@
               </div>
 
               <p class="small" style="margin-top:10px">
-                Tip: incluye tu nombre + servicio que quieres, en el recuadro debajo de este, en "CONTACTO" para agilizar EL PROCESO.
+                Tip: incluye tu nombre + servicio que quieres, en el recuadro de "CONTACTO" para agilizar el proceso.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ RESULTADOS (NUEVO) -->
+    <section id="resultados">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> Resultados en clientes y atletas de PRO EHN</h3>
+        <p>Casos reales · progreso visual</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12">
+          <div class="results-card">
+            <div class="results-wrap">
+              <div class="results-row">
+                <div class="shot">
+                  <img src="image1.png" alt="Resultado PRO EHN 1">
+                  <div class="cap2">image1.png</div>
+                </div>
+                <div class="shot">
+                  <img src="image2.png" alt="Resultado PRO EHN 2">
+                  <div class="cap2">image2.png</div>
+                </div>
+                <div class="shot">
+                  <img src="image3.png" alt="Resultado PRO EHN 3">
+                  <div class="cap2">image3.png</div>
+                </div>
+              </div>
+
+              <div class="results-row">
+                <div class="shot">
+                  <img src="image4.png" alt="Resultado PRO EHN 4">
+                  <div class="cap2">image4.png</div>
+                </div>
+                <div class="shot">
+                  <img src="image5.png" alt="Resultado PRO EHN 5">
+                  <div class="cap2">image5.png</div>
+                </div>
+              </div>
+
+              <div class="small" style="text-align:center; margin-top:2px">
+                Si quieres una evaluación, mándame por WhatsApp: edad, estatura, peso, días de entrenamiento y objetivo.
+              </div>
             </div>
           </div>
         </div>
@@ -1060,18 +935,18 @@
         <div class="card span-6">
           <div style="padding:20px">
             <div class="item">
-              <h4 class="gold-stroke">1) WhatsApp</h4>
-              <p><a class="mono" href="https://wa.me/5218132216529" target="_blank" rel="noopener">wa.me/5218132216529</a></p>
+              <h4 class="gold-stroke" style="margin:0 0 6px">1) WhatsApp</h4>
+              <p style="margin:0"><a class="mono" href="https://wa.me/5218132216529" target="_blank" rel="noopener">wa.me/5218132216529</a></p>
             </div>
 
             <div class="item" style="margin-top:10px">
-              <h4 class="gold-stroke">2) Instagram</h4>
-              <p><a class="mono" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">@raulvargas_proehn</a></p>
+              <h4 class="gold-stroke" style="margin:0 0 6px">2) Instagram</h4>
+              <p style="margin:0"><a class="mono" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">@raulvargas_proehn</a></p>
             </div>
 
             <div class="item" style="margin-top:10px">
-              <h4 class="gold-stroke">3) Correo</h4>
-              <p><a class="mono" href="mailto:Pro.Enhanced.Nutrition@gmail.com">Pro.Enhanced.Nutrition@gmail.com</a></p>
+              <h4 class="gold-stroke" style="margin:0 0 6px">3) Correo</h4>
+              <p style="margin:0"><a class="mono" href="mailto:Pro.Enhanced.Nutrition@gmail.com">Pro.Enhanced.Nutrition@gmail.com</a></p>
             </div>
           </div>
         </div>
@@ -1085,25 +960,6 @@
           <a href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
           ·
           <a href="mailto:Pro.Enhanced.Nutrition@gmail.com">Correo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ✅ NUEVO BLOQUE AL FINAL (DEBAJO DE TODO): TESTIMONIOS / RESULTADOS -->
-    <section id="resultados">
-      <div class="section-title">
-        <h3 class="gold-stroke-outline"><span class="mark"></span> RESULTADOS EN CLIENTES Y ATLETAS DE PRO EHN</h3>
-        <p>Evidencia visual (antes / después, progreso y seguimiento)</p>
-      </div>
-
-      <div class="card">
-        <div class="testi-wrap">
-          <div class="testi-grid">
-            <!-- Izquierda a derecha: image1.png, image2.png, image3.png -->
-            <div class="testi"><img src="image1.png" alt="Resultados PRO EHN 1"></div>
-            <div class="testi"><img src="image2.png" alt="Resultados PRO EHN 2"></div>
-            <div class="testi"><img src="image3.png" alt="Resultados PRO EHN 3"></div>
-          </div>
         </div>
       </div>
     </section>
