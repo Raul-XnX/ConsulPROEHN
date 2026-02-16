@@ -35,6 +35,12 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
 
+    /* ✅ Mejor UX en móviles: sin highlight feo al tocar */
+    a, button, .btn, .pill, .cta{
+      -webkit-tap-highlight-color: transparent;
+      tap-highlight-color: transparent;
+    }
+
     body{
       margin:0;
       font-family:var(--sans);
@@ -128,7 +134,7 @@
       font-size:14px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, background .14s ease;
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, background .14s ease, filter .14s ease;
     }
     .pill:hover{
       border-color: rgba(216,178,90,.40);
@@ -254,8 +260,6 @@
       transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
       will-change: transform;
     }
-
-    /* ✅ HOVER “LEVITA” PARA CUALQUIER CARD */
     .card:hover{
       transform: translateY(-12px) scale(1.01);
       filter: saturate(1.05);
@@ -265,7 +269,6 @@
         0 0 54px rgba(216,178,90,.18);
     }
 
-    /* ✅ ITEM (ya con levitación) */
     .item{
       padding:14px; border-radius:16px;
       background: rgba(255,255,255,.07);
@@ -284,7 +287,7 @@
         0 0 40px rgba(216,178,90,.14);
     }
 
-    /* ✅ NUEVO: LEVITACIÓN PARA MINI / SERVICE-SUB / PHOTO / PHOTO-IMG */
+    /* ✅ LEVITACIÓN PARA MINI / SERVICE-SUB / PHOTO / PHOTO-IMG */
     .mini, .service-sub, .photo, .photo-img{
       transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
       will-change: transform;
@@ -308,7 +311,6 @@
         0 0 54px rgba(216,178,90,.18);
     }
 
-    /* photo-img: más sutil para que no “brinque” dentro del contenedor */
     .photo-img:hover{
       transform: translateY(-6px) scale(1.01);
       filter: saturate(1.04);
@@ -431,9 +433,7 @@
 
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
-    /* ==============================
-       FOTO COMPLETA (SIN RECORTE)
-       ============================== */
+    /* FOTO COMPLETA */
     .photo{
       border-radius: 18px;
       background:
@@ -550,7 +550,6 @@
       .span-6,.span-4,.span-8{grid-column: span 12}
     }
 
-    /* ✅ LISTA BONITA PARA “OTROS SERVICIOS” */
     .bullets{
       margin: 10px 0 0;
       padding-left: 18px;
@@ -707,6 +706,69 @@
     }
     .wa-float svg{ width: 28px; height: 28px; fill: #fff; }
 
+    /* ✅ MOBILE: efecto “press” premium al TOCAR (touch devices) */
+    @media (hover: none) and (pointer: coarse){
+      .card:active{
+        transform: translateY(-8px) scale(1.01);
+        filter: saturate(1.05);
+        box-shadow:
+          0 34px 98px rgba(0,0,0,.64),
+          0 0 0 1px rgba(216,178,90,.22),
+          0 0 48px rgba(216,178,90,.16);
+      }
+
+      .service-card:active{
+        transform: translateY(-10px) scale(1.015);
+        filter: saturate(1.05);
+        box-shadow:
+          0 38px 110px rgba(0,0,0,.66),
+          0 0 0 1px rgba(216,178,90,.22),
+          0 0 54px rgba(216,178,90,.18);
+      }
+
+      .item:active{
+        transform: translateY(-6px) scale(1.01);
+        filter: saturate(1.05);
+        box-shadow:
+          0 28px 78px rgba(0,0,0,.58),
+          0 0 0 1px rgba(216,178,90,.18),
+          0 0 36px rgba(216,178,90,.14);
+      }
+
+      .mini:active, .service-sub:active{
+        transform: translateY(-7px) scale(1.012);
+        filter: saturate(1.05);
+        box-shadow:
+          0 30px 86px rgba(0,0,0,.60),
+          0 0 0 1px rgba(216,178,90,.20),
+          0 0 42px rgba(216,178,90,.16);
+      }
+
+      .photo:active{
+        transform: translateY(-7px) scale(1.01);
+        filter: saturate(1.05);
+        box-shadow:
+          0 34px 102px rgba(0,0,0,.66),
+          0 0 0 1px rgba(216,178,90,.22),
+          0 0 50px rgba(216,178,90,.18);
+      }
+
+      .photo-img:active{
+        transform: translateY(-5px) scale(1.01);
+        filter: saturate(1.04);
+        box-shadow:
+          0 26px 74px rgba(0,0,0,.58),
+          0 0 0 1px rgba(216,178,90,.18),
+          0 0 36px rgba(216,178,90,.14);
+      }
+
+      /* botones/pills con press */
+      .btn:active, .pill:active, .cta:active{
+        transform: translateY(1px) scale(0.99);
+        filter: saturate(1.02);
+      }
+    }
+
     /* NAV MOBILE */
     @media (max-width: 780px){
       .nav-inner{
@@ -744,11 +806,10 @@
     @media (prefers-reduced-motion: reduce){
       .card, .item, .mini, .service-sub, .service-card, .photo, .photo-img{ animation:none !important; }
       .card:before, .item:before, .mini:before, .service-sub:before, .service-card:before{ animation:none !important; }
-      .service-card{ transition:none !important; }
-      .service-card:hover{ transform:none !important; }
-      .card:hover{ transform:none !important; }
-      .item:hover{ transform:none !important; }
-      .mini:hover, .service-sub:hover, .photo:hover, .photo-img:hover{ transform:none !important; }
+      .service-card, .card, .item, .mini, .service-sub, .photo, .photo-img{ transition:none !important; }
+      .service-card:hover, .card:hover, .item:hover, .mini:hover, .service-sub:hover, .photo:hover, .photo-img:hover{ transform:none !important; }
+      .service-card:active, .card:active, .item:active, .mini:active, .service-sub:active, .photo:active, .photo-img:active{ transform:none !important; }
+      .btn:active, .pill:active, .cta:active{ transform:none !important; }
     }
   </style>
 </head>
@@ -947,7 +1008,6 @@
           </div>
         </div>
 
-        <!-- ✅ NUEVO RECUADRO: OTROS SERVICIOS -->
         <div class="span-12">
           <div class="card">
             <div style="padding:20px">
@@ -963,7 +1023,7 @@
             </div>
           </div>
         </div>
-        <!-- /NUEVO RECUADRO -->
+
       </div>
     </section>
 
