@@ -251,9 +251,40 @@
       border-radius: var(--radius2);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      will-change: transform;
     }
+
+    /* ✅ NUEVO: HOVER “LEVITA” PARA CUALQUIER CARD (incluye OTROS SERVICIOS) */
+    .card:hover{
+      transform: translateY(-12px) scale(1.01);
+      filter: saturate(1.05);
+      box-shadow:
+        0 38px 110px rgba(0,0,0,.66),
+        0 0 0 1px rgba(216,178,90,.22),
+        0 0 54px rgba(216,178,90,.18);
+    }
+
+    /* ✅ Opcional: también hace micro-levitar los items internos al pasar el cursor */
+    .item{
+      padding:14px; border-radius:16px;
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 14px 26px rgba(0,0,0,.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      will-change: transform;
+    }
+    .item:hover{
+      transform: translateY(-8px) scale(1.01);
+      filter: saturate(1.05);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 0 1px rgba(216,178,90,.18),
+        0 0 40px rgba(216,178,90,.14);
+    }
+
     .card > *{position:relative; z-index:3}
-    .item > *{position:relative; z-index:3}
     .mini > *{position:relative; z-index:3}
     .service-sub > *{position:relative; z-index:3}
     .service-card > *{position:relative; z-index:3}
@@ -485,16 +516,6 @@
       .span-6,.span-4,.span-8{grid-column: span 12}
     }
 
-    .item{
-      padding:14px; border-radius:16px;
-      background: rgba(255,255,255,.07);
-      box-shadow: 0 14px 26px rgba(0,0,0,.25);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-    .item h4{margin:0 0 6px; font-size:15px}
-    .item p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
-
     /* ✅ LISTA BONITA PARA “OTROS SERVICIOS” */
     .bullets{
       margin: 10px 0 0;
@@ -691,6 +712,8 @@
       .card:before, .item:before, .mini:before, .service-sub:before, .service-card:before{ animation:none !important; }
       .service-card{ transition:none !important; }
       .service-card:hover{ transform:none !important; }
+      .card:hover{ transform:none !important; }
+      .item:hover{ transform:none !important; }
     }
   </style>
 </head>
@@ -809,7 +832,7 @@
             </div>
             <div class="item" style="margin-top:10px">
               <h4>Objetivo</h4>
-              <p>Resultados sostenibles con rendimiento, salud y estética.</p>
+              <p>Resultados sostenibles con rendimiento y estética.</p>
             </div>
           </div>
         </div>
