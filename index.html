@@ -32,8 +32,6 @@
       --gold:#d8b25a;
       --gold2:#f3df9b;
       --gold3:#b98a2f;
-      --goldLine: rgba(216,178,90,.35);
-      --goldGlow: rgba(216,178,90,.14);
 
       --shadow: 0 20px 60px rgba(0,0,0,.48);
       --shadow2: 0 18px 45px rgba(0,0,0,.34);
@@ -198,36 +196,12 @@
       transition: opacity .14s ease;
       z-index:0;
     }
-
-    @keyframes goldPulseBorder{
-      0%{
-        box-shadow:
-          0 26px 60px rgba(0,0,0,.55),
-          0 18px 34px rgba(255,42,42,.14),
-          0 0 0 1px rgba(216,178,90,.22),
-          0 0 16px rgba(216,178,90,.10);
-      }
-      100%{
-        box-shadow:
-          0 26px 60px rgba(0,0,0,.55),
-          0 18px 34px rgba(255,42,42,.14),
-          0 0 0 1px rgba(216,178,90,.34),
-          0 0 28px rgba(216,178,90,.18);
-      }
-    }
-
     .cta:hover{
       border-color: rgba(216,178,90,.72);
       transform: translateY(-1px);
       filter: saturate(1.05);
-      animation: goldPulseBorder 1.55s ease-in-out infinite alternate;
     }
     .cta:hover:after{ opacity:.9; }
-
-    @media (prefers-reduced-motion: reduce){
-      .cta, .pill, .btn{transition:none}
-      .cta:hover{animation:none}
-    }
 
     .gold-stroke{
       text-shadow:
@@ -246,48 +220,97 @@
     }
 
     /* ============================================================
-       ✅ MARCO DORADO PREMIUM PARA TODOS LOS "RECUADROS"
-       (cards, items, minis, subcards, etc.)
+       ✅ BORDE DORADO "AGRESIVO PREMIUM" + BRILLO ANIMADO
+       - Aplica a TODOS los recuadros (cards, items, minis, etc.)
+       - Efecto shimmer dorado y glow respirando
        ============================================================ */
-    .card, .item, .mini, .service-sub, .service-card, .photo{
-      border-color: rgba(216,178,90,.28) !important;
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.48),
-        0 0 0 1px rgba(216,178,90,.14),
-        0 0 22px rgba(216,178,90,.10);
+
+    @keyframes goldGlowPulse {
+      0%   { filter: saturate(1.00); }
+      50%  { filter: saturate(1.08); }
+      100% { filter: saturate(1.00); }
     }
 
-    /* Card base */
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius2);
-      overflow:hidden;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      position:relative;
+    @keyframes goldShimmer {
+      0%   { transform: translateX(-55%) rotate(18deg); opacity: .00; }
+      12%  { opacity: .55; }
+      50%  { opacity: .75; }
+      88%  { opacity: .55; }
+      100% { transform: translateX(155%) rotate(18deg); opacity: .00; }
     }
-    .card:after{
+
+    /* contenedor premium universal */
+    .card, .item, .mini, .service-sub, .service-card, .photo{
+      position:relative;
+      border:1px solid rgba(216,178,90,.32) !important;
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.55),
+        0 0 0 1px rgba(216,178,90,.16),
+        0 0 30px rgba(216,178,90,.14);
+      animation: goldGlowPulse 3.1s ease-in-out infinite;
+      overflow:hidden;
+    }
+
+    /* borde interior + halo */
+    .card:after,
+    .item:after,
+    .mini:after,
+    .service-sub:after{
       content:"";
       position:absolute; inset:0;
-      border-radius: var(--radius2);
-      border:1px solid rgba(216,178,90,.32);
+      border-radius: inherit;
+      border:1px solid rgba(216,178,90,.42);
       pointer-events:none;
-      opacity:.92;
+      opacity:.96;
       mix-blend-mode: screen;
+      box-shadow: 0 0 36px rgba(216,178,90,.14);
+      z-index: 2;
     }
-    .card:before{
+
+    /* shimmer dorado */
+    .card:before,
+    .item:before,
+    .mini:before,
+    .service-sub:before,
+    .service-card:before{
       content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 220px at 15% 10%, rgba(255,62,165,.18), transparent 55%),
-        radial-gradient(700px 240px at 90% 20%, rgba(255,42,42,.14), transparent 60%),
-        radial-gradient(700px 240px at 20% 120%, rgba(216,178,90,.12), transparent 60%);
+      position:absolute;
+      top:-45%;
+      left:-80%;
+      width:65%;
+      height:220%;
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(243,223,155,.00) 25%,
+        rgba(243,223,155,.18) 45%,
+        rgba(216,178,90,.30) 55%,
+        rgba(243,223,155,.18) 65%,
+        rgba(243,223,155,.00) 85%,
+        transparent 100%
+      );
+      transform: rotate(18deg);
       pointer-events:none;
-      opacity:.9;
-      filter: blur(10px);
+      z-index: 1;
+      opacity: 0;
+      animation: goldShimmer 5.2s ease-in-out infinite;
     }
-    .card > *{position:relative; z-index:1}
+
+    /* respetar overlays previos del card */
+    .card > *{ position:relative; z-index:3; }
+    .item > *{ position:relative; z-index:3; }
+    .mini > *{ position:relative; z-index:3; }
+    .service-sub > *{ position:relative; z-index:3; }
+    .service-card > *{ position:relative; z-index:3; }
+    .photo > *{ position:relative; z-index:3; }
+
+    /* Card base (mantiene fondo) */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
+      border-radius: var(--radius2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
 
     .hero{
       padding:30px 0 16px;
@@ -297,6 +320,7 @@
     @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
 
     .hero-main{padding:26px}
+
     .kicker{
       display:inline-flex; gap:10px; align-items:center;
       font-family:var(--mono);
@@ -315,6 +339,7 @@
       background: linear-gradient(135deg, var(--gold2), var(--pink), var(--fire));
       box-shadow: 0 0 0 4px rgba(216,178,90,.12);
     }
+
     .hero h2{
       margin:16px 0 10px;
       font-size:40px;
@@ -330,6 +355,7 @@
       line-height:1.7;
       max-width: 74ch;
     }
+
     .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 
     .btn{
@@ -437,10 +463,7 @@
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
     .photo{
-      position:relative;
       border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(216,178,90,.22);
       background:
         radial-gradient(800px 320px at 15% 20%, rgba(255,62,165,.26), transparent 55%),
         radial-gradient(800px 320px at 85% 10%, rgba(255,42,42,.18), transparent 55%),
@@ -448,27 +471,6 @@
         linear-gradient(135deg, rgba(26,34,64,.62), rgba(34,48,95,.92));
       min-height: 320px;
       box-shadow: var(--shadow2);
-    }
-    /* ✅ Foto ya usa :after para glow, por eso el marco premium va en :before */
-    .photo:before{
-      content:"";
-      position:absolute; inset:0;
-      border-radius:18px;
-      border:1px solid rgba(216,178,90,.34);
-      box-shadow: 0 0 26px rgba(216,178,90,.12);
-      pointer-events:none;
-      z-index:2;
-    }
-    .photo:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(420px 160px at 75% 80%, rgba(255,106,0,.12), transparent 60%),
-        radial-gradient(420px 160px at 25% 30%, rgba(216,178,90,.14), transparent 60%);
-      pointer-events:none;
-      filter: blur(10px);
-      opacity:.9;
-      z-index:1;
     }
     .photo .cap{
       position:absolute; left:12px; bottom:12px;
@@ -480,7 +482,6 @@
       box-shadow: 0 14px 26px rgba(0,0,0,.35);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      z-index:3;
     }
     .photo .ghost{
       position:absolute; inset:0;
@@ -507,22 +508,10 @@
 
     .mini{
       padding:16px;
-      border:1px solid rgba(216,178,90,.22);
       border-radius:18px;
       background: rgba(255,255,255,.07);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      position:relative;
-      overflow:hidden;
-    }
-    .mini:after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius:18px;
-      border:1px solid rgba(216,178,90,.30);
-      pointer-events:none;
-      opacity:.9;
-      mix-blend-mode: screen;
     }
     .mini .t{font-size:12px; color:var(--muted); margin:0}
     .mini .v{margin:10px 0 0; font-weight:900; line-height:1.35}
@@ -554,22 +543,10 @@
 
     .item{
       padding:14px; border-radius:16px;
-      border:1px solid rgba(216,178,90,.18);
       background: rgba(255,255,255,.07);
       box-shadow: 0 14px 26px rgba(0,0,0,.25);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      position:relative;
-      overflow:hidden;
-    }
-    .item:after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius:16px;
-      border:1px solid rgba(216,178,90,.30);
-      pointer-events:none;
-      opacity:.9;
-      mix-blend-mode: screen;
     }
     .item h4{margin:0 0 6px; font-size:15px}
     .item p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
@@ -589,56 +566,24 @@
     .service-card{
       padding:18px;
       border-radius: var(--radius2);
-      border:1px solid rgba(216,178,90,.22);
       background: rgba(255,255,255,.07);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       display:flex;
       flex-direction:column;
       gap:12px;
-      position:relative;
-      overflow:hidden;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, filter .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
       will-change: transform;
     }
-    .service-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 240px at 20% 10%, rgba(255,62,165,.16), transparent 60%),
-        radial-gradient(700px 260px at 90% 20%, rgba(255,42,42,.12), transparent 62%),
-        radial-gradient(700px 260px at 15% 115%, rgba(216,178,90,.14), transparent 62%);
-      pointer-events:none;
-      filter: blur(12px);
-      opacity:.85;
-    }
-    /* ✅ Marco premium siempre visible en service-card */
-    .service-card:after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius: var(--radius2);
-      border:1px solid rgba(216,178,90,.34);
-      box-shadow: 0 0 26px rgba(216,178,90,.10);
-      pointer-events:none;
-      opacity:.92;
-      mix-blend-mode: screen;
-    }
-    .service-card > *{position:relative; z-index:1}
 
-    /* ✅ Hover: se levanta MÁS (y se siente premium) */
+    /* ✅ Hover: se levanta MÁS */
     .service-card:hover{
-      transform: translateY(-10px) scale(1.012);
-      border-color: rgba(216,178,90,.52);
-      filter: saturate(1.04);
+      transform: translateY(-12px) scale(1.015);
+      filter: saturate(1.05);
       box-shadow:
-        0 34px 95px rgba(0,0,0,.62),
+        0 38px 110px rgba(0,0,0,.66),
         0 0 0 1px rgba(216,178,90,.22),
-        0 0 44px rgba(216,178,90,.16);
-    }
-    .service-card:hover:after{
-      border-color: rgba(216,178,90,.48);
-      box-shadow: 0 0 40px rgba(216,178,90,.14);
-      opacity: 1;
+        0 0 54px rgba(216,178,90,.18);
     }
 
     .service-head{
@@ -679,21 +624,9 @@
     .service-sub{
       padding:14px;
       border-radius:16px;
-      border:1px solid rgba(216,178,90,.18);
       background: rgba(255,255,255,.07);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      position:relative;
-      overflow:hidden;
-    }
-    .service-sub:after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius:16px;
-      border:1px solid rgba(216,178,90,.30);
-      pointer-events:none;
-      opacity:.9;
-      mix-blend-mode: screen;
     }
     .service-sub h5{
       margin:0 0 6px;
@@ -776,7 +709,6 @@
 
     /* ✅ NAV MOBILE */
     @media (max-width: 780px){
-
       .nav-inner{
         flex-direction: column;
         align-items: stretch;
@@ -810,6 +742,14 @@
         border-radius: 16px;
         padding: 10px 10px;
       }
+    }
+
+    /* Accesibilidad: si el usuario prefiere menos animación */
+    @media (prefers-reduced-motion: reduce){
+      .card, .item, .mini, .service-sub, .service-card, .photo{ animation:none !important; }
+      .card:before, .item:before, .mini:before, .service-sub:before, .service-card:before{ animation:none !important; }
+      .service-card{ transition:none !important; }
+      .service-card:hover{ transform:none !important; }
     }
   </style>
 </head>
@@ -994,7 +934,7 @@
 
             <div class="service-sub">
               <h5 class="gold-stroke"><strong>Salud hormonal</strong></h5>
-              <p>Apoyo en contexto de SÍNDROME DE OVARIO POLIQUÍSTICO SOP, hiperandrogenismo, endometriosis, miomatosis, hipotiroidismo, etc. (con enfoque en hábitos, nutrición y estrategia individual).</p>
+              <p>Apoyo en contexto de SÍNDROME DE OVARIO POLIQUÍSTICO (SOP), hiperandrogenismo, endometriosis, miomatosis, hipotiroidismo, etc. (con enfoque en hábitos, nutrición y estrategia individual).</p>
             </div>
 
             <div class="service-sub">
@@ -1035,7 +975,7 @@
               </div>
 
               <p class="small" style="margin-top:10px">
-                Tip: incluye tu nombre + servicio que quieres, en el recuadro debajo de este, en "CONTACTO" para agilizar.
+                Tip: incluye tu nombre + servicio que quieres, en el recuadro debajo de este, en "CONTACTO" para agilizar EL PROCESO.
               </p>
             </div>
           </div>
