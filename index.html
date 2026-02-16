@@ -255,7 +255,7 @@
       will-change: transform;
     }
 
-    /* ✅ NUEVO: HOVER “LEVITA” PARA CUALQUIER CARD (incluye OTROS SERVICIOS) */
+    /* ✅ HOVER “LEVITA” PARA CUALQUIER CARD */
     .card:hover{
       transform: translateY(-12px) scale(1.01);
       filter: saturate(1.05);
@@ -265,7 +265,7 @@
         0 0 54px rgba(216,178,90,.18);
     }
 
-    /* ✅ Opcional: también hace micro-levitar los items internos al pasar el cursor */
+    /* ✅ ITEM (ya con levitación) */
     .item{
       padding:14px; border-radius:16px;
       background: rgba(255,255,255,.07);
@@ -280,6 +280,40 @@
       filter: saturate(1.05);
       box-shadow:
         0 30px 80px rgba(0,0,0,.55),
+        0 0 0 1px rgba(216,178,90,.18),
+        0 0 40px rgba(216,178,90,.14);
+    }
+
+    /* ✅ NUEVO: LEVITACIÓN PARA MINI / SERVICE-SUB / PHOTO / PHOTO-IMG */
+    .mini, .service-sub, .photo, .photo-img{
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      will-change: transform;
+    }
+
+    .mini:hover, .service-sub:hover{
+      transform: translateY(-10px) scale(1.012);
+      filter: saturate(1.05);
+      box-shadow:
+        0 34px 96px rgba(0,0,0,.62),
+        0 0 0 1px rgba(216,178,90,.20),
+        0 0 46px rgba(216,178,90,.16);
+    }
+
+    .photo:hover{
+      transform: translateY(-10px) scale(1.01);
+      filter: saturate(1.05);
+      box-shadow:
+        0 38px 110px rgba(0,0,0,.66),
+        0 0 0 1px rgba(216,178,90,.22),
+        0 0 54px rgba(216,178,90,.18);
+    }
+
+    /* photo-img: más sutil para que no “brinque” dentro del contenedor */
+    .photo-img:hover{
+      transform: translateY(-6px) scale(1.01);
+      filter: saturate(1.04);
+      box-shadow:
+        0 30px 86px rgba(0,0,0,.58),
         0 0 0 1px rgba(216,178,90,.18),
         0 0 40px rgba(216,178,90,.14);
     }
@@ -714,6 +748,7 @@
       .service-card:hover{ transform:none !important; }
       .card:hover{ transform:none !important; }
       .item:hover{ transform:none !important; }
+      .mini:hover, .service-sub:hover, .photo:hover, .photo-img:hover{ transform:none !important; }
     }
   </style>
 </head>
