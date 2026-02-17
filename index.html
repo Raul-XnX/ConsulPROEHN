@@ -9,9 +9,9 @@
   <style>
     :root{
       /* ✅ Fondo: MORADO + NARANJA (premium) */
-      --bg0:#2b0f4a;   /* morado profundo */
-      --bg1:#431269;   /* morado medio */
-      --bg2:#6a1b9a;   /* violeta */
+      --bg0:#2b0f4a;
+      --bg1:#431269;
+      --bg2:#6a1b9a;
 
       --text:#eef2ff;
       --muted:rgba(238,242,255,.74);
@@ -19,9 +19,8 @@
       --pink:#ff3ea5;
       --fire:#ff2a2a;
 
-      /* ✅ Tonos naranjas (más presentes, pero elegantes) */
-      --fire2:#ff6a00;     /* naranja principal */
-      --orange2:#ff8a2a;   /* naranja suave */
+      --fire2:#ff6a00;
+      --orange2:#ff8a2a;
       --lineOrange: rgba(255,106,0,.16);
       --lineOrange2: rgba(255,138,42,.12);
 
@@ -38,8 +37,8 @@
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
 
       --line: rgba(255,255,255,.14);
-      --panel: rgba(255,255,255,.08);   /* cards */
-      --panel2: rgba(255,255,255,.06);  /* items */
+      --panel: rgba(255,255,255,.08);
+      --panel2: rgba(255,255,255,.06);
     }
 
     *{box-sizing:border-box}
@@ -55,8 +54,6 @@
       font-family:var(--sans);
       font-size:16.5px;
       color:var(--text);
-
-      /* ✅ Naranja más visible pero sutil */
       background:
         radial-gradient(980px 560px at 14% 6%, rgba(255,106,0,.22), transparent 62%),
         radial-gradient(1100px 680px at 92% 10%, rgba(255,62,165,.18), transparent 64%),
@@ -141,7 +138,6 @@
       filter: saturate(1.05);
     }
 
-    /* Tipografía premium */
     .gold-stroke{ text-shadow: 0 12px 28px rgba(0,0,0,.55); }
     .gold-stroke-outline{
       text-shadow:
@@ -149,7 +145,6 @@
         0 12px 28px rgba(0,0,0,.55);
     }
 
-    /* ✅ Cards y recuadros: toque naranja en bordes */
     .card{
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
@@ -292,7 +287,7 @@
         110deg,
         transparent 0%,
         rgba(243,223,155,.00) 25%,
-        rgba(243,223,155,.16) 45%,
+        rgba(243,df,155,.16) 45%,
         rgba(216,178,90,.26) 55%,
         rgba(243,223,155,.16) 65%,
         rgba(243,223,155,.00) 85%,
@@ -513,7 +508,7 @@
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
-    /* RESULTADOS */
+    /* TESTIMONIOS (antes "resultados") */
     .results-card{ padding:18px; }
     .results-wrap{ display:flex; flex-direction:column; gap:14px; }
     .results-row{
@@ -639,7 +634,8 @@
         <a class="pill" href="#sobre">Sobre mí</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#pago">Forma de pago</a>
-        <a class="pill" href="#resultados">Resultados</a>
+        <!-- ✅ CAMBIO: Testimonios -->
+        <a class="pill" href="#resultados">Testimonios</a>
         <a class="pill" href="#contacto">Contacto</a>
         <a class="pill" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
         <a class="cta" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
@@ -874,49 +870,6 @@
       </div>
     </section>
 
-    <section id="resultados">
-      <div class="section-title">
-        <h3 class="gold-stroke-outline"><span class="mark"></span> Resultados en clientes y atletas de PRO EHN</h3>
-        <p>Casos reales · progreso visual</p>
-      </div>
-
-      <div class="grid">
-        <div class="card span-12">
-          <div class="results-card">
-            <div class="results-wrap">
-              <div class="results-row">
-                <div class="shot">
-                  <img src="image1.png" alt="Resultado PRO EHN 1">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot">
-                  <img src="image2.png" alt="Resultado PRO EHN 2">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot">
-                  <img src="image3.png" alt="Resultado PRO EHN 3">
-                  <div class="cap2">Pacientes</div>
-                </div>
-              </div>
-
-              <div class="results-row">
-                <div class="shot">
-                  <img src="image4.png" alt="Resultado PRO EHN 4">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot">
-                  <img src="image5.png" alt="Resultado PRO EHN 5">
-                  <div class="cap2">Pacientes</div>
-                </div>
-              </div>
-
-              <div class="small" style="text-align:center; margin-top:2px"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="contacto">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Contacto</h3>
@@ -955,6 +908,50 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ✅ AHORA SE LLAMA TESTIMONIOS -->
+    <section id="resultados">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> Testimonios en clientes y atletas de PRO EHN</h3>
+        <p>Casos reales · progreso visual</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12">
+          <div class="results-card">
+            <div class="results-wrap">
+              <div class="results-row">
+                <div class="shot">
+                  <img src="image1.png" alt="Testimonio PRO EHN 1">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot">
+                  <img src="image2.png" alt="Testimonio PRO EHN 2">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot">
+                  <img src="image3.png" alt="Testimonio PRO EHN 3">
+                  <div class="cap2">Pacientes</div>
+                </div>
+              </div>
+
+              <div class="results-row">
+                <div class="shot">
+                  <img src="image4.png" alt="Testimonio PRO EHN 4">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot">
+                  <img src="image5.png" alt="Testimonio PRO EHN 5">
+                  <div class="cap2">Pacientes</div>
+                </div>
+              </div>
+
+              <div class="small" style="text-align:center; margin-top:2px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="footer">
         <div>© <span id="year"></span> Pro Enhanced Nutrition — Raúl Vargas Zalazar</div>
@@ -967,6 +964,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <script>
