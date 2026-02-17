@@ -38,6 +38,12 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
+
+    a, button, .btn, .pill, .cta{
+      -webkit-tap-highlight-color: transparent;
+      tap-highlight-color: transparent;
+    }
+
     body{
       margin:0;
       font-family:var(--sans);
@@ -51,13 +57,9 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
       min-height:100vh;
     }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 74px}
-
-    a, button, .btn, .pill, .cta{
-      -webkit-tap-highlight-color: transparent;
-      tap-highlight-color: transparent;
-    }
 
     /* NAV */
     .nav{
@@ -73,6 +75,7 @@
       padding:16px 18px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
+
     .brand{display:flex; align-items:center; gap:12px}
     .badge{
       width:46px; height:46px;
@@ -97,6 +100,7 @@
       align-items:center;
       justify-content:flex-end;
     }
+
     .pill{
       padding:11px 14px;
       border-radius:999px;
@@ -112,6 +116,7 @@
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
     }
+
     .cta{
       padding:11px 16px;
       border-radius:999px;
@@ -191,6 +196,7 @@
       opacity:.9;
     }
     .gold-mirror > *{ position:relative; z-index:2; }
+
     .gold-mirror:hover{
       box-shadow:
         0 22px 66px rgba(0,0,0,.42),
@@ -198,8 +204,14 @@
         0 0 42px rgba(216,178,90,.10);
     }
 
-    /* Levitar internos */
-    .item, .mini, .service-sub, .cap, .shot, .photo-img{
+    /* ====== ✅ LEVITACIÓN SOLO PARA RECUADROS INTERNOS ====== */
+    .item,
+    .mini,
+    .service-sub,
+    .cap,
+    .shot,
+    .photo-img,
+    .step-card{
       will-change: transform, box-shadow, filter;
       transition:
         transform .22s cubic-bezier(.2,.8,.2,1),
@@ -208,7 +220,11 @@
         border-color .22s ease,
         background .22s ease;
     }
-    .item:hover, .mini:hover, .service-sub:hover, .cap:hover{
+    .item:hover,
+    .mini:hover,
+    .service-sub:hover,
+    .cap:hover,
+    .step-card:hover{
       transform: translateY(-8px);
       box-shadow: 0 22px 66px rgba(0,0,0,.36);
       filter: saturate(1.03);
@@ -224,10 +240,12 @@
       filter: saturate(1.04);
     }
     @media (hover: none){
-      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover{
-        transform:none; filter:none;
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover{
+        transform:none;
+        filter:none;
       }
     }
+    /* ====== /LEVITACIÓN ====== */
 
     .item{
       padding:14px; border-radius:16px;
@@ -249,19 +267,6 @@
     }
     .mini .t{font-size:12px; color:var(--muted); margin:0}
     .mini .v{margin:10px 0 0; font-weight:900; line-height:1.35}
-
-    /* Tag row (faltaba) */
-    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
-    .tag{
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.92);
-      font-family: var(--mono);
-    }
 
     /* HERO */
     .hero{
@@ -296,6 +301,7 @@
       letter-spacing:-.6px;
     }
     @media (max-width: 520px){ .hero h2{font-size:30px} }
+
     .hero p{
       margin:0;
       color: var(--muted);
@@ -303,6 +309,7 @@
       line-height:1.7;
       max-width: 74ch;
     }
+
     .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 
     .btn{
@@ -320,23 +327,136 @@
       box-shadow: var(--shadow2);
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
+      filter: saturate(1.03);
     }
     .btn.primary{
       border-color: rgba(255,255,255,.24);
       background: linear-gradient(135deg, rgba(255,106,0,.18), rgba(255,62,165,.16), rgba(106,27,154,.18));
     }
-    .btn.gold{
-      border-color: rgba(255,255,255,.22);
-      background: rgba(255,255,255,.10);
-    }
     .btn.green{
       border-color: rgba(37,211,102,.55);
       background: linear-gradient(135deg, rgba(37,211,102,.18), rgba(18,140,126,.10), rgba(255,255,255,.06));
     }
+    .btn.gold{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+    }
+
+    /* ✅ NUEVO: EFECTO PALPITANTE PARA BOTONES DE PAGO */
+    .pulse-pay{
+      animation: payPulse 1.55s ease-in-out infinite;
+      transform-origin: center;
+    }
+    /* evita que el hover “corte” el pulso feo */
+    .pulse-pay:hover{
+      animation-play-state: running;
+    }
+
+    @keyframes payPulse{
+      0%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 14px 30px rgba(0,0,0,.24),
+          0 0 0 0 rgba(255,106,0,.22),
+          0 0 18px rgba(255,62,165,.10);
+      }
+      50%{
+        transform: translateY(-1px) scale(1.03);
+        box-shadow:
+          0 20px 48px rgba(0,0,0,.30),
+          0 0 0 10px rgba(255,106,0,.10),
+          0 0 26px rgba(255,62,165,.14);
+      }
+      100%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 14px 30px rgba(0,0,0,.24),
+          0 0 0 0 rgba(255,106,0,.22),
+          0 0 18px rgba(255,62,165,.10);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .pulse-pay{ animation: none !important; }
+    }
+    /* /pago pulse */
 
     .small{font-size:12px; color:var(--muted)}
     .mono{font-family:var(--mono)}
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
+
+    /* ✅ CÓMO FUNCIONA (4 PASOS) */
+    .steps-wrap{
+      margin-top:18px;
+      padding-top:14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .steps-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .steps-head h4{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .steps-head p{
+      margin:0;
+      font-size:12px;
+      color: rgba(238,242,255,.65);
+      font-family: var(--mono);
+    }
+    .steps-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 520px){
+      .steps-grid{ grid-template-columns: 1fr; }
+    }
+    .step-card{
+      border-radius:16px;
+      padding:12px 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-left-color: rgba(243,223,155,.18);
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .step-top{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:6px;
+    }
+    .step-num{
+      width:28px; height:28px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      font-family: var(--mono);
+      font-weight:900;
+      font-size:12px;
+      color:#1b1026;
+      background: linear-gradient(135deg, rgba(243,223,155,.92), rgba(216,178,90,.85));
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      flex: 0 0 auto;
+    }
+    .step-title{
+      margin:0;
+      font-weight:1000;
+      letter-spacing:.1px;
+      font-size:13.5px;
+      color: rgba(255,255,255,.95);
+    }
+    .step-desc{
+      margin:0;
+      color: rgba(238,242,255,.72);
+      font-size:12.5px;
+      line-height:1.55;
+    }
 
     /* FOTO */
     .photo{
@@ -369,6 +489,7 @@
       border:1px solid rgba(216,178,90,.34);
       box-shadow: 0 18px 40px rgba(0,0,0,.32);
     }
+
     .photo-img img{
       width:100%;
       height:100%;
@@ -376,6 +497,7 @@
       object-position:center;
       display:block;
     }
+
     .photo-meta{
       display:flex;
       flex-direction:column;
@@ -384,6 +506,7 @@
       gap:10px;
       padding: 2px 4px 6px;
     }
+
     .ghost{
       color: rgba(255,255,255,.94);
       font-weight:900;
@@ -401,6 +524,7 @@
       font-family: var(--mono);
       color: rgba(255,255,255,.82);
     }
+
     .cap{
       padding:10px 12px;
       border-radius: 14px;
@@ -426,6 +550,19 @@
       box-shadow: 0 0 0 5px rgba(255,255,255,.10);
     }
     .section-title p{margin:0; color:var(--muted); font-size:13px}
+
+    /* TAGS */
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .tag{
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      font-family: var(--mono);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.90);
+    }
 
     /* GRID */
     .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; margin-top:14px}
@@ -481,43 +618,6 @@
     .service-sub h5{ margin:0 0 6px; font-size:13px; letter-spacing:.1px; }
     .service-sub p{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
 
-    /* FORMA DE PAGO - Botones con fondo + pulso */
-    @keyframes pulseGlow {
-      0%   { transform: translateY(0) scale(1); filter:saturate(1); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
-      50%  { transform: translateY(-1px) scale(1.03); filter:saturate(1.10); box-shadow: 0 18px 44px rgba(0,0,0,.34); }
-      100% { transform: translateY(0) scale(1); filter:saturate(1); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
-    }
-    .pay-btn{
-      position:relative;
-      overflow:hidden;
-      animation: pulseGlow 1.65s ease-in-out infinite;
-    }
-    .pay-btn.transfer{
-      border-color: rgba(243,223,155,.28);
-      background: linear-gradient(135deg,
-        rgba(243,223,155,.18),
-        rgba(255,62,165,.10),
-        rgba(106,27,154,.18));
-    }
-    .pay-btn.deposit{
-      border-color: rgba(37,211,102,.55);
-      background: linear-gradient(135deg,
-        rgba(37,211,102,.20),
-        rgba(18,140,126,.12),
-        rgba(255,255,255,.06));
-    }
-    .pay-btn::after{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:inherit;
-      background: radial-gradient(600px 220px at 20% 0%, rgba(255,255,255,.18), transparent 55%);
-      opacity:.55;
-      pointer-events:none;
-    }
-    @media (prefers-reduced-motion: reduce){
-      .pay-btn{ animation:none; }
-    }
-
     /* FORM */
     .form{display:grid; gap:10px}
     input, textarea{
@@ -535,6 +635,15 @@
     input:focus, textarea:focus{
       border-color: rgba(255,106,0,.22);
       box-shadow: 0 0 0 4px rgba(255,106,0,.10);
+    }
+
+    .footer{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
     /* TESTIMONIOS */
@@ -566,7 +675,6 @@
       border-radius:14px;
       display:block;
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
     }
     .shot .cap2{
       margin-top:10px;
@@ -576,16 +684,7 @@
       text-align:center;
     }
 
-    .footer{
-      margin-top:30px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.12);
-      color:var(--muted);
-      font-size:13px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    }
-
-    /* FLOAT BUTTONS (restaurados) */
+    /* FLOAT BUTTONS */
     .ig-float{
       position: fixed;
       right: 18px;
@@ -679,7 +778,6 @@
   </div>
 
   <main class="wrap">
-    <!-- HERO -->
     <div class="hero">
       <div class="card hero-main gold-mirror">
         <div class="kicker"><span class="dot"></span> Pro Enhanced Nutrition · Planes personalizados</div>
@@ -704,6 +802,49 @@
           <span class="mono">Correo:</span>
           <a href="mailto:Pro.Enhanced.Nutrition@gmail.com">Pro.Enhanced.Nutrition@gmail.com</a>
         </p>
+
+        <!-- CÓMO FUNCIONA -->
+        <div class="steps-wrap">
+          <div class="steps-head">
+            <h4 class="gold-stroke">Cómo funciona</h4>
+            <p>proceso simple · 4 pasos</p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card gold-mirror">
+              <div class="step-top">
+                <div class="step-num">1</div>
+                <p class="step-title">Evaluación</p>
+              </div>
+              <p class="step-desc">Recolectamos tus datos, hábitos, objetivo y punto de partida para trabajar con precisión.</p>
+            </div>
+
+            <div class="step-card gold-mirror">
+              <div class="step-top">
+                <div class="step-num">2</div>
+                <p class="step-title">Plan personalizado</p>
+              </div>
+              <p class="step-desc">Nutrición + entrenamiento con estructura, métricas y una estrategia realista para tu vida.</p>
+            </div>
+
+            <div class="step-card gold-mirror">
+              <div class="step-top">
+                <div class="step-num">3</div>
+                <p class="step-title">Seguimiento semanal</p>
+              </div>
+              <p class="step-desc">Revisamos progreso, adherencia y desempeño. Te guío para mantener consistencia.</p>
+            </div>
+
+            <div class="step-card gold-mirror">
+              <div class="step-top">
+                <div class="step-num">4</div>
+                <p class="step-title">Ajustes y resultado</p>
+              </div>
+              <p class="step-desc">Ajustes finos según tu respuesta: más control, menos improvisación, mejor resultado.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /CÓMO FUNCIONA -->
       </div>
 
       <div class="card hero-side gold-mirror">
@@ -733,7 +874,6 @@
       </div>
     </div>
 
-    <!-- SOBRE -->
     <section id="sobre">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Sobre mí</h3>
@@ -751,7 +891,6 @@
               Sistema simple y efectivo: <strong>evaluación → plan de nutrición y entrenamiento → seguimiento → ajustes → resultado</strong>.
               Te acompaño para que avances con claridad y seguridad.
             </p>
-
             <div class="tagrow">
               <span class="tag">Fuerza</span>
               <span class="tag">Hipertrofia</span>
@@ -780,7 +919,6 @@
       </div>
     </section>
 
-    <!-- SERVICIOS -->
     <section id="servicios">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Servicios</h3>
@@ -860,9 +998,9 @@
               <div class="item gold-mirror">
                 <h4 class="gold-stroke" style="margin:0 0 8px">OTROS SERVICIOS</h4>
                 <ul style="margin: 10px 0 0; padding-left: 18px; color: rgba(238,242,255,.88); line-height: 1.65; font-size: 14px;">
-                  <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular / pérdida de grasa</li>
+                  <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular/ pérdida de grasa</li>
                   <li>Mejora en la salud hormonal, salud intestinal</li>
-                  <li>Enfoques recreativos, competitivos</li>
+                  <li>Enfoques recreativos, competitivos.</li>
                   <li>Etc</li>
                 </ul>
               </div>
@@ -873,7 +1011,6 @@
       </div>
     </section>
 
-    <!-- FORMA DE PAGO (restaurado) -->
     <section id="pago">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Forma de pago</h3>
@@ -888,13 +1025,14 @@
               <p style="margin:0; color:var(--muted); line-height:1.6">Te los envío directo por WhatsApp para que el proceso sea rápido y claro.</p>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-                <a class="btn pay-btn transfer"
+                <!-- ✅ aquí regresó el “palpitante” -->
+                <a class="btn gold pulse-pay"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20TRANSFERENCIA.%20%F0%9F%92%B3"
                    target="_blank" rel="noopener">
                   Transferencia
                 </a>
 
-                <a class="btn pay-btn deposit"
+                <a class="btn green pulse-pay"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20DEP%C3%93SITO.%20%F0%9F%8F%A6"
                    target="_blank" rel="noopener">
                   Depósito
@@ -910,7 +1048,6 @@
       </div>
     </section>
 
-    <!-- CONTACTO (restaurado) -->
     <section id="contacto">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Contacto</h3>
@@ -951,7 +1088,6 @@
       </div>
     </section>
 
-    <!-- TESTIMONIOS -->
     <section id="resultados">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Testimonios en clientes y atletas de PRO EHN</h3>
@@ -963,7 +1099,6 @@
           <div class="results-card">
             <div class="results-wrap">
 
-              <!-- 1-3 -->
               <div class="results-row">
                 <div class="shot gold-mirror">
                   <img src="image1.png" alt="Testimonio PRO EHN 1">
@@ -979,7 +1114,6 @@
                 </div>
               </div>
 
-              <!-- 4-5 -->
               <div class="results-row">
                 <div class="shot gold-mirror">
                   <img src="image4.png" alt="Testimonio PRO EHN 4">
@@ -991,7 +1125,6 @@
                 </div>
               </div>
 
-              <!-- 6-8 -->
               <div class="results-row">
                 <div class="shot gold-mirror">
                   <img src="image6.png" alt="Testimonio PRO EHN 6">
@@ -1007,7 +1140,6 @@
                 </div>
               </div>
 
-              <!-- 9-11 (nueva fila) -->
               <div class="results-row">
                 <div class="shot gold-mirror">
                   <img src="image9.png" alt="Testimonio PRO EHN 9">
@@ -1023,7 +1155,6 @@
                 </div>
               </div>
 
-              <!-- 12-14 (nueva fila) -->
               <div class="results-row">
                 <div class="shot gold-mirror">
                   <img src="image12.png" alt="Testimonio PRO EHN 12">
@@ -1039,7 +1170,6 @@
                 </div>
               </div>
 
-              <div class="small" style="text-align:center; margin-top:2px"></div>
             </div>
           </div>
         </div>
@@ -1056,6 +1186,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <script>
@@ -1072,7 +1203,6 @@
     }
   </script>
 
-  <!-- FLOATS -->
   <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.89.756 5.707 2.192 8.19L0 32l7.61-2.145a15.94 15.94 0 0 0 8.39 2.33c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.09a13.02 13.02 0 0 1-6.62-1.81l-.474-.28-4.52 1.27 1.21-4.41-.31-.45A13.02 13.02 0 0 1 2.98 16.4c0-7.19 5.84-13.02 13.02-13.02 7.19 0 13.02 5.83 13.02 13.02 0 7.18-5.83 13.02-13.02 13.02z"/>
@@ -1084,5 +1214,6 @@
       <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3.25a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
     </svg>
   </a>
+
 </body>
 </html>
