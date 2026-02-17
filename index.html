@@ -38,12 +38,6 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
-    a, button, .btn, .pill, .cta{
-      -webkit-tap-highlight-color: transparent;
-      tap-highlight-color: transparent;
-    }
-
     body{
       margin:0;
       font-family:var(--sans);
@@ -57,9 +51,13 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
       min-height:100vh;
     }
-
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 74px}
+
+    a, button, .btn, .pill, .cta{
+      -webkit-tap-highlight-color: transparent;
+      tap-highlight-color: transparent;
+    }
 
     /* NAV */
     .nav{
@@ -75,7 +73,6 @@
       padding:16px 18px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-
     .brand{display:flex; align-items:center; gap:12px}
     .badge{
       width:46px; height:46px;
@@ -100,7 +97,6 @@
       align-items:center;
       justify-content:flex-end;
     }
-
     .pill{
       padding:11px 14px;
       border-radius:999px;
@@ -116,7 +112,6 @@
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
     }
-
     .cta{
       padding:11px 16px;
       border-radius:999px;
@@ -149,10 +144,90 @@
       border-left-color: rgba(255,138,42,.12);
       border-radius: var(--radius2);
       box-shadow: var(--shadow2);
-      transition: transform .18s ease, box-shadow .18s ease;
       overflow:hidden;
+      transition: box-shadow .18s ease, filter .18s ease;
+      will-change: box-shadow, filter;
     }
-    .card:hover{ transform: translateY(-8px); box-shadow: var(--shadow); }
+    .card:hover{ box-shadow: 0 18px 50px rgba(0,0,0,.34); filter:saturate(1.01); }
+
+    /* ✅ EFECTO ESPEJO DORADO */
+    .gold-mirror{
+      position: relative;
+      isolation: isolate;
+      overflow:hidden;
+      border-color: rgba(216,178,90,.22) !important;
+      border-top-color: rgba(243,223,155,.32) !important;
+      border-left-color: rgba(216,178,90,.18) !important;
+    }
+    .gold-mirror::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius: inherit;
+      background:
+        linear-gradient(135deg,
+          rgba(243,223,155,.10) 0%,
+          rgba(216,178,90,.10) 20%,
+          rgba(255,255,255,.04) 45%,
+          rgba(216,178,90,.08) 70%,
+          rgba(243,223,155,.10) 100%);
+      opacity:.85;
+      mix-blend-mode: screen;
+      pointer-events:none;
+      z-index:0;
+      filter: blur(.2px);
+    }
+    .gold-mirror::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.14), transparent 38%),
+        radial-gradient(900px 220px at 18% 0%, rgba(243,223,155,.18), transparent 60%),
+        radial-gradient(900px 260px at 85% 8%, rgba(216,178,90,.12), transparent 62%),
+        linear-gradient(120deg, transparent 0%, rgba(243,223,155,.10) 18%, rgba(255,255,255,.06) 34%, transparent 55%);
+      pointer-events:none;
+      z-index:1;
+      opacity:.9;
+    }
+    .gold-mirror > *{ position:relative; z-index:2; }
+    .gold-mirror:hover{
+      box-shadow:
+        0 22px 66px rgba(0,0,0,.42),
+        0 0 0 1px rgba(243,223,155,.10),
+        0 0 42px rgba(216,178,90,.10);
+    }
+
+    /* Levitar internos */
+    .item, .mini, .service-sub, .cap, .shot, .photo-img{
+      will-change: transform, box-shadow, filter;
+      transition:
+        transform .22s cubic-bezier(.2,.8,.2,1),
+        box-shadow .22s cubic-bezier(.2,.8,.2,1),
+        filter .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+    }
+    .item:hover, .mini:hover, .service-sub:hover, .cap:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 22px 66px rgba(0,0,0,.36);
+      filter: saturate(1.03);
+    }
+    .shot:hover{
+      transform: translateY(-10px);
+      box-shadow: 0 26px 72px rgba(0,0,0,.40);
+      filter: saturate(1.04);
+    }
+    .photo-img:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 26px 70px rgba(0,0,0,.40);
+      filter: saturate(1.04);
+    }
+    @media (hover: none){
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover{
+        transform:none; filter:none;
+      }
+    }
 
     .item{
       padding:14px; border-radius:16px;
@@ -160,7 +235,7 @@
       border:1px solid rgba(255,255,255,.12);
       border-left-color: rgba(255,138,42,.12);
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+      overflow:hidden;
     }
 
     .mini{
@@ -170,9 +245,23 @@
       border:1px solid rgba(255,255,255,.14);
       border-top-color: rgba(255,106,0,.16);
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      overflow:hidden;
     }
     .mini .t{font-size:12px; color:var(--muted); margin:0}
     .mini .v{margin:10px 0 0; font-weight:900; line-height:1.35}
+
+    /* Tag row (faltaba) */
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .tag{
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.92);
+      font-family: var(--mono);
+    }
 
     /* HERO */
     .hero{
@@ -207,7 +296,6 @@
       letter-spacing:-.6px;
     }
     @media (max-width: 520px){ .hero h2{font-size:30px} }
-
     .hero p{
       margin:0;
       color: var(--muted);
@@ -215,7 +303,6 @@
       line-height:1.7;
       max-width: 74ch;
     }
-
     .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 
     .btn{
@@ -226,7 +313,7 @@
       font-weight:900;
       display:inline-flex; gap:10px; align-items:center;
       cursor:pointer;
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease, filter .16s ease;
     }
     .btn:hover{
       border-color: rgba(255,106,0,.22);
@@ -238,13 +325,13 @@
       border-color: rgba(255,255,255,.24);
       background: linear-gradient(135deg, rgba(255,106,0,.18), rgba(255,62,165,.16), rgba(106,27,154,.18));
     }
-    .btn.green{
-      border-color: rgba(37,211,102,.55);
-      background: linear-gradient(135deg, rgba(37,211,102,.18), rgba(18,140,126,.10), rgba(255,255,255,.06));
-    }
     .btn.gold{
       border-color: rgba(255,255,255,.22);
       background: rgba(255,255,255,.10);
+    }
+    .btn.green{
+      border-color: rgba(37,211,102,.55);
+      background: linear-gradient(135deg, rgba(37,211,102,.18), rgba(18,140,126,.10), rgba(255,255,255,.06));
     }
 
     .small{font-size:12px; color:var(--muted)}
@@ -267,7 +354,10 @@
       gap:12px;
       padding:14px;
       min-height: 320px;
+      transition: box-shadow .18s ease, filter .18s ease;
+      will-change: box-shadow, filter;
     }
+    .photo:hover{ box-shadow: 0 28px 86px rgba(0,0,0,.46); filter:saturate(1.01); }
 
     .photo-img{
       height: 360px;
@@ -279,7 +369,6 @@
       border:1px solid rgba(216,178,90,.34);
       box-shadow: 0 18px 40px rgba(0,0,0,.32);
     }
-
     .photo-img img{
       width:100%;
       height:100%;
@@ -287,7 +376,6 @@
       object-position:center;
       display:block;
     }
-
     .photo-meta{
       display:flex;
       flex-direction:column;
@@ -296,7 +384,6 @@
       gap:10px;
       padding: 2px 4px 6px;
     }
-
     .ghost{
       color: rgba(255,255,255,.94);
       font-weight:900;
@@ -314,7 +401,6 @@
       font-family: var(--mono);
       color: rgba(255,255,255,.82);
     }
-
     .cap{
       padding:10px 12px;
       border-radius: 14px;
@@ -322,6 +408,7 @@
       background: rgba(255,255,255,.10);
       font-weight:900;
       box-shadow: 0 14px 26px rgba(0,0,0,.28);
+      overflow:hidden;
     }
 
     section{padding-top:26px}
@@ -361,13 +448,11 @@
       display:flex;
       flex-direction:column;
       gap:12px;
-      transition: transform .18s ease, box-shadow .18s ease;
-      will-change: transform;
+      overflow:hidden;
+      transition: box-shadow .18s ease, filter .18s ease;
+      will-change: box-shadow, filter;
     }
-    .service-card:hover{
-      transform: translateY(-8px);
-      box-shadow: var(--shadow);
-    }
+    .service-card:hover{ box-shadow: 0 18px 50px rgba(0,0,0,.34); filter:saturate(1.01); }
 
     .service-head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
     .service-title{margin:0; font-size:16px; letter-spacing:-.2px;}
@@ -391,9 +476,47 @@
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
       border-left-color: rgba(255,106,0,.12);
+      overflow:hidden;
     }
     .service-sub h5{ margin:0 0 6px; font-size:13px; letter-spacing:.1px; }
     .service-sub p{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
+
+    /* FORMA DE PAGO - Botones con fondo + pulso */
+    @keyframes pulseGlow {
+      0%   { transform: translateY(0) scale(1); filter:saturate(1); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+      50%  { transform: translateY(-1px) scale(1.03); filter:saturate(1.10); box-shadow: 0 18px 44px rgba(0,0,0,.34); }
+      100% { transform: translateY(0) scale(1); filter:saturate(1); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+    }
+    .pay-btn{
+      position:relative;
+      overflow:hidden;
+      animation: pulseGlow 1.65s ease-in-out infinite;
+    }
+    .pay-btn.transfer{
+      border-color: rgba(243,223,155,.28);
+      background: linear-gradient(135deg,
+        rgba(243,223,155,.18),
+        rgba(255,62,165,.10),
+        rgba(106,27,154,.18));
+    }
+    .pay-btn.deposit{
+      border-color: rgba(37,211,102,.55);
+      background: linear-gradient(135deg,
+        rgba(37,211,102,.20),
+        rgba(18,140,126,.12),
+        rgba(255,255,255,.06));
+    }
+    .pay-btn::after{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:inherit;
+      background: radial-gradient(600px 220px at 20% 0%, rgba(255,255,255,.18), transparent 55%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    @media (prefers-reduced-motion: reduce){
+      .pay-btn{ animation:none; }
+    }
 
     /* FORM */
     .form{display:grid; gap:10px}
@@ -412,15 +535,6 @@
     input:focus, textarea:focus{
       border-color: rgba(255,106,0,.22);
       box-shadow: 0 0 0 4px rgba(255,106,0,.10);
-    }
-
-    .footer{
-      margin-top:30px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.12);
-      color:var(--muted);
-      font-size:13px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
     /* TESTIMONIOS */
@@ -443,6 +557,7 @@
       max-width: 340px;
       border:1px solid rgba(216,178,90,.34);
       box-shadow: 0 18px 40px rgba(0,0,0,.26);
+      overflow:hidden;
     }
     .shot img{
       width:100%;
@@ -451,6 +566,7 @@
       border-radius:14px;
       display:block;
       border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
     }
     .shot .cap2{
       margin-top:10px;
@@ -460,7 +576,16 @@
       text-align:center;
     }
 
-    /* FLOAT BUTTONS */
+    .footer{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    /* FLOAT BUTTONS (restaurados) */
     .ig-float{
       position: fixed;
       right: 18px;
@@ -554,8 +679,9 @@
   </div>
 
   <main class="wrap">
+    <!-- HERO -->
     <div class="hero">
-      <div class="card hero-main">
+      <div class="card hero-main gold-mirror">
         <div class="kicker"><span class="dot"></span> Pro Enhanced Nutrition · Planes personalizados</div>
 
         <h2 class="gold-stroke-outline">Entrenamiento + nutrición para ganar músculo, perder grasa y mejorar tu salud metabólica y hormonal.</h2>
@@ -580,9 +706,9 @@
         </p>
       </div>
 
-      <div class="card hero-side">
-        <div class="photo">
-          <div class="photo-img">
+      <div class="card hero-side gold-mirror">
+        <div class="photo gold-mirror">
+          <div class="photo-img gold-mirror">
             <img src="raul.png" alt="Raúl Vargas Zalazar">
           </div>
 
@@ -594,11 +720,11 @@
               </div>
             </div>
 
-            <div class="cap">Pro Enhanced Nutrition</div>
+            <div class="cap gold-mirror">Pro Enhanced Nutrition</div>
           </div>
         </div>
 
-        <div class="mini">
+        <div class="mini gold-mirror">
           <p class="t">Servicios principales</p>
           <p class="v">Masa muscular · Pérdida de grasa · Salud hormonal</p>
           <p class="v">Hábitos y relación con la comida (adherencia real)</p>
@@ -607,6 +733,7 @@
       </div>
     </div>
 
+    <!-- SOBRE -->
     <section id="sobre">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Sobre mí</h3>
@@ -614,7 +741,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-8">
+        <div class="card span-8 gold-mirror">
           <div style="padding:20px">
             <p style="margin:0; color:var(--muted); line-height:1.75">
               Soy <strong>Raúl Vargas Zalazar</strong>, fundador de <strong>Pro Enhanced Nutrition</strong>.
@@ -624,6 +751,7 @@
               Sistema simple y efectivo: <strong>evaluación → plan de nutrición y entrenamiento → seguimiento → ajustes → resultado</strong>.
               Te acompaño para que avances con claridad y seguridad.
             </p>
+
             <div class="tagrow">
               <span class="tag">Fuerza</span>
               <span class="tag">Hipertrofia</span>
@@ -633,17 +761,17 @@
           </div>
         </div>
 
-        <div class="card span-4">
+        <div class="card span-4 gold-mirror">
           <div style="padding:20px">
-            <div class="item">
+            <div class="item gold-mirror">
               <h4 style="margin:0 0 6px">Qué vas a notar</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Claridad, estructura y progreso real (sin improvisación).</p>
             </div>
-            <div class="item" style="margin-top:10px">
+            <div class="item gold-mirror" style="margin-top:10px">
               <h4 style="margin:0 0 6px">¿Cómo medimos?</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Fuerza, RPE/RIR, medidas, tallas, peso y ajustes precisos según respuesta.</p>
             </div>
-            <div class="item" style="margin-top:10px">
+            <div class="item gold-mirror" style="margin-top:10px">
               <h4 style="margin:0 0 6px">Objetivo</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Resultados sostenibles con rendimiento y estética.</p>
             </div>
@@ -652,6 +780,7 @@
       </div>
     </section>
 
+    <!-- SERVICIOS -->
     <section id="servicios">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Servicios</h3>
@@ -660,7 +789,7 @@
 
       <div class="grid">
         <div class="span-4">
-          <div class="service-card">
+          <div class="service-card gold-mirror">
             <div class="service-head">
               <h4 class="service-title gold-stroke">Aumento de masa muscular</h4>
               <div class="service-badge">Hipertrofia</div>
@@ -669,12 +798,12 @@
 
             <div class="divider"></div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Aumento en tu musculatura</strong></h5>
               <p>Buscaremos aumentar tu masa muscular (si es tu objetivo) mejorando estética, salud metabólica y rendimiento, evitando el error de “comer por comer” y subir más grasa que músculo.</p>
             </div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Dopaje y antidopaje</strong></h5>
               <p>Si por decisión personal usas esteroides anabólicos androgénicos, puedo guiarte en nutrición y entrenamiento aplicados al contexto, cuidando al máximo variables como perfil lipídico, triglicéridos y salud general.</p>
             </div>
@@ -682,7 +811,7 @@
         </div>
 
         <div class="span-4">
-          <div class="service-card">
+          <div class="service-card gold-mirror">
             <div class="service-head">
               <h4 class="service-title gold-stroke">Pérdida de grasa corporal</h4>
               <div class="service-badge">Definición</div>
@@ -691,12 +820,12 @@
 
             <div class="divider"></div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Perder grasa corporal</strong></h5>
               <p>Disminuimos tu porcentaje de grasa evitando extremos (como dejar de comer “porque sí”), minimizando deficiencias nutricionales y cuidando tu salud.</p>
             </div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Rendimiento primero</strong></h5>
               <p>Ajustes que respetan tu energía, sueño y entrenamiento para mantener desempeño mientras bajas grasa.</p>
             </div>
@@ -704,7 +833,7 @@
         </div>
 
         <div class="span-4">
-          <div class="service-card">
+          <div class="service-card gold-mirror">
             <div class="service-head">
               <h4 class="service-title gold-stroke">Optimización de salud hormonal</h4>
               <div class="service-badge">Salud</div>
@@ -713,12 +842,12 @@
 
             <div class="divider"></div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Salud hormonal</strong></h5>
               <p>SÍNDROME DE OVARIO POLIQUÍSTICO (SOP), hiperandrogenismo, endometriosis, miomatosis, hipotiroidismo, etc. (con enfoque en hábitos, nutrición y estrategia individual).</p>
             </div>
 
-            <div class="service-sub">
+            <div class="service-sub gold-mirror">
               <h5 class="gold-stroke"><strong>Suplementación con criterio</strong></h5>
               <p>Solo lo necesario, con justificación y objetivos claros. Sin “pilas mágicas”.</p>
             </div>
@@ -726,14 +855,14 @@
         </div>
 
         <div class="span-12">
-          <div class="card">
+          <div class="card gold-mirror">
             <div style="padding:20px">
-              <div class="item">
+              <div class="item gold-mirror">
                 <h4 class="gold-stroke" style="margin:0 0 8px">OTROS SERVICIOS</h4>
                 <ul style="margin: 10px 0 0; padding-left: 18px; color: rgba(238,242,255,.88); line-height: 1.65; font-size: 14px;">
-                  <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular/ pérdida de grasa</li>
+                  <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular / pérdida de grasa</li>
                   <li>Mejora en la salud hormonal, salud intestinal</li>
-                  <li>Enfoques recreativos, competitivos.</li>
+                  <li>Enfoques recreativos, competitivos</li>
                   <li>Etc</li>
                 </ul>
               </div>
@@ -744,6 +873,7 @@
       </div>
     </section>
 
+    <!-- FORMA DE PAGO (restaurado) -->
     <section id="pago">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Forma de pago</h3>
@@ -751,20 +881,20 @@
       </div>
 
       <div class="grid">
-        <div class="card span-12">
+        <div class="card span-12 gold-mirror">
           <div style="padding:20px">
-            <div class="item">
+            <div class="item gold-mirror">
               <h4 class="gold-stroke" style="margin:0 0 8px">Solicita la mecánica y datos de pago por WhatsApp</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Te los envío directo por WhatsApp para que el proceso sea rápido y claro.</p>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-                <a class="btn gold"
+                <a class="btn pay-btn transfer"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20TRANSFERENCIA.%20%F0%9F%92%B3"
                    target="_blank" rel="noopener">
                   Transferencia
                 </a>
 
-                <a class="btn green"
+                <a class="btn pay-btn deposit"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20DEP%C3%93SITO.%20%F0%9F%8F%A6"
                    target="_blank" rel="noopener">
                   Depósito
@@ -780,6 +910,7 @@
       </div>
     </section>
 
+    <!-- CONTACTO (restaurado) -->
     <section id="contacto">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Contacto</h3>
@@ -787,7 +918,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-6">
+        <div class="card span-6 gold-mirror">
           <div style="padding:20px">
             <form class="form" onsubmit="sendMail(event)">
               <input id="name" placeholder="Tu nombre" required />
@@ -799,19 +930,19 @@
           </div>
         </div>
 
-        <div class="card span-6">
+        <div class="card span-6 gold-mirror">
           <div style="padding:20px">
-            <div class="item">
+            <div class="item gold-mirror">
               <h4 class="gold-stroke" style="margin:0 0 6px">1) WhatsApp</h4>
               <p style="margin:0"><a class="mono" href="https://wa.me/5218132216529" target="_blank" rel="noopener">wa.me/5218132216529</a></p>
             </div>
 
-            <div class="item" style="margin-top:10px">
+            <div class="item gold-mirror" style="margin-top:10px">
               <h4 class="gold-stroke" style="margin:0 0 6px">2) Instagram</h4>
               <p style="margin:0"><a class="mono" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">@raulvargas_proehn</a></p>
             </div>
 
-            <div class="item" style="margin-top:10px">
+            <div class="item gold-mirror" style="margin-top:10px">
               <h4 class="gold-stroke" style="margin:0 0 6px">3) Correo</h4>
               <p style="margin:0"><a class="mono" href="mailto:Pro.Enhanced.Nutrition@gmail.com">Pro.Enhanced.Nutrition@gmail.com</a></p>
             </div>
@@ -820,7 +951,7 @@
       </div>
     </section>
 
-    <!-- ✅ TESTIMONIOS: incluye image6, image7, image8 en fila nueva -->
+    <!-- TESTIMONIOS -->
     <section id="resultados">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Testimonios en clientes y atletas de PRO EHN</h3>
@@ -828,50 +959,82 @@
       </div>
 
       <div class="grid">
-        <div class="card span-12">
+        <div class="card span-12 gold-mirror">
           <div class="results-card">
             <div class="results-wrap">
 
-              <!-- fila 1 -->
+              <!-- 1-3 -->
               <div class="results-row">
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image1.png" alt="Testimonio PRO EHN 1">
                   <div class="cap2">Pacientes</div>
                 </div>
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image2.png" alt="Testimonio PRO EHN 2">
                   <div class="cap2">Pacientes</div>
                 </div>
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image3.png" alt="Testimonio PRO EHN 3">
                   <div class="cap2">Pacientes</div>
                 </div>
               </div>
 
-              <!-- fila 2 -->
+              <!-- 4-5 -->
               <div class="results-row">
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image4.png" alt="Testimonio PRO EHN 4">
                   <div class="cap2">Pacientes</div>
                 </div>
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image5.png" alt="Testimonio PRO EHN 5">
                   <div class="cap2">Pacientes</div>
                 </div>
               </div>
 
-              <!-- ✅ fila 3 (NUEVAS): image6, image7, image8 -->
+              <!-- 6-8 -->
               <div class="results-row">
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image6.png" alt="Testimonio PRO EHN 6">
                   <div class="cap2">Pacientes</div>
                 </div>
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image7.png" alt="Testimonio PRO EHN 7">
                   <div class="cap2">Pacientes</div>
                 </div>
-                <div class="shot">
+                <div class="shot gold-mirror">
                   <img src="image8.png" alt="Testimonio PRO EHN 8">
+                  <div class="cap2">Pacientes</div>
+                </div>
+              </div>
+
+              <!-- 9-11 (nueva fila) -->
+              <div class="results-row">
+                <div class="shot gold-mirror">
+                  <img src="image9.png" alt="Testimonio PRO EHN 9">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot gold-mirror">
+                  <img src="image10.png" alt="Testimonio PRO EHN 10">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot gold-mirror">
+                  <img src="image11.png" alt="Testimonio PRO EHN 11">
+                  <div class="cap2">Pacientes</div>
+                </div>
+              </div>
+
+              <!-- 12-14 (nueva fila) -->
+              <div class="results-row">
+                <div class="shot gold-mirror">
+                  <img src="image12.png" alt="Testimonio PRO EHN 12">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot gold-mirror">
+                  <img src="image13.png" alt="Testimonio PRO EHN 13">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot gold-mirror">
+                  <img src="image14.png" alt="Testimonio PRO EHN 14">
                   <div class="cap2">Pacientes</div>
                 </div>
               </div>
@@ -893,7 +1056,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <script>
@@ -910,6 +1072,7 @@
     }
   </script>
 
+  <!-- FLOATS -->
   <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.89.756 5.707 2.192 8.19L0 32l7.61-2.145a15.94 15.94 0 0 0 8.39 2.33c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.09a13.02 13.02 0 0 1-6.62-1.81l-.474-.28-4.52 1.27 1.21-4.41-.31-.45A13.02 13.02 0 0 1 2.98 16.4c0-7.19 5.84-13.02 13.02-13.02 7.19 0 13.02 5.83 13.02 13.02 0 7.18-5.83 13.02-13.02 13.02z"/>
@@ -921,6 +1084,5 @@
       <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3.25a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
     </svg>
   </a>
-
 </body>
 </html>
