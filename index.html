@@ -8,7 +8,6 @@
 
   <style>
     :root{
-      /* ✅ Fondo: MORADO + NARANJA (premium) */
       --bg0:#2b0f4a;
       --bg1:#431269;
       --bg2:#6a1b9a;
@@ -35,10 +34,6 @@
 
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-
-      --line: rgba(255,255,255,.14);
-      --panel: rgba(255,255,255,.08);
-      --panel2: rgba(255,255,255,.06);
     }
 
     *{box-sizing:border-box}
@@ -138,6 +133,7 @@
       filter: saturate(1.05);
     }
 
+    /* Tipografía premium */
     .gold-stroke{ text-shadow: 0 12px 28px rgba(0,0,0,.55); }
     .gold-stroke-outline{
       text-shadow:
@@ -145,11 +141,12 @@
         0 12px 28px rgba(0,0,0,.55);
     }
 
+    /* Cards */
     .card{
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      border-top-color: var(--lineOrange);
-      border-left-color: var(--lineOrange2);
+      border-top-color: rgba(255,106,0,.16);
+      border-left-color: rgba(255,138,42,.12);
       border-radius: var(--radius2);
       box-shadow: var(--shadow2);
       transition: transform .18s ease, box-shadow .18s ease;
@@ -161,14 +158,9 @@
       padding:14px; border-radius:16px;
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
-      border-left-color: var(--lineOrange2);
+      border-left-color: rgba(255,138,42,.12);
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
       transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
-    }
-    .item:hover{
-      transform: translateY(-5px);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 18px 34px rgba(0,0,0,.24);
     }
 
     .mini{
@@ -176,7 +168,7 @@
       border-radius:18px;
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      border-top-color: var(--lineOrange);
+      border-top-color: rgba(255,106,0,.16);
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
     }
     .mini .t{font-size:12px; color:var(--muted); margin:0}
@@ -259,50 +251,12 @@
     .mono{font-family:var(--mono)}
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
-    /* IMÁGENES (shimmer premium) */
-    @keyframes goldShimmer {
-      0%   { transform: translateX(-55%) rotate(18deg); opacity: .00; }
-      12%  { opacity: .55; }
-      50%  { opacity: .75; }
-      88%  { opacity: .55; }
-      100% { transform: translateX(155%) rotate(18deg); opacity: .00; }
-    }
-    .photo, .photo-img, .shot{
-      position:relative;
-      border:1px solid rgba(216,178,90,.34);
-      box-shadow:
-        0 24px 70px rgba(0,0,0,.42),
-        0 0 0 1px rgba(216,178,90,.14),
-        0 0 28px rgba(216,178,90,.10);
-      overflow:hidden;
-    }
-    .photo:before, .photo-img:before, .shot:before{
-      content:"";
-      position:absolute;
-      top:-45%;
-      left:-80%;
-      width:65%;
-      height:220%;
-      background: linear-gradient(
-        110deg,
-        transparent 0%,
-        rgba(243,223,155,.00) 25%,
-        rgba(243,df,155,.16) 45%,
-        rgba(216,178,90,.26) 55%,
-        rgba(243,223,155,.16) 65%,
-        rgba(243,223,155,.00) 85%,
-        transparent 100%
-      );
-      transform: rotate(18deg);
-      pointer-events:none;
-      z-index: 1;
-      opacity: 0;
-      animation: goldShimmer 5.2s ease-in-out infinite;
-    }
-    .photo > *, .photo-img > *, .shot > *{ position:relative; z-index:2; }
-
+    /* FOTO */
     .photo{
       border-radius: 18px;
+      border:1px solid rgba(216,178,90,.34);
+      box-shadow: 0 24px 70px rgba(0,0,0,.42);
+      overflow:hidden;
       background:
         radial-gradient(800px 320px at 15% 20%, rgba(255,106,0,.18), transparent 55%),
         radial-gradient(800px 320px at 85% 10%, rgba(255,62,165,.14), transparent 55%),
@@ -321,10 +275,9 @@
       overflow:hidden;
       display:grid;
       place-items:center;
-      background:
-        radial-gradient(420px 160px at 25% 30%, rgba(216,178,90,.12), transparent 60%),
-        radial-gradient(420px 160px at 75% 80%, rgba(255,106,0,.12), transparent 60%),
-        rgba(255,255,255,.04);
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(216,178,90,.34);
+      box-shadow: 0 18px 40px rgba(0,0,0,.32);
     }
 
     .photo-img img{
@@ -397,33 +350,13 @@
       .span-6,.span-4,.span-8{grid-column: span 12}
     }
 
-    .bullets{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: rgba(238,242,255,.88);
-      line-height: 1.65;
-      font-size: 14px;
-    }
-    .bullets li{ margin: 8px 0; }
-    .bullets li::marker{ color: rgba(255,106,0,.92); }
-
-    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .tag{
-      font-size:12px;
-      border:1px solid rgba(255,106,0,.16);
-      padding:6px 10px; border-radius:999px;
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.90);
-      font-family:var(--mono);
-    }
-
-    /* SERVICE CARDS */
+    /* SERVICES */
     .service-card{
       padding:18px;
       border-radius: var(--radius2);
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      border-top-color: var(--lineOrange);
+      border-top-color: rgba(255,106,0,.16);
       box-shadow: var(--shadow2);
       display:flex;
       flex-direction:column;
@@ -436,17 +369,8 @@
       box-shadow: var(--shadow);
     }
 
-    .service-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .service-title{
-      margin:0;
-      font-size:16px;
-      letter-spacing:-.2px;
-    }
+    .service-head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+    .service-title{margin:0; font-size:16px; letter-spacing:-.2px;}
     .service-badge{
       flex:0 0 auto;
       padding:8px 10px;
@@ -459,17 +383,8 @@
       color: rgba(255,255,255,.92);
       white-space:nowrap;
     }
-    .service-desc{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-    }
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,106,0,.20), transparent);
-      margin: 6px 0;
-    }
+    .service-desc{margin:0; color:var(--muted); font-size:13px; line-height:1.6;}
+    .divider{height:1px; background: linear-gradient(90deg, transparent, rgba(255,106,0,.20), transparent); margin: 6px 0;}
     .service-sub{
       padding:14px;
       border-radius:16px;
@@ -508,7 +423,7 @@
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
-    /* TESTIMONIOS (antes "resultados") */
+    /* TESTIMONIOS */
     .results-card{ padding:18px; }
     .results-wrap{ display:flex; flex-direction:column; gap:14px; }
     .results-row{
@@ -526,6 +441,8 @@
       padding:10px;
       flex: 1 1 260px;
       max-width: 340px;
+      border:1px solid rgba(216,178,90,.34);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
     }
     .shot img{
       width:100%;
@@ -610,12 +527,6 @@
       .photo-img{ height: 300px; }
       .shot img{ height: 240px; }
     }
-
-    @media (prefers-reduced-motion: reduce){
-      .photo:before, .photo-img:before, .shot:before{ animation:none !important; }
-      .card, .service-card, .item, .pill, .btn, .cta{ transition:none !important; }
-      .card:hover, .service-card:hover, .item:hover{ transform:none !important; }
-    }
   </style>
 </head>
 
@@ -634,7 +545,6 @@
         <a class="pill" href="#sobre">Sobre mí</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#pago">Forma de pago</a>
-        <!-- ✅ CAMBIO: Testimonios -->
         <a class="pill" href="#resultados">Testimonios</a>
         <a class="pill" href="#contacto">Contacto</a>
         <a class="pill" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
@@ -820,7 +730,7 @@
             <div style="padding:20px">
               <div class="item">
                 <h4 class="gold-stroke" style="margin:0 0 8px">OTROS SERVICIOS</h4>
-                <ul class="bullets">
+                <ul style="margin: 10px 0 0; padding-left: 18px; color: rgba(238,242,255,.88); line-height: 1.65; font-size: 14px;">
                   <li>Nutrición y/o entrenamiento con enfoque en el aumento de masa muscular/ pérdida de grasa</li>
                   <li>Mejora en la salud hormonal, salud intestinal</li>
                   <li>Enfoques recreativos, competitivos.</li>
@@ -910,7 +820,7 @@
       </div>
     </section>
 
-    <!-- ✅ AHORA SE LLAMA TESTIMONIOS -->
+    <!-- ✅ TESTIMONIOS: incluye image6, image7, image8 en fila nueva -->
     <section id="resultados">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Testimonios en clientes y atletas de PRO EHN</h3>
@@ -921,6 +831,8 @@
         <div class="card span-12">
           <div class="results-card">
             <div class="results-wrap">
+
+              <!-- fila 1 -->
               <div class="results-row">
                 <div class="shot">
                   <img src="image1.png" alt="Testimonio PRO EHN 1">
@@ -936,6 +848,7 @@
                 </div>
               </div>
 
+              <!-- fila 2 -->
               <div class="results-row">
                 <div class="shot">
                   <img src="image4.png" alt="Testimonio PRO EHN 4">
@@ -943,6 +856,22 @@
                 </div>
                 <div class="shot">
                   <img src="image5.png" alt="Testimonio PRO EHN 5">
+                  <div class="cap2">Pacientes</div>
+                </div>
+              </div>
+
+              <!-- ✅ fila 3 (NUEVAS): image6, image7, image8 -->
+              <div class="results-row">
+                <div class="shot">
+                  <img src="image6.png" alt="Testimonio PRO EHN 6">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot">
+                  <img src="image7.png" alt="Testimonio PRO EHN 7">
+                  <div class="cap2">Pacientes</div>
+                </div>
+                <div class="shot">
+                  <img src="image8.png" alt="Testimonio PRO EHN 8">
                   <div class="cap2">Pacientes</div>
                 </div>
               </div>
