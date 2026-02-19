@@ -153,7 +153,7 @@
     }
     .card:hover{ box-shadow: 0 18px 50px rgba(0,0,0,.34); filter:saturate(1.01); }
 
-    /* ✅ EFECTO ESPEJO DORADO */
+    /* ✅ EFECTO ESPEJO DORADO (se mantiene para otras secciones) */
     .gold-mirror{
       position: relative;
       isolation: isolate;
@@ -201,7 +201,7 @@
     }
 
     /* ====== ✅ LEVITACIÓN SOLO PARA RECUADROS INTERNOS ====== */
-    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img{
+    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap{
       will-change: transform, box-shadow, filter;
       transition:
         transform .22s cubic-bezier(.2,.8,.2,1),
@@ -210,7 +210,7 @@
         border-color .22s ease,
         background .22s ease;
     }
-    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover{
+    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover{
       transform: translateY(-8px);
       box-shadow: 0 22px 66px rgba(0,0,0,.36);
       filter: saturate(1.03);
@@ -226,7 +226,7 @@
       filter: saturate(1.04);
     }
     @media (hover: none){
-      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover{
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover{
         transform:none; filter:none;
       }
     }
@@ -542,6 +542,36 @@
     .service-sub h5{ margin:0 0 6px; font-size:13px; letter-spacing:.1px; }
     .service-sub p{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
 
+    /* ✅ PRODUCTO: IMAGEN COMPLETA */
+    .product-banner{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(216,178,90,.34);
+      background:
+        radial-gradient(760px 240px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
+        radial-gradient(760px 240px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
+        rgba(255,255,255,.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
+      height: 320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .product-banner img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      object-position:center;
+      display:block;
+      padding: 10px;
+      filter: saturate(1.02);
+    }
+    @media (max-width: 900px){ .product-banner{ height: 280px; } }
+    @media (max-width: 520px){
+      .product-banner{ height: 240px; }
+      .product-banner img{ padding: 8px; }
+    }
+
     /* FORM */
     .form{display:grid; gap:10px}
     input, textarea{
@@ -706,7 +736,7 @@
     .vip-banner img{
       width:100%;
       height:100%;
-      object-fit: contain; /* ✅ se ve completa */
+      object-fit: contain;
       object-position: center;
       display:block;
       padding: 8px;
@@ -764,6 +794,146 @@
     }
     .wa-float svg{ width: 28px; height: 28px; fill: #fff; }
 
+    /* ✅ ACORDEÓN "MI FORMACIÓN" (base) */
+    .acc-wrap{
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-left-color: rgba(243,223,155,.18);
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    details.accordion{
+      border-radius:16px;
+      border:1px solid rgba(216,178,90,.28);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 12px 26px rgba(0,0,0,.20);
+      overflow:hidden;
+    }
+    details.accordion summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight:1000;
+      letter-spacing:.2px;
+      user-select:none;
+      background:
+        linear-gradient(135deg, rgba(243,223,155,.10), rgba(255,255,255,.04), rgba(216,178,90,.08));
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    details.accordion summary::-webkit-details-marker{display:none}
+    .acc-left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      min-width:0;
+    }
+    .acc-title{
+      font-size:14.5px;
+      color: rgba(255,255,255,.94);
+      text-shadow: 0 12px 28px rgba(0,0,0,.55);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .acc-sub{
+      font-size:12px;
+      color: rgba(238,242,255,.70);
+      font-family: var(--mono);
+    }
+    .acc-arrow{
+      flex:0 0 auto;
+      width:34px;height:34px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 10px 20px rgba(0,0,0,.20);
+      transition: transform .18s ease;
+    }
+    details.accordion[open] .acc-arrow{ transform: rotate(180deg); }
+    .acc-body{
+      padding:14px 14px 16px;
+      color: rgba(238,242,255,.86);
+      line-height:1.75;
+      font-size:14px;
+      white-space:pre-wrap;
+    }
+    .acc-body .cv-head{
+      font-weight:1000;
+      letter-spacing:.2px;
+      margin-bottom:10px;
+      color: rgba(255,255,255,.95);
+    }
+    .acc-body .cv-text{
+      margin:0;
+      color: rgba(238,242,255,.82);
+    }
+
+    /* ✅✅ NUEVO: CV en AZUL/BLANCO médico profesional (sin dorado) */
+    .cv-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(231,243,255,.90));
+      border: 1px solid rgba(41,121,255,.18);
+      border-top-color: rgba(41,121,255,.22);
+      border-left-color: rgba(11,18,32,.10);
+      box-shadow: 0 18px 46px rgba(0,0,0,.22);
+    }
+    .cv-card:hover{ box-shadow: 0 22px 60px rgba(0,0,0,.26); filter:none; }
+
+    .cv-wrap{
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(41,121,255,.16);
+      border-left-color: rgba(41,121,255,.22);
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
+    }
+
+    details.accordion.cv-accordion{
+      border: 1px solid rgba(41,121,255,.22);
+      background: rgba(255,255,255,.90);
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+    }
+
+    details.accordion.cv-accordion summary{
+      background: linear-gradient(135deg, rgba(207,232,255,.95), rgba(233,244,255,.96));
+      border-bottom: 1px solid rgba(41,121,255,.16);
+      color:#0b1220;
+      text-shadow:none;
+    }
+
+    details.accordion.cv-accordion .acc-title{
+      color:#0b1220;
+      text-shadow:none;
+    }
+    details.accordion.cv-accordion .acc-sub{
+      color: rgba(11,18,32,.72);
+    }
+
+    details.accordion.cv-accordion .acc-arrow{
+      background: rgba(11,18,32,.06);
+      border: 1px solid rgba(11,18,32,.14);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12);
+    }
+    details.accordion.cv-accordion .acc-arrow svg path{
+      stroke: rgba(11,18,32,.88) !important;
+    }
+
+    details.accordion.cv-accordion .acc-body{
+      color: rgba(11,18,32,.88);
+      font-size: 14.5px;
+    }
+    details.accordion.cv-accordion .acc-body .cv-head{
+      color:#0b1220;
+    }
+    details.accordion.cv-accordion .acc-body .cv-text{
+      color: rgba(11,18,32,.86);
+    }
+
     /* NAV MOBILE */
     @media (max-width: 780px){
       .nav-inner{
@@ -815,6 +985,7 @@
 
       <div class="links">
         <a class="pill" href="#sobre">Sobre mí</a>
+        <a class="pill" href="#formacion">Mi formación</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#diplomado">Diplomado</a>
         <a class="pill" href="#pago">Forma de pago</a>
@@ -951,10 +1122,96 @@
       </div>
     </section>
 
+    <!-- ✅ MI FORMACIÓN (CV) — SIN DORADO + AZUL/BLANCO -->
+    <section id="formacion">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> MI FORMACIÓN</h3>
+        <p>Presiona para ver el CV completo</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 cv-card">
+          <div style="padding:20px">
+            <div class="acc-wrap cv-wrap">
+              <details class="accordion cv-accordion">
+                <summary>
+                  <div class="acc-left">
+                    <div class="acc-title">Currículum Vitae — Raúl Vargas Zalazar</div>
+                    <div class="acc-sub">Toca aquí para desplegar todo el CV</div>
+                  </div>
+                  <div class="acc-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 10l5 5 5-5" stroke="rgba(11,18,32,.88)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </summary>
+
+                <div class="acc-body">
+                  <div class="cv-head">CV (texto completo)</div>
+                  <p class="cv-text">Raúl Vargas Zalazar 
+L.Nutrición  
+ESTUDIANTE DE LIC. EN CULTURA FÍSICA Y DEPORTE. 
+
+-Más de 7 años estudiando el impacto de la nutrición sobre endocrinopatias.
+-EXPERIENCIA en Nutrición, entrenamiento, Suplementación, y antidopaje.
+-Más de 7 años estudiando la fisiopatología del síndrome de ovario poliquístico, miomatosis, endometriosis, otras afecciones en la fisiología femenina.
+
+-Seminario de "Nutrición y Entrenamiento Aplicado al Fisicoconstructivismo y Fitness". Avalado por el centro universitario UNAM A. C. (MÉXICO).
+
+-Certificación en Nutrición Especializada aplicada al Fisicoconstructivismo y Fitness, por la Academia de Fisicoconstructivismo y Fitness del estado de Jalisco (AFFEJ)/NABBA Jalisco (National Amateur Bodybuilders Association), en coordinación con el Instituto de Nutrición Aplicada al Deporte (INAD). (MÉXICO).
+
+-Ponente en el curso: Síndrome De Ovario Poliquístico Abordaje, Diagnóstico y Tratamiento. Sociedad Internacional de Nutriólogos en México. SOCINUM AC. (MÉXICO).
+
+-Especialista en Entrenamiento enfocado en las Mujeres, por el INAF en Coordinación con la ACAFFEM. (MÉXICO)
+
+-Ponente en Wellogi Academy en la certificación: Especialización en abordaje Nutricional, Suplementación y Farmacológico en el Síndrome de Ovario Poliquístico. (MÉXICO)
+
+-Enfocado principalmente en la fisiología femenina así como múltiples problemas de salud que pueden tratarse con la nutrición, suplementación y prescripción del entrenamiento. (MÉXICO).
+
+-Ponente en el curso "La ciencia del fitness, 2 da generación". Abordaje en el Síndrome de Ovario Poliquístico. Acreditado Colegio de Profesionales de la Salud del Estado de Guerrero A. C y avalado por la Universidad Autónoma de Guerrero. (UAGro). (MÉXICO).
+
+-DIPLOMADO EN NUTRICIÓN, ENTRENAMIENTO, Y CIENCIAS APLICADAS a la recomposición corporal.
+(Wellogi academy, 160 hrs con valor curricular)
+
+-Especialista en Entrenamiento enfocado en las Mujeres, por el INAF en Coordinación con la ACAFFEM. (MÉXICO).
+
+-Ponente Internacional en el Curso: Síndrome de Ovario Poliquístico: Enfoque Nutricional y Farmacológico. Organizado por Nutrition Society. (Perú).
+
+-Curso: Nutrición Aplicada a las Enfermedades Ginecológicas - Colegio Mexicano de Nutriólogos, AC. (MÉXICO).
+
+-Ponente Internacional en el Curso: Síndrome de Ovario Poliquístico: Enfoque Nutricional y Farmacológico. Organizado por Nutrition Society. II EDICIÓN. (PERÚ).
+
+-Ponente Internacional en el Curso-Taller Internacional De Síndrome De Ovario Poliquístico   II EDICIÓN; OrganizadO por NUTRILIVERY. (PERÚ).
+
+-Ponente en la Jornada Internacional de Nutrición y Salud Mental, impartiendo el tema Síndrome de Ovario Poliquístico. Organizada por NUTRILIVERY. (PERÚ).
+
+-Ponente Internacional en la VIII Jornada Internacional de Nutrición sobre el tema: Nutrición y Síndrome de Ovario Poliquístico. Organizada por NUTRILIVERY. (PERÚ).
+
+-Ponente nacional en el curso: Recomposición corporal en el sindrome de ovario poliquístico.
+Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  Organizado por EDDN (El Diario Del Nutriólogo) Academy
+
+-Certificación en ciencias de las PIED'S, Wellogi academy. (MÉXICO).
+
+-Ponente Internacional en el IX Congreso Internacional de Actualización De Nutrición. Abordaje Nutricional en el Síndrome De Ovario Poliquístico. Organizada por NUTRILIVERY. (PERÚ).
+
+-Curso-Taller "La Ciencia del Fitness". Acreditado por el Colegio de Profesionales de la Salud del Estado de Guerrero A. C y avalado por la Universidad Autónoma de Guerrero. (UAGro). (MÉXICO).
+
+-Certificado como Entrenador Profesional por el Instituto Nacional de Acondicionamiento Físico y Nutrición Deportiva (INAF), en coordinación con la Academia de Acondicionamiento Físico y Fitness del estado de Michoacán. Con aval de la NSCA (MÉXICO).
+
+-Ponente internacional en el: CURSO INTERNACIONAL: ABORDAJE NUTRICIONAL Y SUPLEMENTACIÓN EN EL SÍNDROME DE OVARIO POLIQUÍSTICO. (ACREDITADO POR el consejo regional VI de arequipa, colegio de nutricionistas del Perú, con valor académico de 30 horas)         
+</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /MI FORMACIÓN -->
+
     <section id="servicios">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Servicios</h3>
-        <p>Elige tu objetivo y agenda por WhatsApp o correo.</p>
       </div>
 
       <div class="grid">
@@ -1039,6 +1296,33 @@
       </div>
     </section>
 
+    <!-- ✅ NUEVA SECCIÓN: OTROS PRODUCTOS (debajo de Otros Servicios) -->
+    <section id="otros-productos">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> OTROS PRODUCTOS</h3>
+        <p>Herramientas y evaluadores</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 gold-mirror">
+          <div style="padding:20px">
+            <div class="item gold-mirror">
+              <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
+                EVALUADOR DE SALUD METABÓLICA Y FENOTIPO DE SÍNDROME DE OVARIO POLIQUÍSTICO
+              </h4>
+
+              <div class="product-banner gold-mirror" aria-label="Evaluador de Salud Metabólica y Fenotipo SOP — portada">
+                <img src="image18.png" alt="Evaluador de salud metabólica y fenotipo de SOP">
+              </div>
+
+              <p class="small" style="margin-top:10px"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /OTROS PRODUCTOS -->
+
     <!-- ✅ DIPLOMADO -->
     <section id="diplomado">
       <div class="section-title">
@@ -1075,12 +1359,7 @@
                        target="_blank" rel="noopener">
                       Pedir info (WhatsApp)
                     </a>
-                    
                   </div>
-
-                  <p class="small" style="margin-top:10px">
-                    
-                  </p>
                 </div>
               </div>
 
@@ -1089,7 +1368,7 @@
                 <h5 class="vip-title">Grupo VIP Diplomado</h5>
 
                 <p style="margin:0; color: rgba(238,242,255,.78); line-height:1.65; font-size:13px">
-                  Si <strong> ya pagaste </strong>eres parte del <strong>VIP</strong>, entra directo al grupo oficial aquí:
+                  Si <strong>ya pagaste</strong> eres parte del <strong>VIP</strong>, entra directo al grupo oficial aquí:
                 </p>
 
                 <div class="vip-banner" aria-label="Grupo VIP — banner">
@@ -1105,7 +1384,10 @@
                   <a class="btn" href="#contacto">Ir a contacto</a>
                 </div>
 
-               
+                <p class="small" style="margin-top:10px">
+                  Nota: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
+                </p>
+              </div>
               <!-- /VIP -->
 
             </div>
@@ -1118,7 +1400,6 @@
     <section id="pago">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> FORMA DE PAGO PARA CONSULTA PRIVADA</h3>
-        <p>Transferencia · Depósito</p>
       </div>
 
       <div class="grid">
@@ -1150,7 +1431,6 @@
     <section id="contacto">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> Contacto</h3>
-        <p>WhatsApp · Instagram · Correo</p>
       </div>
 
       <div class="grid">
