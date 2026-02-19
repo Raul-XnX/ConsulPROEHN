@@ -17,9 +17,9 @@
 
       --pink:#ff3ea5;
       --fire:#ff2a2a;
-
       --fire2:#ff6a00;
       --orange2:#ff8a2a;
+
       --lineOrange: rgba(255,106,0,.16);
       --lineOrange2: rgba(255,138,42,.12);
 
@@ -38,7 +38,6 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     a, button, .btn, .pill, .cta{
       -webkit-tap-highlight-color: transparent;
       tap-highlight-color: transparent;
@@ -63,7 +62,9 @@
 
     /* NAV */
     .nav{
-      position:sticky; top:0; z-index:50;
+      position:sticky;
+      top:0;
+      z-index:50;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       background: rgba(26,10,50,.60);
@@ -73,14 +74,18 @@
       max-width:var(--max);
       margin:0 auto;
       padding:16px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
-
     .brand{display:flex; align-items:center; gap:12px}
     .badge{
-      width:46px; height:46px;
+      width:46px;
+      height:46px;
       border-radius:16px;
-      display:grid; place-items:center;
+      display:grid;
+      place-items:center;
       font-family:var(--mono);
       font-weight:900;
       font-size:11px;
@@ -92,7 +97,6 @@
     }
     .brand h1{font-size:16px; margin:0; letter-spacing:.2px}
     .brand p{margin:0; font-size:13px; color:var(--muted)}
-
     .links{
       display:flex;
       flex-wrap:wrap;
@@ -100,7 +104,6 @@
       align-items:center;
       justify-content:flex-end;
     }
-
     .pill{
       padding:11px 14px;
       border-radius:999px;
@@ -116,7 +119,6 @@
       background: rgba(255,255,255,.10);
       transform: translateY(-1px);
     }
-
     .cta{
       padding:11px 16px;
       border-radius:999px;
@@ -135,11 +137,7 @@
 
     /* Tipografía premium */
     .gold-stroke{ text-shadow: 0 12px 28px rgba(0,0,0,.55); }
-    .gold-stroke-outline{
-      text-shadow:
-        0 0 18px rgba(0,0,0,.25),
-        0 12px 28px rgba(0,0,0,.55);
-    }
+    .gold-stroke-outline{ text-shadow: 0 0 18px rgba(0,0,0,.25), 0 12px 28px rgba(0,0,0,.55); }
 
     /* Cards */
     .card{
@@ -166,15 +164,15 @@
     }
     .gold-mirror::before{
       content:"";
-      position:absolute; inset:-2px;
+      position:absolute;
+      inset:-2px;
       border-radius: inherit;
-      background:
-        linear-gradient(135deg,
-          rgba(243,223,155,.10) 0%,
-          rgba(216,178,90,.10) 20%,
-          rgba(255,255,255,.04) 45%,
-          rgba(216,178,90,.08) 70%,
-          rgba(243,223,155,.10) 100%);
+      background: linear-gradient(135deg,
+        rgba(243,223,155,.10) 0%,
+        rgba(216,178,90,.10) 20%,
+        rgba(255,255,255,.04) 45%,
+        rgba(216,178,90,.08) 70%,
+        rgba(243,223,155,.10) 100%);
       opacity:.85;
       mix-blend-mode: screen;
       pointer-events:none;
@@ -196,22 +194,14 @@
       opacity:.9;
     }
     .gold-mirror > *{ position:relative; z-index:2; }
-
     .gold-mirror:hover{
-      box-shadow:
-        0 22px 66px rgba(0,0,0,.42),
-        0 0 0 1px rgba(243,223,155,.10),
-        0 0 42px rgba(216,178,90,.10);
+      box-shadow: 0 22px 66px rgba(0,0,0,.42),
+                  0 0 0 1px rgba(243,223,155,.10),
+                  0 0 42px rgba(216,178,90,.10);
     }
 
     /* ====== ✅ LEVITACIÓN SOLO PARA RECUADROS INTERNOS ====== */
-    .item,
-    .mini,
-    .service-sub,
-    .cap,
-    .shot,
-    .photo-img,
-    .step-card{
+    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img{
       will-change: transform, box-shadow, filter;
       transition:
         transform .22s cubic-bezier(.2,.8,.2,1),
@@ -220,11 +210,7 @@
         border-color .22s ease,
         background .22s ease;
     }
-    .item:hover,
-    .mini:hover,
-    .service-sub:hover,
-    .cap:hover,
-    .step-card:hover{
+    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover{
       transform: translateY(-8px);
       box-shadow: 0 22px 66px rgba(0,0,0,.36);
       filter: saturate(1.03);
@@ -240,15 +226,15 @@
       filter: saturate(1.04);
     }
     @media (hover: none){
-      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover{
-        transform:none;
-        filter:none;
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover{
+        transform:none; filter:none;
       }
     }
     /* ====== /LEVITACIÓN ====== */
 
     .item{
-      padding:14px; border-radius:16px;
+      padding:14px;
+      border-radius:16px;
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
       border-left-color: rgba(255,138,42,.12);
@@ -271,14 +257,18 @@
     /* HERO */
     .hero{
       padding:30px 0 16px;
-      display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
       align-items:stretch;
     }
     @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
-    .hero-main{padding:26px}
 
+    .hero-main{padding:26px}
     .kicker{
-      display:inline-flex; gap:10px; align-items:center;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
       font-family:var(--mono);
       font-size:12px;
       letter-spacing:.55px;
@@ -289,7 +279,7 @@
       color: rgba(255,255,255,.92);
     }
     .kicker .dot{
-      width:8px; height:8px; border-radius:99px;
+      width:8px;height:8px;border-radius:99px;
       background: linear-gradient(135deg, var(--fire2), var(--pink), rgba(106,27,154,.95));
       box-shadow: 0 0 0 4px rgba(255,255,255,.10);
     }
@@ -309,16 +299,18 @@
       line-height:1.7;
       max-width: 74ch;
     }
-
     .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 
     .btn{
-      padding:12px 16px; border-radius:14px;
+      padding:12px 16px;
+      border-radius:14px;
       border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color:var(--text);
       font-weight:900;
-      display:inline-flex; gap:10px; align-items:center;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
       cursor:pointer;
       transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease, filter .16s ease;
     }
@@ -347,75 +339,34 @@
       animation: payPulse 1.55s ease-in-out infinite;
       transform-origin: center;
     }
-    /* evita que el hover “corte” el pulso feo */
-    .pulse-pay:hover{
-      animation-play-state: running;
-    }
-
+    .pulse-pay:hover{ animation-play-state: running; }
     @keyframes payPulse{
       0%{
         transform: translateY(0) scale(1);
-        box-shadow:
-          0 14px 30px rgba(0,0,0,.24),
-          0 0 0 0 rgba(255,106,0,.22),
-          0 0 18px rgba(255,62,165,.10);
+        box-shadow: 0 14px 30px rgba(0,0,0,.24), 0 0 0 0 rgba(255,106,0,.22), 0 0 18px rgba(255,62,165,.10);
       }
       50%{
         transform: translateY(-1px) scale(1.03);
-        box-shadow:
-          0 20px 48px rgba(0,0,0,.30),
-          0 0 0 10px rgba(255,106,0,.10),
-          0 0 26px rgba(255,62,165,.14);
+        box-shadow: 0 20px 48px rgba(0,0,0,.30), 0 0 0 10px rgba(255,106,0,.10), 0 0 26px rgba(255,62,165,.14);
       }
       100%{
         transform: translateY(0) scale(1);
-        box-shadow:
-          0 14px 30px rgba(0,0,0,.24),
-          0 0 0 0 rgba(255,106,0,.22),
-          0 0 18px rgba(255,62,165,.10);
+        box-shadow: 0 14px 30px rgba(0,0,0,.24), 0 0 0 0 rgba(255,106,0,.22), 0 0 18px rgba(255,62,165,.10);
       }
     }
-    @media (prefers-reduced-motion: reduce){
-      .pulse-pay{ animation: none !important; }
-    }
-    /* /pago pulse */
+    @media (prefers-reduced-motion: reduce){ .pulse-pay{ animation: none !important; } }
 
     .small{font-size:12px; color:var(--muted)}
     .mono{font-family:var(--mono)}
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
     /* ✅ CÓMO FUNCIONA (4 PASOS) */
-    .steps-wrap{
-      margin-top:18px;
-      padding-top:14px;
-      border-top: 1px solid rgba(255,255,255,.10);
-    }
-    .steps-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:10px;
-    }
-    .steps-head h4{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.2px;
-    }
-    .steps-head p{
-      margin:0;
-      font-size:12px;
-      color: rgba(238,242,255,.65);
-      font-family: var(--mono);
-    }
-    .steps-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:10px;
-    }
-    @media (max-width: 520px){
-      .steps-grid{ grid-template-columns: 1fr; }
-    }
+    .steps-wrap{ margin-top:18px; padding-top:14px; border-top: 1px solid rgba(255,255,255,.10); }
+    .steps-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    .steps-head h4{ margin:0; font-size:14px; letter-spacing:.2px; }
+    .steps-head p{ margin:0; font-size:12px; color: rgba(238,242,255,.65); font-family: var(--mono); }
+    .steps-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; }
+    @media (max-width: 520px){ .steps-grid{ grid-template-columns: 1fr; } }
     .step-card{
       border-radius:16px;
       padding:12px 12px;
@@ -425,12 +376,7 @@
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
       overflow:hidden;
     }
-    .step-top{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:6px;
-    }
+    .step-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
     .step-num{
       width:28px; height:28px;
       border-radius:10px;
@@ -444,19 +390,8 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.22);
       flex: 0 0 auto;
     }
-    .step-title{
-      margin:0;
-      font-weight:1000;
-      letter-spacing:.1px;
-      font-size:13.5px;
-      color: rgba(255,255,255,.95);
-    }
-    .step-desc{
-      margin:0;
-      color: rgba(238,242,255,.72);
-      font-size:12.5px;
-      line-height:1.55;
-    }
+    .step-title{ margin:0; font-weight:1000; letter-spacing:.1px; font-size:13.5px; color: rgba(255,255,255,.95); }
+    .step-desc{ margin:0; color: rgba(238,242,255,.72); font-size:12.5px; line-height:1.55; }
 
     /* FOTO */
     .photo{
@@ -489,7 +424,6 @@
       border:1px solid rgba(216,178,90,.34);
       box-shadow: 0 18px 40px rgba(0,0,0,.32);
     }
-
     .photo-img img{
       width:100%;
       height:100%;
@@ -507,23 +441,9 @@
       padding: 2px 4px 6px;
     }
 
-    .ghost{
-      color: rgba(255,255,255,.94);
-      font-weight:900;
-      letter-spacing:.4px;
-    }
-    .ghost .big{
-      font-size:18px;
-      opacity:.96;
-      text-shadow: 0 10px 24px rgba(0,0,0,.55);
-    }
-    .ghost .sub{
-      margin-top:8px;
-      font-size:12px;
-      opacity:.86;
-      font-family: var(--mono);
-      color: rgba(255,255,255,.82);
-    }
+    .ghost{ color: rgba(255,255,255,.94); font-weight:900; letter-spacing:.4px; }
+    .ghost .big{ font-size:18px; opacity:.96; text-shadow: 0 10px 24px rgba(0,0,0,.55); }
+    .ghost .sub{ margin-top:8px; font-size:12px; opacity:.86; font-family: var(--mono); color: rgba(255,255,255,.82); }
 
     .cap{
       padding:10px 12px;
@@ -537,12 +457,18 @@
 
     section{padding-top:26px}
     .section-title{
-      display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:14px;
       margin: 18px 0 12px;
     }
     .section-title h3{
-      margin:0; font-size:20px;
-      display:inline-flex; align-items:center; gap:10px;
+      margin:0;
+      font-size:20px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
     }
     .section-title h3 .mark{
       width:10px; height:10px; border-radius:99px;
@@ -570,9 +496,7 @@
     .span-8{grid-column: span 8}
     .span-6{grid-column: span 6}
     .span-4{grid-column: span 4}
-    @media (max-width: 900px){
-      .span-6,.span-4,.span-8{grid-column: span 12}
-    }
+    @media (max-width: 900px){ .span-6,.span-4,.span-8{grid-column: span 12} }
 
     /* SERVICES */
     .service-card{
@@ -643,18 +567,16 @@
       border-top:1px solid rgba(255,255,255,.12);
       color:var(--muted);
       font-size:13px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     /* TESTIMONIOS */
     .results-card{ padding:18px; }
     .results-wrap{ display:flex; flex-direction:column; gap:14px; }
-    .results-row{
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
+    .results-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     .shot{
       border-radius:18px;
       background:
@@ -682,6 +604,131 @@
       color: rgba(238,242,255,.78);
       font-family: var(--mono);
       text-align:center;
+    }
+
+    /* ✅ DIPLOMADO IMG */
+    .diploma-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+      margin-top:12px;
+    }
+    @media (max-width: 900px){
+      .diploma-row{ grid-template-columns: 1fr; }
+    }
+    .diploma-img{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(216,178,90,.34);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
+    }
+    .diploma-img img{
+      width:100%;
+      height:100%;
+      max-height: 360px;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* ✅ VIP NEÓN + PALPITACIÓN + IMAGEN COMPLETA */
+    .vip-neon{
+      border: 2px solid rgba(57,255,20,.85) !important;
+      box-shadow:
+        0 0 0 1px rgba(57,255,20,.18),
+        0 0 24px rgba(57,255,20,.18),
+        0 0 60px rgba(57,255,20,.10),
+        0 18px 50px rgba(0,0,0,.30) !important;
+      position: relative;
+    }
+    .vip-neon.vip-pulse{
+      animation: vipPulse 1.55s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes vipPulse{
+      0%{
+        box-shadow:
+          0 0 0 1px rgba(57,255,20,.14),
+          0 0 20px rgba(57,255,20,.14),
+          0 0 52px rgba(57,255,20,.08),
+          0 18px 50px rgba(0,0,0,.30);
+        filter: saturate(1.00);
+      }
+      50%{
+        box-shadow:
+          0 0 0 2px rgba(57,255,20,.22),
+          0 0 32px rgba(57,255,20,.22),
+          0 0 86px rgba(57,255,20,.14),
+          0 22px 62px rgba(0,0,0,.36);
+        filter: saturate(1.05);
+      }
+      100%{
+        box-shadow:
+          0 0 0 1px rgba(57,255,20,.14),
+          0 0 20px rgba(57,255,20,.14),
+          0 0 52px rgba(57,255,20,.08),
+          0 18px 50px rgba(0,0,0,.30);
+        filter: saturate(1.00);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .vip-neon.vip-pulse{ animation: none !important; }
+    }
+
+    .vip-title{
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:.6px;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: rgba(57,255,20,.95);
+      text-shadow: 0 0 12px rgba(57,255,20,.18), 0 12px 28px rgba(0,0,0,.55);
+    }
+
+    .vip-banner{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(57,255,20,.55);
+      box-shadow: 0 14px 34px rgba(0,0,0,.25);
+      margin-top:12px;
+
+      height: 210px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:
+        radial-gradient(700px 220px at 20% 15%, rgba(57,255,20,.10), transparent 60%),
+        radial-gradient(700px 220px at 80% 85%, rgba(57,255,20,.08), transparent 62%),
+        rgba(255,255,255,.04);
+    }
+    .vip-banner img{
+      width:100%;
+      height:100%;
+      object-fit: contain; /* ✅ se ve completa */
+      object-position: center;
+      display:block;
+      padding: 8px;
+      filter: saturate(1.02);
+    }
+    @media (max-width: 900px){
+      .vip-banner{ height: 190px; }
+    }
+    @media (max-width: 520px){
+      .vip-banner{ height: 170px; }
+      .vip-banner img{ padding: 6px; }
+    }
+
+    .btn.vip{
+      border-color: rgba(57,255,20,.60);
+      background: linear-gradient(135deg, rgba(57,255,20,.18), rgba(255,255,255,.06), rgba(57,255,20,.10));
+      box-shadow: 0 16px 34px rgba(0,0,0,.20), 0 0 0 6px rgba(57,255,20,.08);
+    }
+    .btn.vip:hover{
+      border-color: rgba(57,255,20,.80);
+      box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 0 8px rgba(57,255,20,.10);
+      filter: saturate(1.08);
     }
 
     /* FLOAT BUTTONS */
@@ -750,6 +797,7 @@
       }
       .photo-img{ height: 300px; }
       .shot img{ height: 240px; }
+      .diploma-img img{ max-height: 320px; }
     }
   </style>
 </head>
@@ -768,6 +816,7 @@
       <div class="links">
         <a class="pill" href="#sobre">Sobre mí</a>
         <a class="pill" href="#servicios">Servicios</a>
+        <a class="pill" href="#diplomado">Diplomado</a>
         <a class="pill" href="#pago">Forma de pago</a>
         <a class="pill" href="#resultados">Testimonios</a>
         <a class="pill" href="#contacto">Contacto</a>
@@ -781,9 +830,7 @@
     <div class="hero">
       <div class="card hero-main gold-mirror">
         <div class="kicker"><span class="dot"></span> Pro Enhanced Nutrition · Planes personalizados</div>
-
         <h2 class="gold-stroke-outline">Entrenamiento + nutrición para ganar músculo, perder grasa y mejorar tu salud metabólica y hormonal.</h2>
-
         <p>
           Enfoque directo y medible: <strong>evaluación → plan individualizado → seguimiento → ajustes</strong>.
           Ideal si eres una persona comprometida, responsable y lista para trabajar con estructura (sin “humo”).
@@ -791,11 +838,9 @@
 
         <div class="hero-actions">
           <a class="btn primary" href="#servicios">Ver servicios</a>
-          <a class="btn"
-             href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20una%20evaluaci%C3%B3n%20para%20masa%20muscular%20/%20p%C3%A9rdida%20de%20grasa%20/%20salud%20hormonal.%20Mis%20datos%3A%20edad%2C%20estatura%2C%20peso%2C%20d%C3%ADas%20que%20entreno%20y%20objetivo."
-             target="_blank" rel="noopener">
-            Agendar evaluación (WhatsApp)
-          </a>
+          <a class="btn" href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20una%20evaluaci%C3%B3n%20para%20masa%20muscular%20/%20p%C3%A9rdida%20de%20grasa%20/%20salud%20hormonal.%20Mis%20datos%3A%20edad%2C%20estatura%2C%20peso%2C%20d%C3%ADas%20que%20entreno%20y%20objetivo."
+             target="_blank" rel="noopener">Agendar evaluación (WhatsApp)</a>
+          <a class="btn gold" href="#diplomado">Ver Diplomado</a>
         </div>
 
         <p class="small" style="margin-top:14px">
@@ -803,7 +848,6 @@
           <a href="mailto:Pro.Enhanced.Nutrition@gmail.com">Pro.Enhanced.Nutrition@gmail.com</a>
         </p>
 
-        <!-- CÓMO FUNCIONA -->
         <div class="steps-wrap">
           <div class="steps-head">
             <h4 class="gold-stroke">Cómo funciona</h4>
@@ -812,39 +856,26 @@
 
           <div class="steps-grid">
             <div class="step-card gold-mirror">
-              <div class="step-top">
-                <div class="step-num">1</div>
-                <p class="step-title">Evaluación</p>
-              </div>
+              <div class="step-top"><div class="step-num">1</div><p class="step-title">Evaluación</p></div>
               <p class="step-desc">Recolectamos tus datos, hábitos, objetivo y punto de partida para trabajar con precisión.</p>
             </div>
 
             <div class="step-card gold-mirror">
-              <div class="step-top">
-                <div class="step-num">2</div>
-                <p class="step-title">Plan personalizado</p>
-              </div>
+              <div class="step-top"><div class="step-num">2</div><p class="step-title">Plan personalizado</p></div>
               <p class="step-desc">Nutrición + entrenamiento con estructura, métricas y una estrategia realista para tu vida.</p>
             </div>
 
             <div class="step-card gold-mirror">
-              <div class="step-top">
-                <div class="step-num">3</div>
-                <p class="step-title">Seguimiento semanal</p>
-              </div>
+              <div class="step-top"><div class="step-num">3</div><p class="step-title">Seguimiento semanal</p></div>
               <p class="step-desc">Revisamos progreso, adherencia y desempeño. Te guío para mantener consistencia.</p>
             </div>
 
             <div class="step-card gold-mirror">
-              <div class="step-top">
-                <div class="step-num">4</div>
-                <p class="step-title">Ajustes y resultado</p>
-              </div>
+              <div class="step-top"><div class="step-num">4</div><p class="step-title">Ajustes y resultado</p></div>
               <p class="step-desc">Ajustes finos según tu respuesta: más control, menos improvisación, mejor resultado.</p>
             </div>
           </div>
         </div>
-        <!-- /CÓMO FUNCIONA -->
       </div>
 
       <div class="card hero-side gold-mirror">
@@ -852,7 +883,6 @@
           <div class="photo-img gold-mirror">
             <img src="raul.png" alt="Raúl Vargas Zalazar">
           </div>
-
           <div class="photo-meta">
             <div class="ghost">
               <div>
@@ -860,7 +890,6 @@
                 <div class="sub">Atención personalizada · métricas · seguimiento</div>
               </div>
             </div>
-
             <div class="cap gold-mirror">Pro Enhanced Nutrition</div>
           </div>
         </div>
@@ -891,6 +920,7 @@
               Sistema simple y efectivo: <strong>evaluación → plan de nutrición y entrenamiento → seguimiento → ajustes → resultado</strong>.
               Te acompaño para que avances con claridad y seguridad.
             </p>
+
             <div class="tagrow">
               <span class="tag">Fuerza</span>
               <span class="tag">Hipertrofia</span>
@@ -906,10 +936,12 @@
               <h4 style="margin:0 0 6px">Qué vas a notar</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Claridad, estructura y progreso real (sin improvisación).</p>
             </div>
+
             <div class="item gold-mirror" style="margin-top:10px">
               <h4 style="margin:0 0 6px">¿Cómo medimos?</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Fuerza, RPE/RIR, medidas, tallas, peso y ajustes precisos según respuesta.</p>
             </div>
+
             <div class="item gold-mirror" style="margin-top:10px">
               <h4 style="margin:0 0 6px">Objetivo</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Resultados sostenibles con rendimiento y estética.</p>
@@ -933,7 +965,6 @@
               <div class="service-badge">Hipertrofia</div>
             </div>
             <p class="service-desc">Progresión + técnica + recuperación + nutrición para avanzar más rápido y con control.</p>
-
             <div class="divider"></div>
 
             <div class="service-sub gold-mirror">
@@ -955,7 +986,6 @@
               <div class="service-badge">Definición</div>
             </div>
             <p class="service-desc">Déficit inteligente sin destruir rendimiento: adherencia, hábitos y estrategia sostenible.</p>
-
             <div class="divider"></div>
 
             <div class="service-sub gold-mirror">
@@ -977,7 +1007,6 @@
               <div class="service-badge">Salud</div>
             </div>
             <p class="service-desc">Nutrición + suplementación puntual orientada a energía, sueño y recuperación, según tu objetivo.</p>
-
             <div class="divider"></div>
 
             <div class="service-sub gold-mirror">
@@ -1007,13 +1036,91 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
+    <!-- ✅ DIPLOMADO -->
+    <section id="diplomado">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> Diplomado</h3>
+        <p>Información y acceso</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 gold-mirror">
+          <div style="padding:20px">
+            <div class="item gold-mirror">
+              <h4 class="gold-stroke" style="margin:0 0 10px">
+                Diplomado Abordaje en el Síndrome de Ovario Poliquístico y Otras afecciones femeninas - 2026 Wellogi
+              </h4>
+
+              <p style="margin:0; color:var(--muted); line-height:1.7">
+                Próximamente.
+              </p>
+
+              <div class="diploma-row">
+                <div class="diploma-img gold-mirror" aria-label="Diplomado — imagen informativa">
+                  <img src="image16.png" alt="Diplomado SOP y otras afecciones femeninas 2026 Wellogi">
+                </div>
+
+                <div class="item gold-mirror">
+                  <h5 class="gold-stroke" style="margin:0 0 8px; font-size:14px">¿Quieres info rápida?</h5>
+                  <p style="margin:0; color:var(--muted); line-height:1.65; font-size:13px">
+                    Envíame tu <strong>nombre</strong>, <strong>ciudad</strong> y si eres <strong>profesional de salud</strong> o <strong>estudiante</strong> para orientarte mejor.
+                  </p>
+
+                  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+                    <a class="btn primary"
+                       href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20informaci%C3%B3n%20del%20Diplomado%20Abordaje%20en%20el%20S%C3%ADndrome%20de%20Ovario%20Poliqu%C3%ADstico%20y%20Otras%20afecciones%20femeninas%20-%202026%20Wellogi."
+                       target="_blank" rel="noopener">
+                      Pedir info (WhatsApp)
+                    </a>
+                    <a class="btn" href="#contacto">Ir a contacto</a>
+                  </div>
+
+                  <p class="small" style="margin-top:10px">
+                    
+                  </p>
+                </div>
+              </div>
+
+              <!-- ✅ GRUPO VIP DIPLOMADO (NEÓN VERDE + IMAGEN COMPLETA) -->
+              <div class="item gold-mirror vip-neon vip-pulse" style="margin-top:14px">
+                <h5 class="vip-title">Grupo VIP Diplomado</h5>
+
+                <p style="margin:0; color: rgba(238,242,255,.78); line-height:1.65; font-size:13px">
+                  Si <strong>ya pagaste</strong> y eres parte del <strong>VIP</strong>, entra directo al grupo oficial aquí:
+                </p>
+
+                <div class="vip-banner" aria-label="Grupo VIP — banner">
+                  <img src="image17.png" alt="Grupo VIP Diplomado">
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+                  <a class="btn vip"
+                     href="https://chat.whatsapp.com/HZkW9nOXl7DFeyLdvRp3LO"
+                     target="_blank" rel="noopener">
+                    SOY VIP (He pagado)
+                  </a>
+                  <a class="btn" href="#contacto">Ir a contacto</a>
+                </div>
+
+                <p class="small" style="margin-top:10px">
+                  Nota: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
+                </p>
+              </div>
+              <!-- /VIP -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /DIPLOMADO -->
+
     <section id="pago">
       <div class="section-title">
-        <h3 class="gold-stroke-outline"><span class="mark"></span> Forma de pago</h3>
+        <h3 class="gold-stroke-outline"><span class="mark"></span> Forma de pago PARA CONSULTA PRIVADA</h3>
         <p>Transferencia · Depósito</p>
       </div>
 
@@ -1025,18 +1132,13 @@
               <p style="margin:0; color:var(--muted); line-height:1.6">Te los envío directo por WhatsApp para que el proceso sea rápido y claro.</p>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-                <!-- ✅ aquí regresó el “palpitante” -->
                 <a class="btn gold pulse-pay"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20TRANSFERENCIA.%20%F0%9F%92%B3"
-                   target="_blank" rel="noopener">
-                  Transferencia
-                </a>
+                   target="_blank" rel="noopener">Transferencia</a>
 
                 <a class="btn green pulse-pay"
                    href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20solicito%20la%20mec%C3%A1nica%20y%20datos%20de%20pago%20por%20WhatsApp.%20Quiero%20pagar%20por%20DEP%C3%93SITO.%20%F0%9F%8F%A6"
-                   target="_blank" rel="noopener">
-                  Depósito
-                </a>
+                   target="_blank" rel="noopener">Depósito</a>
               </div>
 
               <p class="small" style="margin-top:10px">
@@ -1098,78 +1200,30 @@
         <div class="card span-12 gold-mirror">
           <div class="results-card">
             <div class="results-wrap">
-
               <div class="results-row">
-                <div class="shot gold-mirror">
-                  <img src="image1.png" alt="Testimonio PRO EHN 1">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image2.png" alt="Testimonio PRO EHN 2">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image3.png" alt="Testimonio PRO EHN 3">
-                  <div class="cap2">Pacientes</div>
-                </div>
+                <div class="shot gold-mirror"><img src="image1.png" alt="Testimonio PRO EHN 1"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image2.png" alt="Testimonio PRO EHN 2"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image3.png" alt="Testimonio PRO EHN 3"><div class="cap2">Pacientes</div></div>
               </div>
-
               <div class="results-row">
-                <div class="shot gold-mirror">
-                  <img src="image4.png" alt="Testimonio PRO EHN 4">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image5.png" alt="Testimonio PRO EHN 5">
-                  <div class="cap2">Pacientes</div>
-                </div>
+                <div class="shot gold-mirror"><img src="image4.png" alt="Testimonio PRO EHN 4"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image5.png" alt="Testimonio PRO EHN 5"><div class="cap2">Pacientes</div></div>
               </div>
-
               <div class="results-row">
-                <div class="shot gold-mirror">
-                  <img src="image6.png" alt="Testimonio PRO EHN 6">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image7.png" alt="Testimonio PRO EHN 7">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image8.png" alt="Testimonio PRO EHN 8">
-                  <div class="cap2">Pacientes</div>
-                </div>
+                <div class="shot gold-mirror"><img src="image6.png" alt="Testimonio PRO EHN 6"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image7.png" alt="Testimonio PRO EHN 7"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image8.png" alt="Testimonio PRO EHN 8"><div class="cap2">Pacientes</div></div>
               </div>
-
               <div class="results-row">
-                <div class="shot gold-mirror">
-                  <img src="image9.png" alt="Testimonio PRO EHN 9">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image10.png" alt="Testimonio PRO EHN 10">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image11.png" alt="Testimonio PRO EHN 11">
-                  <div class="cap2">Pacientes</div>
-                </div>
+                <div class="shot gold-mirror"><img src="image9.png" alt="Testimonio PRO EHN 9"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image10.png" alt="Testimonio PRO EHN 10"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image11.png" alt="Testimonio PRO EHN 11"><div class="cap2">Pacientes</div></div>
               </div>
-
               <div class="results-row">
-                <div class="shot gold-mirror">
-                  <img src="image12.png" alt="Testimonio PRO EHN 12">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image13.png" alt="Testimonio PRO EHN 13">
-                  <div class="cap2">Pacientes</div>
-                </div>
-                <div class="shot gold-mirror">
-                  <img src="image14.png" alt="Testimonio PRO EHN 14">
-                  <div class="cap2">Pacientes</div>
-                </div>
+                <div class="shot gold-mirror"><img src="image12.png" alt="Testimonio PRO EHN 12"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image13.png" alt="Testimonio PRO EHN 13"><div class="cap2">Pacientes</div></div>
+                <div class="shot gold-mirror"><img src="image14.png" alt="Testimonio PRO EHN 14"><div class="cap2">Pacientes</div></div>
               </div>
-
             </div>
           </div>
         </div>
@@ -1178,15 +1232,12 @@
       <div class="footer">
         <div>© <span id="year"></span> Pro Enhanced Nutrition — Raúl Vargas Zalazar</div>
         <div class="mono">
-          <a href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
-          ·
-          <a href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
-          ·
+          <a href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a> ·
+          <a href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a> ·
           <a href="mailto:Pro.Enhanced.Nutrition@gmail.com">Correo</a>
         </div>
       </div>
     </section>
-
   </main>
 
   <script>
@@ -1197,8 +1248,10 @@
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const msg = document.getElementById("msg").value.trim();
+
       const subject = encodeURIComponent("Contacto — Pro Enhanced Nutrition (" + name + ")");
       const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${msg}`);
+
       window.location.href = `mailto:Pro.Enhanced.Nutrition@gmail.com?subject=${subject}&body=${body}`;
     }
   </script>
@@ -1214,6 +1267,5 @@
       <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3.25a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
     </svg>
   </a>
-
 </body>
 </html>
