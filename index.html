@@ -626,6 +626,72 @@
     }
     @media (prefers-reduced-motion: reduce){ .community-pulse{ animation:none !important; } }
 
+    /* ✅✅ NUEVO: EBOOK PRECIO (NEÓN VERDE + PALPITANTE) */
+    .ebook-neon{
+      border: 2px solid rgba(57,255,20,.85) !important;
+      box-shadow:
+        0 0 0 1px rgba(57,255,20,.18),
+        0 0 24px rgba(57,255,20,.18),
+        0 0 60px rgba(57,255,20,.10),
+        0 18px 50px rgba(0,0,0,.30) !important;
+      position: relative;
+    }
+    .ebook-neon.ebook-pulse{
+      animation: ebookPulse 1.55s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes ebookPulse{
+      0%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 0 0 1px rgba(57,255,20,.14),
+          0 0 18px rgba(57,255,20,.14),
+          0 0 46px rgba(57,255,20,.08),
+          0 18px 50px rgba(0,0,0,.28);
+        filter: saturate(1.00);
+      }
+      50%{
+        transform: translateY(-1px) scale(1.03);
+        box-shadow:
+          0 0 0 2px rgba(57,255,20,.24),
+          0 0 30px rgba(57,255,20,.22),
+          0 0 84px rgba(57,255,20,.14),
+          0 22px 62px rgba(0,0,0,.34);
+        filter: saturate(1.06);
+      }
+      100%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 0 0 1px rgba(57,255,20,.14),
+          0 0 18px rgba(57,255,20,.14),
+          0 0 46px rgba(57,255,20,.08),
+          0 18px 50px rgba(0,0,0,.28);
+        filter: saturate(1.00);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .ebook-neon.ebook-pulse{ animation:none !important; }
+    }
+    .ebook-price{
+      margin: 0;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: rgba(57,255,20,.96);
+      text-shadow: 0 0 12px rgba(57,255,20,.18), 0 12px 28px rgba(0,0,0,.55);
+      font-size: 14px;
+    }
+    .btn.ebook{
+      border-color: rgba(57,255,20,.60);
+      background: linear-gradient(135deg, rgba(57,255,20,.18), rgba(255,255,255,.06), rgba(57,255,20,.10));
+      box-shadow: 0 16px 34px rgba(0,0,0,.20), 0 0 0 6px rgba(57,255,20,.08);
+    }
+    .btn.ebook:hover{
+      border-color: rgba(57,255,20,.82);
+      box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 0 8px rgba(57,255,20,.10);
+      filter: saturate(1.08);
+    }
+
     /* FORM */
     .form{display:grid; gap:10px}
     input, textarea{
@@ -1414,8 +1480,26 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
               </h4>
 
               <div class="product-banner gold-mirror" aria-label="E-BOOK Nutrición y Salud Mental — portada">
-                <img src="image30.PNG" alt="E-BOOK Nutrición y Salud Mental — Raúl Vargas">
+                <img src="IMAGE30.PNG" alt="E-BOOK Nutrición y Salud Mental — Raúl Vargas">
               </div>
+
+              <!-- ✅✅ CUADRO VERDE PALPITANTE (precio + CTA) -->
+              <div class="item ebook-neon ebook-pulse" style="margin-top:12px; text-align:center">
+                <p class="ebook-price">VALOR $649 pesos mexicanos</p>
+
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
+                  <a class="btn ebook"
+                     href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20el%20E-BOOK%20Nutrici%C3%B3n%20y%20Salud%20Mental.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
+                     target="_blank" rel="noopener">
+                    Adquirir o solicitar más información
+                  </a>
+                </div>
+
+                <p class="small" style="margin-top:10px">
+                  Tip: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
+                </p>
+              </div>
+              <!-- /CUADRO VERDE -->
 
               <p class="small" style="margin-top:10px"></p>
             </div>
