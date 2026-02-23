@@ -1733,20 +1733,47 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
   </main>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  /* =========================
+     CONFIG GLOBAL
+     Cambia tu número AQUÍ una sola vez
+     ========================= */
+  const WHATSAPP_NUMBER = "5215658984223";
 
-    function sendMail(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const msg = document.getElementById("msg").value.trim();
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-      const subject = encodeURIComponent("Contacto — Pro Enhanced Nutrition (" + name + ")");
-      const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${msg}`);
+  /* Reemplaza automáticamente todos los enlaces wa.me del sitio */
+  (function hydrateWhatsAppLinks(){
+    const waRegex = /wa\.me\/\d+/i;
 
-      window.location.href = `mailto:Pro.Enhanced.Nutrition@gmail.com?subject=${subject}&body=${body}`;
-    }
-  </script>
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+      const currentHref = a.getAttribute("href");
+      if (!currentHref) return;
+
+      // Reemplaza solo la parte del número
+      const updatedHref = currentHref.replace(waRegex, `wa.me/${WHATSAPP_NUMBER}`);
+      a.setAttribute("href", updatedHref);
+    });
+
+    // Reemplaza texto visible tipo "wa.me/521..."
+    document.querySelectorAll("a.mono").forEach(a => {
+      if (a.textContent && a.textContent.includes("wa.me/")) {
+        a.textContent = `wa.me/${WHATSAPP_NUMBER}`;
+      }
+    });
+  })();
+
+  function sendMail(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const msg = document.getElementById("msg").value.trim();
+
+    const subject = encodeURIComponent("Contacto — Pro Enhanced Nutrition (" + name + ")");
+    const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${msg}`);
+
+    window.location.href = `mailto:Pro.Enhanced.Nutrition@gmail.com?subject=${subject}&body=${body}`;
+  }
+</script>
 
   <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
