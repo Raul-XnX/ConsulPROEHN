@@ -201,7 +201,7 @@
     }
 
     /* LEVITACIÓN */
-    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap, .community-banner{
+    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap, .community-banner, .plan-banner{
       will-change: transform, box-shadow, filter;
       transition:
         transform .22s cubic-bezier(.2,.8,.2,1),
@@ -210,7 +210,7 @@
         border-color .22s ease,
         background .22s ease;
     }
-    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover{
+    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover{
       transform: translateY(-8px);
       box-shadow: 0 22px 66px rgba(0,0,0,.36);
       filter: saturate(1.03);
@@ -226,7 +226,7 @@
       filter: saturate(1.04);
     }
     @media (hover: none){
-      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover{
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover{
         transform:none; filter:none;
       }
     }
@@ -754,6 +754,143 @@
       }
     }
 
+    /* NUEVA SECCIÓN: PLANES DE ASESORÍA Y CONSULTA */
+    .plans-row{
+      display:grid;
+      grid-template-columns: minmax(280px, 520px) minmax(260px, 1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:10px;
+    }
+    .plans-media-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .plan-banner{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(216,178,90,.34);
+      background:
+        radial-gradient(760px 260px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
+        radial-gradient(760px 260px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
+        rgba(255,255,255,.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
+      min-height: 250px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .plan-banner img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      object-position:center;
+      display:block;
+      padding:10px;
+      filter: saturate(1.02);
+    }
+    .plans-cta-side{
+      display:flex;
+      align-items:center;
+    }
+    .plans-cta-panel{
+      width:100%;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:16px;
+      border-radius:16px;
+    }
+    .btn.plan-green{
+      border-color: rgba(57,255,20,.78);
+      background:
+        linear-gradient(135deg, rgba(57,255,20,.20), rgba(255,255,255,.08), rgba(57,255,20,.12));
+      box-shadow:
+        0 16px 34px rgba(0,0,0,.22),
+        0 0 0 1px rgba(57,255,20,.18) inset,
+        0 0 22px rgba(57,255,20,.16),
+        0 0 48px rgba(57,255,20,.10);
+      position:relative;
+      overflow:hidden;
+      justify-content:center;
+      text-align:center;
+    }
+    .btn.plan-green::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 42%),
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 18%, rgba(255,255,255,.08) 34%, transparent 56%);
+      opacity:.9;
+    }
+    .btn.plan-green:hover{
+      border-color: rgba(57,255,20,.95);
+      filter:saturate(1.10);
+      box-shadow:
+        0 22px 58px rgba(0,0,0,.30),
+        0 0 0 1px rgba(57,255,20,.24) inset,
+        0 0 28px rgba(57,255,20,.22),
+        0 0 66px rgba(57,255,20,.16);
+    }
+    .plan-pulse{
+      animation: planBtnPulse 1.55s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes planBtnPulse{
+      0%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.22),
+          0 0 0 1px rgba(57,255,20,.18) inset,
+          0 0 18px rgba(57,255,20,.14),
+          0 0 40px rgba(57,255,20,.09);
+        filter: saturate(1.00);
+      }
+      50%{
+        transform: translateY(-1px) scale(1.035);
+        box-shadow:
+          0 24px 62px rgba(0,0,0,.34),
+          0 0 0 2px rgba(57,255,20,.26) inset,
+          0 0 34px rgba(57,255,20,.24),
+          0 0 82px rgba(57,255,20,.16);
+        filter: saturate(1.08);
+      }
+      100%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.22),
+          0 0 0 1px rgba(57,255,20,.18) inset,
+          0 0 18px rgba(57,255,20,.14),
+          0 0 40px rgba(57,255,20,.09);
+        filter: saturate(1.00);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .plan-pulse{ animation:none !important; }
+    }
+    @media (max-width: 900px){
+      .plans-row{
+        grid-template-columns: 1fr;
+      }
+      .plans-cta-side{ align-items:stretch; }
+    }
+    @media (max-width: 620px){
+      .plans-media-grid{
+        grid-template-columns: 1fr;
+      }
+      .plan-banner{
+        min-height: 220px;
+      }
+    }
+
     /* FORM */
     .form{display:grid; gap:10px}
     input, textarea{
@@ -818,88 +955,77 @@
       text-align:center;
     }
 
-    /* =========================
-   VIP DIPLOMADO — layout horizontal (imagen izquierda / botones derecha)
-   ========================= */
-.vip-row{
-  display:grid;
-  grid-template-columns: minmax(250px, 420px) minmax(260px, 1fr);
-  gap:14px;
-  align-items:stretch;
-  margin-top:12px;
-}
+    /* VIP DIPLOMADO */
+    .vip-row{
+      display:grid;
+      grid-template-columns: minmax(250px, 420px) minmax(260px, 1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:12px;
+    }
+    .vip-media{
+      display:flex;
+      align-items:stretch;
+    }
+    .vip-media .vip-banner{
+      width:100%;
+      height:100%;
+      min-height: 220px;
+      margin-top:0;
+    }
+    .vip-cta-side{
+      display:flex;
+      align-items:stretch;
+    }
+    .vip-cta-panel{
+      width:100%;
+      margin-top:0 !important;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:left;
+    }
+    .vip-cta-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      align-items:center;
+    }
+    .vip-cta-actions .btn{
+      justify-content:center;
+    }
+    .vip-cta-actions .btn.vip.vip-cta{
+      flex: 1 1 260px;
+    }
+    .vip-cta-actions .btn:not(.vip-cta){
+      flex: 0 1 auto;
+    }
+    @media (max-width: 900px){
+      .vip-row{
+        grid-template-columns: 1fr;
+      }
 
-.vip-media{
-  display:flex;
-  align-items:stretch;
-}
+      .vip-media .vip-banner{
+        min-height: 190px;
+      }
 
-.vip-media .vip-banner{
-  width:100%;
-  height:100%;
-  min-height: 220px;
-  margin-top:0;
-}
+      .vip-cta-panel{
+        text-align:center;
+        align-items:center;
+      }
 
-.vip-cta-side{
-  display:flex;
-  align-items:stretch;
-}
+      .vip-cta-actions{
+        justify-content:center;
+        width:100%;
+      }
 
-.vip-cta-panel{
-  width:100%;
-  margin-top:0 !important;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  text-align:left;
-}
-
-.vip-cta-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:12px;
-  align-items:center;
-}
-
-.vip-cta-actions .btn{
-  justify-content:center;
-}
-
-.vip-cta-actions .btn.vip.vip-cta{
-  flex: 1 1 260px;
-}
-
-.vip-cta-actions .btn:not(.vip-cta){
-  flex: 0 1 auto;
-}
-
-@media (max-width: 900px){
-  .vip-row{
-    grid-template-columns: 1fr;
-  }
-
-  .vip-media .vip-banner{
-    min-height: 190px;
-  }
-
-  .vip-cta-panel{
-    text-align:center;
-    align-items:center;
-  }
-
-  .vip-cta-actions{
-    justify-content:center;
-    width:100%;
-  }
-
-  .vip-cta-actions .btn,
-  .vip-cta-actions .btn.vip.vip-cta{
-    flex: 1 1 100%;
-    width:100%;
-  }
-}
+      .vip-cta-actions .btn,
+      .vip-cta-actions .btn.vip.vip-cta{
+        flex: 1 1 100%;
+        width:100%;
+      }
+    }
 
     .vip-title{
       margin:0 0 8px;
@@ -956,7 +1082,6 @@
       filter: saturate(1.08);
     }
 
-    /* ✅ BOTÓN VIP "SOY VIP" — VERDE PALPITANTE + RESPLANDOR + EFECTO ESPEJO */
     .btn.vip.vip-cta{
       position: relative;
       overflow: hidden;
@@ -971,8 +1096,6 @@
       animation: vipBtnPulse 1.55s ease-in-out infinite;
       transform-origin: center;
     }
-
-    /* brillo espejo */
     .btn.vip.vip-cta::before{
       content:"";
       position:absolute;
@@ -984,8 +1107,6 @@
         linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 18%, rgba(255,255,255,.08) 34%, transparent 56%);
       opacity:.9;
     }
-
-    /* halo exterior */
     .btn.vip.vip-cta::after{
       content:"";
       position:absolute;
@@ -998,7 +1119,6 @@
         0 0 38px rgba(57,255,20,.12);
       opacity:.9;
     }
-
     .btn.vip.vip-cta:hover{
       border-color: rgba(57,255,20,.95);
       filter: saturate(1.10);
@@ -1008,7 +1128,6 @@
         0 0 28px rgba(57,255,20,.22),
         0 0 66px rgba(57,255,20,.16);
     }
-
     @keyframes vipBtnPulse{
       0%{
         transform: translateY(0) scale(1);
@@ -1038,7 +1157,6 @@
         filter: saturate(1.00);
       }
     }
-
     @media (prefers-reduced-motion: reduce){
       .btn.vip.vip-cta{ animation:none !important; }
     }
@@ -1216,6 +1334,42 @@
       color: rgba(11,18,32,.86);
     }
 
+    /* DIPLOMADO imagen (si no estaba definido) */
+    .diploma-row{
+      display:grid;
+      grid-template-columns: minmax(260px, 420px) minmax(260px, 1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:12px;
+    }
+    .diploma-img{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(216,178,90,.34);
+      background:
+        radial-gradient(760px 240px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
+        radial-gradient(760px 240px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
+        rgba(255,255,255,.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
+      min-height: 260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .diploma-img img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      object-position:center;
+      display:block;
+      padding: 10px;
+      filter: saturate(1.02);
+    }
+    @media (max-width: 900px){
+      .diploma-row{ grid-template-columns:1fr; }
+      .diploma-img{ min-height:220px; }
+    }
+
     /* NAV MOBILE */
     @media (max-width: 780px){
       .nav-inner{
@@ -1270,6 +1424,7 @@
         <a class="pill" href="#formacion">Mi formación</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#comunidad">Comunidad</a>
+        <a class="pill" href="#planes-asesoria">Planes</a>
         <a class="pill" href="#diplomado">Diplomado</a>
         <a class="pill" href="#pago">Forma de pago</a>
         <a class="pill" href="#resultados">Testimonios</a>
@@ -1618,6 +1773,60 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
       </div>
     </section>
 
+    <!-- NUEVA SECCIÓN: PLANES DE ASESORÍA Y CONSULTA -->
+    <section id="planes-asesoria">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> PLANES DE ASESORÍA Y CONSULTA PERSONALIZADA</h3>
+        <p>Solicita información por WhatsApp Business</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 gold-mirror">
+          <div style="padding:20px">
+            <div class="item gold-mirror">
+              <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
+                
+              </h4>
+
+              <div class="plans-row">
+                <!-- Imágenes a la izquierda dentro del mismo recuadro -->
+                <div class="plans-media-grid" aria-label="Planes de asesoría y consulta — imágenes">
+                  <div class="plan-banner gold-mirror">
+                    <img src="image31.png" alt="Plan de asesoría y consulta 1">
+                  </div>
+                  <div class="plan-banner gold-mirror">
+                    <img src="image32.png" alt="Plan de asesoría y consulta 2">
+                  </div>
+                </div>
+
+                <!-- Botón verde palpitante a la derecha -->
+                <div class="plans-cta-side">
+                  <div class="item gold-mirror plans-cta-panel">
+                    <p style="margin:0; color: rgba(238,242,255,.86); line-height:1.65; font-size:13px; max-width:36ch;">
+                      Si quieres conocer precios, modalidad, seguimiento y qué incluye cada plan,
+                      escríbeme directo a <strong>WhatsApp Business</strong>.
+                    </p>
+
+                    <div style="display:flex; justify-content:center; margin-top:12px; width:100%;">
+                      <a class="btn plan-green plan-pulse"
+                         href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20planes%20de%20asesor%C3%ADa%20y%20consulta.%20%C2%BFMe%20puedes%20orientar%20por%20favor%3F"
+                         target="_blank" rel="noopener">
+                        SOLICITAR MÁS INFORMACIÓN SOBRE LOS PLANES
+                      </a>
+                    </div>
+
+                    <p class="small" style="margin-top:10px">
+                      Tip: si el link no abre, cópialo y pégalo en WhatsApp o tu navegador.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /item -->
+          </div><!-- /padding -->
+        </div><!-- /card -->
+      </div><!-- /grid -->
+    </section>
+
     <!-- OTROS PRODUCTOS -->
     <section id="otros-productos">
       <div class="section-title">
@@ -1650,7 +1859,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                       <a class="btn ebook"
                         href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20o%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20EVALUADOR%20DE%20SALUD%20METAB%C3%93LICA%20Y%20FENOTIPO%20DE%20S%C3%8DNDROME%20DE%20OVARIO%20POLIQU%C3%8DSTICO.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
                         target="_blank" rel="noopener">
-                        Adquirir o solicitar más información
+                        ADQUIRIR O SOLICITAR MÁS INFORMACIÓN
                       </a>
                     </div>
 
@@ -1683,7 +1892,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                       <a class="btn ebook"
                         href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20el%20E-BOOK%20Nutrici%C3%B3n%20y%20Salud%20Mental.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
                         target="_blank" rel="noopener">
-                        Adquirir o solicitar más información
+                        ADQUIRIR O SOLICITAR MÁS INFORMACIÓN
                       </a>
                     </div>
 
@@ -1733,7 +1942,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                     <a class="btn primary"
                        href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20informaci%C3%B3n%20del%20Diplomado%20Abordaje%20en%20el%20S%C3%ADndrome%20de%20Ovario%20Poliqu%C3%ADstico%20y%20Otras%20afecciones%20femeninas%20-%202026%20Wellogi."
                        target="_blank" rel="noopener">
-                      Pedir info (WhatsApp)
+                      Pedir más información y detalles (WhatsApp)
                     </a>
                   </div>
                 </div>
@@ -1743,14 +1952,12 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 <h5 class="vip-title">Grupo VIP Diplomado</h5>
 
                 <div class="vip-row">
-                  <!-- Imagen a la izquierda -->
                   <div class="vip-media">
                     <div class="vip-banner gold-mirror" aria-label="Grupo VIP — banner">
                       <img src="image17.png" alt="Grupo VIP Diplomado">
                     </div>
                   </div>
 
-                  <!-- Contenido + botones a la derecha -->
                   <div class="vip-cta-side">
                     <div class="item gold-mirror vip-cta-panel">
                       <p style="margin:0; color: rgba(238,242,255,.86); line-height:1.65; font-size:13px">
@@ -1890,12 +2097,10 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 <div class="shot gold-mirror"><img src="image27.png" alt="Testimonio PRO EHN 27"><div class="cap2">Pacientes</div></div>
               </div>
 
-              <!-- NUEVA FILA -->
               <div class="results-row">
                 <div class="shot gold-mirror"><img src="image28.png" alt="Testimonio PRO EHN 28"><div class="cap2">Pacientes</div></div>
                 <div class="shot gold-mirror"><img src="image29.png" alt="Testimonio PRO EHN 29"><div class="cap2">Pacientes</div></div>
               </div>
-              <!-- /NUEVA FILA -->
             </div>
           </div>
         </div>
