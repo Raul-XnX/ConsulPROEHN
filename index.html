@@ -153,7 +153,7 @@
     }
     .card:hover{ box-shadow: 0 18px 50px rgba(0,0,0,.34); filter:saturate(1.01); }
 
-    /* ✅ EFECTO ESPEJO DORADO (se mantiene para otras secciones) */
+    /* EFECTO ESPEJO DORADO */
     .gold-mirror{
       position: relative;
       isolation: isolate;
@@ -200,7 +200,7 @@
                   0 0 42px rgba(216,178,90,.10);
     }
 
-    /* ====== ✅ LEVITACIÓN SOLO PARA RECUADROS INTERNOS ====== */
+    /* LEVITACIÓN */
     .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap, .community-banner{
       will-change: transform, box-shadow, filter;
       transition:
@@ -230,7 +230,6 @@
         transform:none; filter:none;
       }
     }
-    /* ====== /LEVITACIÓN ====== */
 
     .item{
       padding:14px;
@@ -334,7 +333,7 @@
       background: rgba(255,255,255,.10);
     }
 
-    /* ✅ NUEVO: EFECTO PALPITANTE PARA BOTONES DE PAGO */
+    /* PALPITANTE BOTONES DE PAGO */
     .pulse-pay{
       animation: payPulse 1.55s ease-in-out infinite;
       transform-origin: center;
@@ -360,7 +359,7 @@
     .mono{font-family:var(--mono)}
     .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
 
-    /* ✅ CÓMO FUNCIONA (4 PASOS) */
+    /* CÓMO FUNCIONA */
     .steps-wrap{ margin-top:18px; padding-top:14px; border-top: 1px solid rgba(255,255,255,.10); }
     .steps-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-bottom:10px; }
     .steps-head h4{ margin:0; font-size:14px; letter-spacing:.2px; }
@@ -542,7 +541,7 @@
     .service-sub h5{ margin:0 0 6px; font-size:13px; letter-spacing:.1px; }
     .service-sub p{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
 
-    /* ✅ PRODUCTO: IMAGEN COMPLETA */
+    /* PRODUCTO: IMAGEN */
     .product-banner{
       border-radius:18px;
       overflow:hidden;
@@ -572,14 +571,14 @@
       .product-banner img{ padding: 8px; }
     }
 
-    /* ✅✅ NUEVO: BANNER COMUNIDAD */
+    /* COMMUNITY BANNER */
     .community-banner{
       border-radius:18px;
       overflow:hidden;
       border:1px solid rgba(216,178,90,.34);
       background:
-        radial-gradient(760px 240px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
-        radial-gradient(760px 240px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
+        radial-gradient(760px 260px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
+        radial-gradient(760px 260px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
         rgba(255,255,255,.04);
       box-shadow: 0 18px 40px rgba(0,0,0,.26);
       height: 360px;
@@ -601,11 +600,19 @@
       .community-banner{ height: 260px; }
       .community-banner img{ padding: 8px; }
     }
+
+    /* BOTÓN COMUNIDAD VERDE */
     .btn.community{
-      border-color: rgba(255,255,255,.24);
-      background: linear-gradient(135deg, rgba(255,106,0,.14), rgba(255,62,165,.14), rgba(106,27,154,.14));
-      box-shadow: 0 16px 34px rgba(0,0,0,.22);
+      border-color: rgba(57,255,20,.60);
+      background: linear-gradient(135deg, rgba(57,255,20,.18), rgba(255,255,255,.06), rgba(57,255,20,.10));
+      box-shadow: 0 16px 34px rgba(0,0,0,.20), 0 0 0 6px rgba(57,255,20,.08);
     }
+    .btn.community:hover{
+      border-color: rgba(57,255,20,.82);
+      box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 0 8px rgba(57,255,20,.10);
+      filter: saturate(1.08);
+    }
+
     .community-pulse{
       animation: commPulse 1.65s ease-in-out infinite;
       transform-origin:center;
@@ -613,20 +620,34 @@
     @keyframes commPulse{
       0%{
         transform: translateY(0) scale(1);
-        box-shadow: 0 16px 34px rgba(0,0,0,.22), 0 0 0 0 rgba(255,106,0,.16);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.20),
+          0 0 0 6px rgba(57,255,20,.08),
+          0 0 0 0 rgba(57,255,20,.16);
+        filter: saturate(1.00);
       }
       50%{
         transform: translateY(-1px) scale(1.03);
-        box-shadow: 0 22px 54px rgba(0,0,0,.28), 0 0 0 10px rgba(255,106,0,.10);
+        box-shadow:
+          0 22px 54px rgba(0,0,0,.28),
+          0 0 0 8px rgba(57,255,20,.10),
+          0 0 0 12px rgba(57,255,20,.08);
+        filter: saturate(1.06);
       }
       100%{
         transform: translateY(0) scale(1);
-        box-shadow: 0 16px 34px rgba(0,0,0,.22), 0 0 0 0 rgba(255,106,0,.16);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.20),
+          0 0 0 6px rgba(57,255,20,.08),
+          0 0 0 0 rgba(57,255,20,.16);
+        filter: saturate(1.00);
       }
     }
-    @media (prefers-reduced-motion: reduce){ .community-pulse{ animation:none !important; } }
+    @media (prefers-reduced-motion: reduce){
+      .community-pulse{ animation:none !important; }
+    }
 
-    /* ✅✅ NUEVO: EBOOK PRECIO (NEÓN VERDE + PALPITANTE) */
+    /* EBOOK NEÓN */
     .ebook-neon{
       border: 2px solid rgba(57,255,20,.85) !important;
       box-shadow:
@@ -690,6 +711,47 @@
       border-color: rgba(57,255,20,.82);
       box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 0 8px rgba(57,255,20,.10);
       filter: saturate(1.08);
+    }
+
+    /* Layout horizontal para productos */
+    .product-row{
+      display:grid;
+      grid-template-columns: minmax(240px, 380px) minmax(260px, 1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:10px;
+    }
+
+    .product-cta-side{
+      display:flex;
+      align-items:center;
+    }
+
+    .product-cta-side .ebook-neon{
+      width:100%;
+      min-height: 100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      padding:16px;
+      border-radius:16px;
+    }
+
+    .product-cta-side .ebook-neon .ebook-price{
+      text-align:center;
+    }
+    .product-cta-side .ebook-neon .small{
+      text-align:center;
+    }
+
+    @media (max-width: 900px){
+      .product-row{
+        grid-template-columns: 1fr;
+      }
+      .product-cta-side{
+        align-items:stretch;
+      }
     }
 
     /* FORM */
@@ -756,7 +818,7 @@
       text-align:center;
     }
 
-    /* ✅ DIPLOMADO IMG */
+    /* DIPLOMADO IMG */
     .diploma-row{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -782,7 +844,7 @@
       display:block;
     }
 
-    /* ✅ VIP NEÓN + PALPITACIÓN + IMAGEN COMPLETA */
+    /* VIP NEÓN */
     .vip-neon{
       border: 2px solid rgba(57,255,20,.85) !important;
       box-shadow:
@@ -881,6 +943,93 @@
       filter: saturate(1.08);
     }
 
+    /* ✅ BOTÓN VIP "SOY VIP" — VERDE PALPITANTE + RESPLANDOR + EFECTO ESPEJO */
+    .btn.vip.vip-cta{
+      position: relative;
+      overflow: hidden;
+      border-color: rgba(57,255,20,.78);
+      background:
+        linear-gradient(135deg, rgba(57,255,20,.20), rgba(255,255,255,.08), rgba(57,255,20,.12));
+      box-shadow:
+        0 16px 34px rgba(0,0,0,.22),
+        0 0 0 1px rgba(57,255,20,.18) inset,
+        0 0 22px rgba(57,255,20,.16),
+        0 0 48px rgba(57,255,20,.10);
+      animation: vipBtnPulse 1.55s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    /* brillo espejo */
+    .btn.vip.vip-cta::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 42%),
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 18%, rgba(255,255,255,.08) 34%, transparent 56%);
+      opacity:.9;
+    }
+
+    /* halo exterior */
+    .btn.vip.vip-cta::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: inherit;
+      pointer-events:none;
+      box-shadow:
+        0 0 0 1px rgba(57,255,20,.18),
+        0 0 18px rgba(57,255,20,.18),
+        0 0 38px rgba(57,255,20,.12);
+      opacity:.9;
+    }
+
+    .btn.vip.vip-cta:hover{
+      border-color: rgba(57,255,20,.95);
+      filter: saturate(1.10);
+      box-shadow:
+        0 22px 58px rgba(0,0,0,.30),
+        0 0 0 1px rgba(57,255,20,.24) inset,
+        0 0 28px rgba(57,255,20,.22),
+        0 0 66px rgba(57,255,20,.16);
+    }
+
+    @keyframes vipBtnPulse{
+      0%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.22),
+          0 0 0 1px rgba(57,255,20,.18) inset,
+          0 0 18px rgba(57,255,20,.14),
+          0 0 40px rgba(57,255,20,.09);
+        filter: saturate(1.00);
+      }
+      50%{
+        transform: translateY(-1px) scale(1.035);
+        box-shadow:
+          0 24px 62px rgba(0,0,0,.34),
+          0 0 0 2px rgba(57,255,20,.26) inset,
+          0 0 34px rgba(57,255,20,.24),
+          0 0 82px rgba(57,255,20,.16);
+        filter: saturate(1.08);
+      }
+      100%{
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 16px 34px rgba(0,0,0,.22),
+          0 0 0 1px rgba(57,255,20,.18) inset,
+          0 0 18px rgba(57,255,20,.14),
+          0 0 40px rgba(57,255,20,.09);
+        filter: saturate(1.00);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .btn.vip.vip-cta{ animation:none !important; }
+    }
+
     /* FLOAT BUTTONS */
     .ig-float{
       position: fixed;
@@ -914,7 +1063,7 @@
     }
     .wa-float svg{ width: 28px; height: 28px; fill: #fff; }
 
-    /* ✅ ACORDEÓN "MI FORMACIÓN" (base) */
+    /* ACORDEÓN */
     .acc-wrap{
       padding:14px;
       border-radius:18px;
@@ -996,7 +1145,7 @@
       color: rgba(238,242,255,.82);
     }
 
-    /* ✅✅ NUEVO: CV en AZUL/BLANCO médico profesional (sin dorado) */
+    /* CV azul/blanco */
     .cv-card{
       background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(231,243,255,.90));
       border: 1px solid rgba(41,121,255,.18);
@@ -1107,6 +1256,7 @@
         <a class="pill" href="#sobre">Sobre mí</a>
         <a class="pill" href="#formacion">Mi formación</a>
         <a class="pill" href="#servicios">Servicios</a>
+        <a class="pill" href="#comunidad">Comunidad</a>
         <a class="pill" href="#diplomado">Diplomado</a>
         <a class="pill" href="#pago">Forma de pago</a>
         <a class="pill" href="#resultados">Testimonios</a>
@@ -1206,7 +1356,7 @@
             <p style="margin:0; color:var(--muted); line-height:1.75">
               Soy <strong>Raúl Vargas Zalazar</strong>, fundador de <strong>Pro Enhanced Nutrition (PRO EHN), con más de 7 años en el medio de la nutrición, nutrición y su relación con la salud hormonal, así como la industria fitness y de fisicoculturismo. Con más de 600 pacientes a lo largo de estos años, atletas y clientes</strong>.
               Trabajo contigo con estructura, métricas y seguimiento para lograr recomposición corporal y rendimiento:
-              peso, estatura, tallas (por ejemplo cintura), fotos de progreso, desempeño,adherencia entre otras métricas.
+              peso, estatura, tallas (por ejemplo cintura), fotos de progreso, desempeño, adherencia entre otras métricas.
               <br><br>
 
               Sistema simple y efectivo: <strong>Evaluación → Plan de nutrición y Programas de entrenamiento → Seguimiento → Ajustes → Resultados</strong>.
@@ -1243,7 +1393,6 @@
       </div>
     </section>
 
-    <!-- ✅✅ NUEVA SECCIÓN: GRUPO / COMUNIDAD PRO EHN -->
     <section id="comunidad">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> GRUPO / COMUNIDAD PRO EHN ENHANCERS</h3>
@@ -1262,7 +1411,7 @@
                 <a class="btn community community-pulse"
                    href="https://chat.whatsapp.com/HCKKZ0HtkpABa2m1fqzHrE"
                    target="_blank" rel="noopener">
-                  UNIRME A LA COMUNIDAD PRO ENHANCED NUTRITION 
+                  UNIRME A LA COMUNIDAD PRO ENHANCED NUTRITION
                 </a>
               </div>
 
@@ -1274,9 +1423,7 @@
         </div>
       </div>
     </section>
-    <!-- /COMUNIDAD -->
 
-    <!-- ✅ MI FORMACIÓN (CV) — SIN DORADO + AZUL/BLANCO -->
     <section id="formacion">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> MI FORMACIÓN</h3>
@@ -1360,7 +1507,6 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
         </div>
       </div>
     </section>
-    <!-- /MI FORMACIÓN -->
 
     <section id="servicios">
       <div class="section-title">
@@ -1449,87 +1595,90 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
       </div>
     </section>
 
-    <!-- ✅ NUEVA SECCIÓN: OTROS PRODUCTOS (debajo de Otros Servicios) -->
-<section id="otros-productos">
-  <div class="section-title">
-    <h3 class="gold-stroke-outline"><span class="mark"></span> OTROS PRODUCTOS</h3>
-    <p>Herramientas y evaluadores</p>
-  </div>
-
-  <div class="grid">
-    <div class="card span-12 gold-mirror">
-      <div style="padding:20px">
-
-        <!-- Producto 1 -->
-        <div class="item gold-mirror">
-          <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
-            EVALUADOR DE SALUD METABÓLICA Y FENOTIPO DE SÍNDROME DE OVARIO POLIQUÍSTICO
-          </h4>
-
-          <div class="product-banner gold-mirror" aria-label="Evaluador de Salud Metabólica y Fenotipo SOP — portada">
-            <img src="image18.png" alt="Evaluador de salud metabólica y fenotipo de SOP">
-          </div>
-
-          <!-- ✅✅ NUEVO: CUADRO VERDE PALPITANTE (precio + CTA) -->
-          <div class="item ebook-neon ebook-pulse" style="margin-top:12px; text-align:center">
-            <p class="ebook-price">VALOR $649 pesos mexicanos</p>
-
-            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
-              <a class="btn ebook"
-                 href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20o%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20EVALUADOR%20DE%20SALUD%20METAB%C3%93LICA%20Y%20FENOTIPO%20DE%20S%C3%8DNDROME%20DE%20OVARIO%20POLIQU%C3%8DSTICO.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
-                 target="_blank" rel="noopener">
-                Adquirir o solicitar más información
-              </a>
-            </div>
-
-            <p class="small" style="margin-top:10px">
-              Tip: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
-            </p>
-          </div>
-          <!-- /CUADRO VERDE -->
-
-          <p class="small" style="margin-top:10px"></p>
-        </div>
-
-        <!-- ✅ Producto 2: E-BOOK -->
-        <div class="item gold-mirror" style="margin-top:14px">
-          <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
-            E-BOOK (LIBRO DIGITAL) NUTRICIÓN Y SALUD MENTAL, AUTOR; RAÚL VARGAS
-          </h4>
-
-          <div class="product-banner gold-mirror" aria-label="E-BOOK Nutrición y Salud Mental — portada">
-            <img src="image30.png" alt="E-BOOK Nutrición y Salud Mental — Raúl Vargas">
-          </div>
-
-          <!-- ✅✅ CUADRO VERDE PALPITANTE (precio + CTA) -->
-          <div class="item ebook-neon ebook-pulse" style="margin-top:12px; text-align:center">
-            <p class="ebook-price">VALOR $649 pesos mexicanos</p>
-
-            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
-              <a class="btn ebook"
-                 href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20el%20E-BOOK%20Nutrici%C3%B3n%20y%20Salud%20Mental.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
-                 target="_blank" rel="noopener">
-                Adquirir o solicitar más información
-              </a>
-            </div>
-
-            <p class="small" style="margin-top:10px">
-              Tip: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
-            </p>
-          </div>
-          <!-- /CUADRO VERDE -->
-
-          <p class="small" style="margin-top:10px"></p>
-        </div>
-        <!-- /Producto 2 -->
-
+    <!-- OTROS PRODUCTOS -->
+    <section id="otros-productos">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> OTROS PRODUCTOS</h3>
+        <p>Herramientas y evaluadores</p>
       </div>
-    </div>
-  </div>
-</section>
-<!-- /OTROS PRODUCTOS -->
 
-    <!-- ✅ DIPLOMADO -->
+      <div class="grid">
+        <div class="card span-12 gold-mirror">
+          <div style="padding:20px">
+
+            <!-- Producto 1 -->
+            <div class="item gold-mirror">
+              <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
+                EVALUADOR DE SALUD METABÓLICA Y FENOTIPO DE SÍNDROME DE OVARIO POLIQUÍSTICO
+              </h4>
+
+              <div class="product-row">
+                <div>
+                  <div class="product-banner gold-mirror" aria-label="Evaluador de Salud Metabólica y Fenotipo SOP — portada">
+                    <img src="image18.png" alt="Evaluador de salud metabólica y fenotipo de SOP">
+                  </div>
+                </div>
+
+                <div class="product-cta-side">
+                  <div class="item ebook-neon ebook-pulse" style="margin-top:0;">
+                    <p class="ebook-price">VALOR $649 pesos mexicanos</p>
+
+                    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
+                      <a class="btn ebook"
+                        href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20o%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20EVALUADOR%20DE%20SALUD%20METAB%C3%93LICA%20Y%20FENOTIPO%20DE%20S%C3%8DNDROME%20DE%20OVARIO%20POLIQU%C3%8DSTICO.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
+                        target="_blank" rel="noopener">
+                        Adquirir o solicitar más información
+                      </a>
+                    </div>
+
+                    <p class="small" style="margin-top:10px">
+                      Tip: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="item gold-mirror" style="margin-top:14px">
+              <h4 class="gold-stroke" style="margin:0 0 10px; text-transform:uppercase;">
+                E-BOOK (LIBRO DIGITAL) NUTRICIÓN Y SALUD MENTAL, AUTOR; RAÚL VARGAS
+              </h4>
+
+              <div class="product-row">
+                <div>
+                  <div class="product-banner gold-mirror" aria-label="E-BOOK Nutrición y Salud Mental — portada">
+                    <img src="image30.png" alt="E-BOOK Nutrición y Salud Mental — Raúl Vargas">
+                  </div>
+                </div>
+
+                <div class="product-cta-side">
+                  <div class="item ebook-neon ebook-pulse" style="margin-top:0;">
+                    <p class="ebook-price">VALOR $649 pesos mexicanos</p>
+
+                    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
+                      <a class="btn ebook"
+                        href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20quiero%20ADQUIRIR%20el%20E-BOOK%20Nutrici%C3%B3n%20y%20Salud%20Mental.%20%C2%BFC%C3%B3mo%20puedo%20pagar%20y%20recibirlo%3F"
+                        target="_blank" rel="noopener">
+                        Adquirir o solicitar más información
+                      </a>
+                    </div>
+
+                    <p class="small" style="margin-top:10px">
+                      Tip: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Producto 2 -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIPLOMADO -->
     <section id="diplomado">
       <div class="section-title">
         <h3 class="gold-stroke-outline"><span class="mark"></span> DIPLOMADO - PRÓXIMAMENTE</h3>
@@ -1544,9 +1693,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 Diplomado: Abordaje en el Síndrome de Ovario Poliquístico y Otras afecciones femeninas - 2026 Wellogi
               </h4>
 
-              <p style="margin:0; color:var(--muted); line-height:1.7">
-                
-              </p>
+              <p style="margin:0; color:var(--muted); line-height:1.7"></p>
 
               <div class="diploma-row">
                 <div class="diploma-img gold-mirror" aria-label="Diplomado — imagen informativa">
@@ -1569,7 +1716,6 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 </div>
               </div>
 
-              <!-- ✅ GRUPO VIP DIPLOMADO (NEÓN VERDE + IMAGEN COMPLETA) -->
               <div class="item gold-mirror vip-neon vip-pulse" style="margin-top:14px">
                 <h5 class="vip-title">Grupo VIP Diplomado</h5>
 
@@ -1582,7 +1728,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 </div>
 
                 <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-                  <a class="btn vip"
+                  <a class="btn vip vip-cta"
                      href="https://chat.whatsapp.com/E7usWV7uhiWCE6hgsTgMSM"
                      target="_blank" rel="noopener">
                     SOY VIP (He pagado)
@@ -1594,14 +1740,12 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                   Nota: si el link no abre, copia y pégalo en WhatsApp o tu navegador.
                 </p>
               </div>
-              <!-- /VIP -->
 
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- /DIPLOMADO -->
 
     <section id="pago">
       <div class="section-title">
@@ -1645,7 +1789,7 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
             <form class="form" onsubmit="sendMail(event)">
               <input id="name" placeholder="Tu nombre" required />
               <input id="email" type="email" placeholder="Tu correo" required />
-              <textarea id="msg" placeholder="Objetivo + experiencia + días de entrenamiento + tiempo disponible" required></textarea>
+              <textarea id="msg" placeholder="Objetivo + Experiencia (tiempo que llevas entrenando en un gimnasio o si nunca has entrenado) + Días de entrenamiento (¿Cuántos días sueles entrenar a la semana?) + Tiempo disponible (¿Cuánto tiempo dispondrías para entrenar en un gimnasio, o levantar "pesas"?)" required></textarea>
               <button class="btn primary" type="submit">Enviar correo</button>
               <div class="small">Para respuesta inmediata: WhatsApp.</div>
             </form>
@@ -1707,15 +1851,11 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
                 <div class="shot gold-mirror"><img src="image13.png" alt="Testimonio PRO EHN 13"><div class="cap2">Pacientes</div></div>
                 <div class="shot gold-mirror"><img src="image14.png" alt="Testimonio PRO EHN 14"><div class="cap2">Pacientes</div></div>
               </div>
-
-              <!-- ✅✅ NUEVA FILA AGREGADA (image24, image26, image27) -->
               <div class="results-row">
                 <div class="shot gold-mirror"><img src="image24.png" alt="Testimonio PRO EHN 24"><div class="cap2">Pacientes</div></div>
                 <div class="shot gold-mirror"><img src="image26.png" alt="Testimonio PRO EHN 26"><div class="cap2">Pacientes</div></div>
                 <div class="shot gold-mirror"><img src="image27.png" alt="Testimonio PRO EHN 27"><div class="cap2">Pacientes</div></div>
               </div>
-              <!-- /NUEVA FILA -->
-
             </div>
           </div>
         </div>
@@ -1733,47 +1873,46 @@ Con 25 horas de duración, acreditado por Salud y nutrición con ciencia a. C.  
   </main>
 
   <script>
-  /* =========================
-     CONFIG GLOBAL
-     Cambia tu número AQUÍ una sola vez
-     ========================= */
-  const WHATSAPP_NUMBER = "5215658984223";
+    /* =========================
+       CONFIG GLOBAL
+       Cambia tu número AQUÍ una sola vez
+       ========================= */
+    const WHATSAPP_NUMBER = "5218132216529";
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* Reemplaza automáticamente todos los enlaces wa.me del sitio */
-  (function hydrateWhatsAppLinks(){
-    const waRegex = /wa\.me\/\d+/i;
+    /* Reemplaza automáticamente todos los enlaces wa.me del sitio */
+    (function hydrateWhatsAppLinks(){
+      const waRegex = /wa\.me\/\d+/i;
 
-    document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
-      const currentHref = a.getAttribute("href");
-      if (!currentHref) return;
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+        const currentHref = a.getAttribute("href");
+        if (!currentHref) return;
 
-      // Reemplaza solo la parte del número
-      const updatedHref = currentHref.replace(waRegex, `wa.me/${WHATSAPP_NUMBER}`);
-      a.setAttribute("href", updatedHref);
-    });
+        const updatedHref = currentHref.replace(waRegex, `wa.me/${WHATSAPP_NUMBER}`);
+        a.setAttribute("href", updatedHref);
+      });
 
-    // Reemplaza texto visible tipo "wa.me/521..."
-    document.querySelectorAll("a.mono").forEach(a => {
-      if (a.textContent && a.textContent.includes("wa.me/")) {
-        a.textContent = `wa.me/${WHATSAPP_NUMBER}`;
-      }
-    });
-  })();
+      /* Reemplaza texto visible tipo wa.me/521... */
+      document.querySelectorAll("a.mono").forEach(a => {
+        if (a.textContent && a.textContent.includes("wa.me/")) {
+          a.textContent = `wa.me/${WHATSAPP_NUMBER}`;
+        }
+      });
+    })();
 
-  function sendMail(e){
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const msg = document.getElementById("msg").value.trim();
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const msg = document.getElementById("msg").value.trim();
 
-    const subject = encodeURIComponent("Contacto — Pro Enhanced Nutrition (" + name + ")");
-    const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${msg}`);
+      const subject = encodeURIComponent("Contacto — Pro Enhanced Nutrition (" + name + ")");
+      const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${msg}`);
 
-    window.location.href = `mailto:Pro.Enhanced.Nutrition@gmail.com?subject=${subject}&body=${body}`;
-  }
-</script>
+      window.location.href = `mailto:Pro.Enhanced.Nutrition@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
 
   <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
