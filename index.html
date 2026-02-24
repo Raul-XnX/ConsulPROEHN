@@ -67,9 +67,9 @@
 
     /* === LOGO GRANDE DECORATIVO (zona superior izquierda) === */
     .hero-logo-float{
-  position:absolute;
-  top:86px; /* ajustado para alinearlo con el recuadro derecho */
-  left:-280px;
+      position:absolute;
+      top:86px; /* ajustado para alinearlo con el recuadro derecho */
+      left:-280px;
       width:250px;
       height:250px;
       border-radius:28px;
@@ -282,7 +282,7 @@
     }
 
     /* LEVITACIÓN */
-    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap, .community-banner, .plan-banner{
+    .item, .mini, .service-sub, .cap, .shot, .photo-img, .step-card, .diploma-img, .product-banner, .acc-wrap, .community-banner, .plan-banner, .youtube-banner{
       will-change: transform, box-shadow, filter;
       transition:
         transform .22s cubic-bezier(.2,.8,.2,1),
@@ -291,7 +291,7 @@
         border-color .22s ease,
         background .22s ease;
     }
-    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover{
+    .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover, .youtube-banner:hover{
       transform: translateY(-8px);
       box-shadow: 0 22px 66px rgba(0,0,0,.36);
       filter: saturate(1.03);
@@ -307,7 +307,7 @@
       filter: saturate(1.04);
     }
     @media (hover: none){
-      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover{
+      .item:hover, .mini:hover, .service-sub:hover, .cap:hover, .shot:hover, .photo-img:hover, .step-card:hover, .diploma-img:hover, .product-banner:hover, .acc-wrap:hover, .community-banner:hover, .plan-banner:hover, .youtube-banner:hover{
         transform:none; filter:none;
       }
     }
@@ -680,6 +680,36 @@
     @media (max-width: 520px){
       .community-banner{ height: 260px; }
       .community-banner img{ padding: 8px; }
+    }
+
+    /* YOUTUBE BANNER (nueva sección) */
+    .youtube-banner{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(216,178,90,.34);
+      background:
+        radial-gradient(760px 260px at 18% 15%, rgba(255,106,0,.14), transparent 62%),
+        radial-gradient(760px 260px at 82% 85%, rgba(255,62,165,.12), transparent 64%),
+        rgba(255,255,255,.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
+      height: 320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .youtube-banner img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      object-position:center;
+      display:block;
+      padding: 10px;
+      filter: saturate(1.02);
+    }
+    @media (max-width: 900px){ .youtube-banner{ height: 280px; } }
+    @media (max-width: 520px){
+      .youtube-banner{ height: 230px; }
+      .youtube-banner img{ padding: 8px; }
     }
 
     /* BOTÓN COMUNIDAD VERDE */
@@ -1519,6 +1549,7 @@
 
       <div class="links">
         <a class="pill" href="#sobre">Sobre mí</a>
+        <a class="pill" href="#youtube">YouTube</a>
         <a class="pill" href="#formacion">Mi formación</a>
         <a class="pill" href="#servicios">Servicios</a>
         <a class="pill" href="#comunidad">Comunidad</a>
@@ -1659,6 +1690,48 @@
             <div class="item gold-mirror" style="margin-top:10px">
               <h4 style="margin:0 0 6px">Objetivo</h4>
               <p style="margin:0; color:var(--muted); line-height:1.6">Resultados sostenibles con rendimiento y estética.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: CANAL DE YOUTUBE -->
+    <section id="youtube">
+      <div class="section-title">
+        <h3 class="gold-stroke-outline"><span class="mark"></span> CANAL DE YOUTUBE</h3>
+        <p>Contenido educativo y más en PRO Enhanced Nutrition</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 gold-mirror">
+          <div style="padding:20px">
+            <div class="item gold-mirror">
+              <div class="product-row">
+                <!-- Imagen a la izquierda -->
+                <div>
+                  <div class="youtube-banner gold-mirror" aria-label="Canal de YouTube PRO Enhanced Nutrition — banner">
+                    <img src="image34.png" alt="Canal de YouTube PRO Enhanced Nutrition">
+                  </div>
+                </div>
+
+                <!-- Botón verde palpitante a la derecha -->
+                <div class="product-cta-side">
+                  <div class="item gold-mirror" style="margin-top:0; width:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                    <div style="display:flex; justify-content:center; margin-top:0; width:100%;">
+                      <a class="btn plan-green plan-pulse"
+                         href="https://youtube.com/@proenhancednutrition?si=VxbzqTZOrFKhYVLg"
+                         target="_blank" rel="noopener">
+                        IR AL CANAL DE YOUTUBE · PRO ENHANCED NUTRITION
+                      </a>
+                    </div>
+
+                    <p class="small" style="margin-top:10px; text-align:center">
+                      Si el link no abre, cópialo y pégalo directamente en tu navegador.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
