@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog | Pro Enhanced Nutrition</title>
+  <meta name="description" content="Blog de Pro Enhanced Nutrition: nutrición, salud hormonal, fuerza, hipertrofia, pérdida de grasa y educación aplicada." />
+
+  <style>
+    :root{
+      --bg0:#2b0f4a;
+      --bg1:#431269;
+      --bg2:#6a1b9a;
+
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.74);
+
+      --pink:#ff3ea5;
+      --fire:#ff2a2a;
+      --fire2:#ff6a00;
+      --gold:#d8b25a;
+      --gold2:#f3df9b;
+
+      --line:rgba(255,255,255,.12);
+      --line2:rgba(216,178,90,.24);
+
+      --ok:#39ff14;
+
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --shadow2:0 12px 32px rgba(0,0,0,.24);
+
+      --r1:24px;
+      --r2:18px;
+      --max:1120px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 8% 4%, rgba(255,106,0,.22), transparent 60%),
+        radial-gradient(1100px 620px at 92% 0%, rgba(255,62,165,.18), transparent 62%),
+        radial-gradient(900px 520px at 60% 120%, rgba(106,27,154,.26), transparent 65%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 46%, var(--bg2));
+      min-height:100vh;
+    }
+
+    a{color:inherit; text-decoration:none}
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:20px 16px 60px;
+    }
+
+    /* Top nav */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background:rgba(20,8,40,.62);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .badge{
+      width:44px;height:44px;
+      border-radius:14px;
+      display:grid;place-items:center;
+      font:900 10px/1 var(--mono);
+      letter-spacing:.6px;
+      color:#fff;
+      text-align:center;
+      background:linear-gradient(135deg, rgba(255,62,165,.95), rgba(255,106,0,.88) 45%, rgba(106,27,154,.92));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 12px 28px rgba(0,0,0,.25);
+    }
+    .brand-text{min-width:0}
+    .brand-text h1{
+      margin:0;
+      font-size:15px;
+      line-height:1.15;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand-text p{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill, .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.07);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      transition:.16s ease;
+      transition-property:transform, box-shadow, border-color, background, filter;
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pill:hover, .cta:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--shadow2);
+      border-color:rgba(255,106,0,.24);
+      background:rgba(255,255,255,.09);
+      filter:saturate(1.03);
+    }
+    .cta{
+      border-color:rgba(57,255,20,.58);
+      background:linear-gradient(135deg, rgba(57,255,20,.16), rgba(255,255,255,.06), rgba(57,255,20,.10));
+      box-shadow:0 12px 26px rgba(0,0,0,.18), 0 0 0 6px rgba(57,255,20,.06);
+    }
+    .cta:hover{
+      border-color:rgba(57,255,20,.82);
+      box-shadow:0 18px 40px rgba(0,0,0,.24), 0 0 0 8px rgba(57,255,20,.08);
+    }
+
+    /* Utility cards */
+    .card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-top-color:rgba(255,106,0,.16);
+      border-left-color:rgba(243,223,155,.16);
+      border-radius:var(--r1);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), transparent 35%),
+        radial-gradient(700px 220px at 10% 0%, rgba(243,223,155,.07), transparent 55%),
+        radial-gradient(700px 220px at 90% 0%, rgba(255,62,165,.06), transparent 58%);
+      opacity:.9;
+    }
+    .card > *{position:relative; z-index:1;}
+
+    .gold-title{
+      text-shadow:0 12px 28px rgba(0,0,0,.55);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .hero h2{
+      margin:14px 0 10px;
+      font-size:38px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15.5px;
+      max-width:68ch;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      font:800 12px/1 var(--mono);
+      color:rgba(255,255,255,.9);
+      letter-spacing:.35px;
+    }
+    .kicker .dot{
+      width:8px;height:8px;border-radius:99px;
+      background:linear-gradient(135deg, var(--fire2), var(--pink), rgba(106,27,154,.95));
+      box-shadow:0 0 0 4px rgba(255,255,255,.08);
+    }
+
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      font-weight:900;
+      font-size:14px;
+      transition:.16s ease;
+      transition-property:transform, box-shadow, border-color, background, filter;
+      cursor:pointer;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--shadow2);
+      border-color:rgba(255,106,0,.24);
+      background:rgba(255,255,255,.10);
+      filter:saturate(1.03);
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(255,106,0,.18), rgba(255,62,165,.16), rgba(106,27,154,.18));
+      border-color:rgba(255,255,255,.22);
+    }
+    .btn.green{
+      border-color: rgba(57,255,20,.72);
+      background:
+        linear-gradient(135deg, rgba(57,255,20,.18), rgba(255,255,255,.08), rgba(57,255,20,.12));
+      box-shadow:
+        0 12px 28px rgba(0,0,0,.20),
+        0 0 0 1px rgba(57,255,20,.16) inset,
+        0 0 18px rgba(57,255,20,.10);
+      animation: pulseGreen 1.65s ease-in-out infinite;
+    }
+    .btn.green:hover{
+      border-color:rgba(57,255,20,.92);
+      box-shadow:
+        0 20px 46px rgba(0,0,0,.28),
+        0 0 0 1px rgba(57,255,20,.20) inset,
+        0 0 26px rgba(57,255,20,.16);
+      filter:saturate(1.08);
+    }
+    @keyframes pulseGreen{
+      0%,100%{ transform:translateY(0) scale(1); }
+      50%{ transform:translateY(-1px) scale(1.03); }
+    }
+
+    .hero-side{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .mini{
+      border-radius:18px;
+      padding:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-left-color:rgba(243,223,155,.18);
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    }
+    .mini h4{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:13px;
+    }
+    .mini ul{
+      margin:8px 0 0;
+      padding-left:18px;
+      color:rgba(238,242,255,.88);
+      line-height:1.6;
+      font-size:13px;
+    }
+
+    /* Sections */
+    section{ margin-top:24px; }
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      margin:0 0 12px;
+    }
+    .section-head h3{
+      margin:0;
+      font-size:20px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-shadow:0 10px 24px rgba(0,0,0,.5);
+    }
+    .section-head h3 .mark{
+      width:10px;height:10px;border-radius:99px;
+      background:linear-gradient(135deg, var(--fire2), var(--pink), rgba(106,27,154,.95));
+      box-shadow:0 0 0 5px rgba(255,255,255,.10);
+    }
+    .section-head p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Search/filter bar (visual) */
+    .toolbar{
+      padding:14px;
+      display:grid;
+      grid-template-columns: 1.2fr auto auto;
+      gap:10px;
+      align-items:center;
+    }
+    .input, .select{
+      width:100%;
+      padding:11px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      font:inherit;
+      outline:none;
+    }
+    .input::placeholder{ color:rgba(238,242,255,.52); }
+    .select{
+      appearance:none;
+      min-width:160px;
+      cursor:pointer;
+    }
+    .input:focus, .select:focus{
+      border-color:rgba(255,106,0,.24);
+      box-shadow:0 0 0 4px rgba(255,106,0,.08);
+    }
+
+    /* Grid posts */
+    .posts-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      padding:14px;
+      padding-top:0;
+    }
+    .post{
+      grid-column: span 4;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow:0 12px 28px rgba(0,0,0,.18);
+      overflow:hidden;
+      transition:.18s ease;
+      transition-property:transform, box-shadow, border-color, filter;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      position:relative;
+    }
+    .post:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 52px rgba(0,0,0,.30);
+      border-color:rgba(243,223,155,.22);
+      filter:saturate(1.03);
+    }
+
+    .thumb{
+      position:relative;
+      height:180px;
+      background:
+        radial-gradient(500px 180px at 18% 15%, rgba(255,106,0,.22), transparent 65%),
+        radial-gradient(500px 180px at 80% 80%, rgba(255,62,165,.16), transparent 65%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+      padding:12px;
+      overflow:hidden;
+    }
+    .thumb::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -30% -20%;
+      height:120px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,106,0,.22), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(255,42,42,.18), transparent 52%),
+        radial-gradient(circle at 45% 60%, rgba(255,62,165,.14), transparent 56%);
+      filter:blur(8px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .thumb .chip{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(19,8,30,.58);
+      border:1px solid rgba(255,255,255,.14);
+      font:800 11px/1 var(--mono);
+      color:rgba(255,255,255,.92);
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+
+    .post-body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+    .post-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .tag{
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font:800 11px/1 var(--mono);
+      color:rgba(255,255,255,.88);
+    }
+    .post h4{
+      margin:0;
+      font-size:16px;
+      line-height:1.25;
+      letter-spacing:-.1px;
+    }
+    .post p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:13.5px;
+      flex:1;
+    }
+    .post-actions{
+      margin-top:2px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .post .link-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:9px 11px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.06);
+      font-weight:900;
+      font-size:12.5px;
+      transition:.15s ease;
+      transition-property:transform, box-shadow, border-color, background;
+    }
+    .post .link-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 22px rgba(0,0,0,.20);
+      border-color:rgba(255,106,0,.24);
+      background:rgba(255,255,255,.09);
+    }
+
+    /* Featured article */
+    .featured{
+      padding:14px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .featured-media{
+      border-radius:18px;
+      border:1px solid rgba(216,178,90,.28);
+      background:
+        radial-gradient(650px 220px at 15% 15%, rgba(255,106,0,.20), transparent 62%),
+        radial-gradient(650px 220px at 85% 85%, rgba(255,62,165,.16), transparent 62%),
+        rgba(255,255,255,.04);
+      min-height:260px;
+      padding:16px;
+      display:flex;
+      align-items:flex-end;
+      box-shadow:0 14px 34px rgba(0,0,0,.20);
+      position:relative;
+      overflow:hidden;
+    }
+    .featured-media::after{
+      content:"PRO EHN BLOG";
+      position:absolute;
+      top:14px; right:14px;
+      padding:7px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(24,10,40,.55);
+      color:rgba(255,255,255,.92);
+      font:900 10px/1 var(--mono);
+      letter-spacing:.7px;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .featured-media h4{
+      margin:0;
+      font-size:28px;
+      line-height:1.05;
+      max-width:18ch;
+      text-shadow:0 12px 28px rgba(0,0,0,.55);
+    }
+
+    .featured-content{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+      box-shadow:0 12px 26px rgba(0,0,0,.18);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .featured-content .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .featured-content p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* Categories blocks */
+    .cats{
+      padding:14px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .cat{
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 10px 22px rgba(0,0,0,.16);
+      transition:.16s ease;
+      transition-property:transform, box-shadow, border-color;
+    }
+    .cat:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 36px rgba(0,0,0,.22);
+      border-color:rgba(243,223,155,.22);
+    }
+    .cat .icon{
+      width:36px;height:36px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(135deg, rgba(255,106,0,.18), rgba(255,62,165,.12), rgba(106,27,154,.14));
+      box-shadow:0 10px 20px rgba(0,0,0,.16);
+      margin-bottom:10px;
+      font-size:16px;
+    }
+    .cat h4{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:.1px;
+    }
+    .cat p{
+      margin:0;
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.55;
+    }
+
+    /* Newsletter/contact block */
+    .cta-block{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .cta-box{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+      box-shadow:0 12px 26px rgba(0,0,0,.18);
+    }
+    .cta-box h4{ margin:0 0 8px; font-size:16px; }
+    .cta-box p{ margin:0; color:var(--muted); line-height:1.7; font-size:13.5px; }
+    .cta-stack{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mono{font-family:var(--mono)}
+    .small{font-size:12px; color:var(--muted)}
+
+    /* Footer */
+    .footer{
+      margin-top:24px;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 12px 24px rgba(0,0,0,.16);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Floating buttons */
+    .wa-float, .ig-float{
+      position:fixed;
+      right:16px;
+      width:56px;height:56px;
+      border-radius:999px;
+      display:grid;place-items:center;
+      z-index:999;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 16px 30px rgba(0,0,0,.30);
+    }
+    .wa-float{
+      bottom:16px;
+      background:linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow:0 16px 30px rgba(0,0,0,.30), 0 0 0 6px rgba(37,211,102,.10);
+    }
+    .ig-float{
+      bottom:84px;
+      background:linear-gradient(135deg, var(--gold2), var(--pink), var(--fire2));
+      box-shadow:0 16px 30px rgba(0,0,0,.30), 0 0 0 6px rgba(255,255,255,.08);
+    }
+    .wa-float svg, .ig-float svg{
+      width:28px;height:28px;fill:#fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns:1fr; }
+      .featured{ grid-template-columns:1fr; }
+      .cta-block{ grid-template-columns:1fr; }
+      .cats{ grid-template-columns: repeat(2, 1fr); }
+      .post{ grid-column: span 6; }
+    }
+    @media (max-width: 680px){
+      .topbar-inner{
+        align-items:stretch;
+      }
+      .nav-actions{
+        width:100%;
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:2px;
+      }
+      .nav-actions::-webkit-scrollbar{height:0}
+      .pill,.cta{
+        flex:0 0 auto;
+        white-space:nowrap;
+      }
+
+      .hero{ padding:16px; }
+      .hero h2{ font-size:30px; }
+      .toolbar{
+        grid-template-columns: 1fr;
+      }
+      .select{ min-width: unset; }
+      .post{ grid-column: span 12; }
+      .cats{ grid-template-columns: 1fr; }
+      .featured-media{ min-height:220px; }
+      .featured-media h4{ font-size:22px; }
+      .thumb{ height:160px; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; }
+      .btn.green{ animation:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="badge">PRO<br>EHN</div>
+        <div class="brand-text">
+          <h1>PRO ENHANCED NUTRITION · BLOG</h1>
+          <p>Nutrición · Hormonas · Fuerza · Hipertrofia · Salud metabólica</p>
+        </div>
+      </div>
+
+      <nav class="nav-actions" aria-label="Navegación principal del blog">
+        <a class="pill" href="../index.html">← Volver al inicio</a>
+        <a class="pill" href="#destacado">Destacado</a>
+        <a class="pill" href="#articulos">Artículos</a>
+        <a class="pill" href="#categorias">Categorías</a>
+        <a class="pill" href="#contacto-blog">Contacto</a>
+        <a class="cta" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="card hero" id="top">
+      <div>
+        <div class="kicker"><span class="dot"></span> NUEVA SECCIÓN · BLOG PRO EHN</div>
+        <h2 class="gold-title">Contenido educativo de <span style="color:var(--gold2)">PRO ENHANCED NUTRITION</span> para aprender, aplicar y mejorar resultados.</h2>
+        <p>
+          Aquí puedes publicar artículos sobre <strong>nutrición</strong>, <strong>salud hormonal</strong>, <strong>síndrome de ovario poliquístico</strong>,
+          <strong>entrenamiento</strong>, <strong>hipertrofia</strong>, <strong>pérdida de grasa</strong> y educación basada en experiencia aplicada.
+          Este diseño ya queda listo para que después vayamos agregando entradas reales.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#articulos">Ver artículos</a>
+          <a class="btn" href="../#diplomado">Ir a diplomado</a>
+          <a class="btn green" href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+            Solicitar información
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="mini">
+          <h4>¿Qué puedes publicar aquí?</h4>
+          <ul>
+            <li>Artículos tipo blog educativo</li>
+            <li>Guías rápidas para pacientes/alumnos</li>
+            <li>Mini resúmenes de SOP / endocrino / fitness</li>
+            <li>Actualizaciones de diplomado y comunidad</li>
+          </ul>
+        </div>
+
+        <div class="mini">
+          <h4>Tip para crecer en SEO</h4>
+          <p>
+            Publica artículos con títulos claros (ej. “SOP y resistencia a la insulina”), subtítulos H2/H3,
+            y cierre con llamada a la acción hacia WhatsApp o tus servicios.
+          </p>
+        </div>
+
+        <div class="mini">
+          <h4>Integración rápida</h4>
+          <p>
+            Este archivo vive en <span class="mono">/blog/index.html</span> y ya está conectado desde tu menú principal con
+            <span class="mono">href="blog/"</span>.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- DESTACADO -->
+    <section id="destacado">
+      <div class="section-head">
+        <h3><span class="mark"></span> Artículo destacado</h3>
+        <p>Bloque principal para tu entrada top</p>
+      </div>
+
+      <div class="card featured">
+        <div class="featured-media">
+          <h4 class="gold-title">SOP, resistencia a la insulina y estrategias reales de nutrición</h4>
+        </div>
+
+        <div class="featured-content">
+          <div class="meta">
+            <span class="tag">SOP</span>
+            <span class="tag">Salud hormonal</span>
+            <span>•</span>
+            <span>Lectura estimada: 8 min</span>
+          </div>
+
+          <p>
+            Puedes usar este espacio para una entrada principal de alto valor: explicación práctica,
+            contexto fisiológico, errores comunes y recomendaciones aplicadas. Ideal para enlazar a tus
+            servicios, diplomado o evaluadores.
+          </p>
+
+          <p>
+            <strong>Tip visual:</strong> cuando tengas portada real, después te adapto este bloque para usar imagen
+            de fondo (JPG/PNG/WebP) y botones como “Leer artículo completo” + “Compartir”.
+          </p>
+
+          <div class="post-actions">
+            <a class="link-btn" href="#">Leer artículo</a>
+            <a class="link-btn" href="https://wa.me/5218132216529" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          </div>
+
+          <p class="small">* Placeholder visual: este botón puede dirigir a una entrada real en el futuro (ej. /blog/sop-resistencia-insulina.html).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTÍCULOS -->
+    <section id="articulos">
+      <div class="section-head">
+        <h3><span class="mark"></span> Artículos recientes</h3>
+        <p>Plantilla lista para duplicar entradas</p>
+      </div>
+
+      <div class="card">
+        <div class="toolbar">
+          <input class="input" type="text" placeholder="Buscar artículo (visual por ahora)..." aria-label="Buscar artículo" />
+          <select class="select" aria-label="Filtrar por categoría">
+            <option>Todas las categorías</option>
+            <option>SOP</option>
+            <option>Nutrición</option>
+            <option>Hipertrofia</option>
+            <option>Pérdida de grasa</option>
+            <option>Salud hormonal</option>
+          </select>
+          <select class="select" aria-label="Ordenar artículos">
+            <option>Más recientes</option>
+            <option>Más leídos</option>
+            <option>Más cortos</option>
+          </select>
+        </div>
+
+        <div class="posts-grid">
+          <!-- POST 1 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">SOP · METABÓLICO</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">SOP</span>
+                <span class="tag">Insulina</span>
+                <span>•</span>
+                <span>12 feb 2026</span>
+              </div>
+              <h4>Señales clínicas frecuentes en SOP que sí cambian la estrategia nutricional</h4>
+              <p>
+                Ejemplo de entrada educativa: cómo interpretar patrones clínicos, síntomas y objetivos para personalizar un plan.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="../#servicios">Ver servicios</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- POST 2 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">HIPERTROFIA · FITNESS</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">Hipertrofia</span>
+                <span class="tag">Entrenamiento</span>
+                <span>•</span>
+                <span>10 feb 2026</span>
+              </div>
+              <h4>Cómo estructurar una fase de aumento muscular sin “comer por comer”</h4>
+              <p>
+                Base de entrenamiento + nutrición + adherencia para subir músculo con control de grasa y mejor rendimiento.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="../#contacto">Contacto</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- POST 3 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">GRASA · ADHERENCIA</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">Pérdida de grasa</span>
+                <span class="tag">Hábitos</span>
+                <span>•</span>
+                <span>08 feb 2026</span>
+              </div>
+              <h4>Errores comunes al intentar perder grasa (y por qué terminan frenando el progreso)</h4>
+              <p>
+                Déficit agresivo, baja adherencia, mal descanso y expectativas irreales: cómo corregirlos con estrategia.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- POST 4 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">HORMONAS · EDUCACIÓN</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">Hormonas</span>
+                <span class="tag">Educación</span>
+                <span>•</span>
+                <span>05 feb 2026</span>
+              </div>
+              <h4>¿Qué sí puede hacer la nutrición en salud hormonal y qué expectativas debes ajustar?</h4>
+              <p>
+                Artículo ideal para educar a pacientes y filtrar expectativas con una comunicación profesional y clara.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="../#sobre">Sobre mí</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- POST 5 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">SOP · FERTILIDAD</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">SOP</span>
+                <span class="tag">Fertilidad</span>
+                <span>•</span>
+                <span>03 feb 2026</span>
+              </div>
+              <h4>SOP y fertilidad: factores de estilo de vida que suelen pasar desapercibidos</h4>
+              <p>
+                Placeholder para un artículo con enfoque educativo y visual, alineado con tu contenido de Instagram y diplomado.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="../#diplomado">Diplomado</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- POST 6 -->
+          <article class="post">
+            <div class="thumb">
+              <span class="chip">NUTRICIÓN · MENTAL</span>
+            </div>
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="tag">Nutrición</span>
+                <span class="tag">Salud mental</span>
+                <span>•</span>
+                <span>01 feb 2026</span>
+              </div>
+              <h4>Nutrición y salud mental: ideas base para una introducción práctica</h4>
+              <p>
+                Excelente entrada para impulsar tu e-book y posicionarte con contenido educativo de alto valor.
+              </p>
+              <div class="post-actions">
+                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="../#otros-productos">Ver e-book</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section id="categorias">
+      <div class="section-head">
+        <h3><span class="mark"></span> Categorías del blog</h3>
+        <p>Accesos rápidos a tus temas principales</p>
+      </div>
+
+      <div class="card cats">
+        <a class="cat" href="#articulos">
+          <div class="icon">🧬</div>
+          <h4>SOP y fisiología femenina</h4>
+          <p>Fenotipos, metabolismo, nutrición aplicada, salud hormonal y educación clínica.</p>
+        </a>
+
+        <a class="cat" href="#articulos">
+          <div class="icon">🏋️</div>
+          <h4>Hipertrofia y fuerza</h4>
+          <p>Programación básica, adherencia, nutrición para volumen y progreso físico.</p>
+        </a>
+
+        <a class="cat" href="#articulos">
+          <div class="icon">🔥</div>
+          <h4>Pérdida de grasa</h4>
+          <p>Déficit inteligente, hábitos, rendimiento, errores frecuentes y estrategia sostenible.</p>
+        </a>
+
+        <a class="cat" href="#articulos">
+          <div class="icon">🧠</div>
+          <h4>Nutrición y salud mental</h4>
+          <p>Educación práctica, fundamentos y contenido relacionado con tu obra digital.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACTO / CTA -->
+    <section id="contacto-blog">
+      <div class="section-head">
+        <h3><span class="mark"></span> Convierte lectores en pacientes / alumnos</h3>
+        <p>Bloque de llamada a la acción</p>
+      </div>
+
+      <div class="card cta-block">
+        <div class="cta-box">
+          <h4 class="gold-title">¿Te gustó el contenido del blog?</h4>
+          <p>
+            Si quieres ayuda personalizada, evaluación o información sobre mis servicios, diplomado o productos,
+            escríbeme directo por WhatsApp. Este bloque está diseñado para convertir visitas en contacto real.
+          </p>
+
+          <div class="cta-stack">
+            <a class="btn green" href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+              Contactar por WhatsApp
+            </a>
+            <a class="btn" href="../#contacto">Ir al formulario de contacto</a>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h4>Próximo paso recomendado</h4>
+          <p>
+            Después te puedo dejar este blog en versión <strong>multiartículo real</strong> con páginas individuales:
+            <span class="mono">/blog/sop-insulina.html</span>, <span class="mono">/blog/hipertrofia-volumen.html</span>, etc.
+          </p>
+
+          <div class="cta-stack">
+            <a class="pill" href="../#diplomado">Ver diplomado</a>
+            <a class="pill" href="../#otros-productos">Ver productos</a>
+            <a class="pill" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram PRO EHN</a>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            Puedes usar este mismo diseño como base para “Noticias”, “Artículos”, “Biblioteca” o “Publicaciones”.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Pro Enhanced Nutrition · Blog</div>
+      <div class="mono">
+        <a href="../">Inicio</a> ·
+        <a href="mailto:Pro.Enhanced.Nutrition@gmail.com">Correo</a> ·
+        <a href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Float buttons -->
+  <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.89.756 5.707 2.192 8.19L0 32l7.61-2.145a15.94 15.94 0 0 0 8.39 2.33c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.09a13.02 13.02 0 0 1-6.62-1.81l-.474-.28-4.52 1.27 1.21-4.41-.31-.45A13.02 13.02 0 0 1 2.98 16.4c0-7.19 5.84-13.02 13.02-13.02 7.19 0 13.02 5.83 13.02 13.02 0 7.18-5.83 13.02-13.02 13.02z"/>
+    </svg>
+  </a>
+
+  <a class="ig-float" href="https://www.instagram.com/raulvargas_proehn" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3.25a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
+    </svg>
+  </a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
