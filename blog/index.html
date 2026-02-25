@@ -537,7 +537,7 @@
       margin:0;
       font-size:28px;
       line-height:1.05;
-      max-width:18ch;
+      max-width:22ch;
       text-shadow:0 12px 28px rgba(0,0,0,.55);
     }
 
@@ -633,6 +633,96 @@
       margin-top:12px;
     }
 
+    /* ARTICLE */
+    .article{
+      padding:16px;
+    }
+    .article-head{
+      padding:16px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+    .article-head h2{
+      margin:8px 0 8px;
+      font-size:30px;
+      line-height:1.1;
+      letter-spacing:-.4px;
+      text-shadow:0 12px 28px rgba(0,0,0,.55);
+    }
+    .article-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:8px;
+    }
+    .article-body{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1fr .42fr;
+      gap:14px;
+      align-items:start;
+    }
+    .prose h3{
+      margin:16px 0 8px;
+      font-size:18px;
+    }
+    .prose p{
+      margin:0 0 12px;
+      color:rgba(238,242,255,.86);
+      line-height:1.8;
+      font-size:14.5px;
+    }
+    .prose ul{
+      margin:8px 0 14px;
+      padding-left:18px;
+      color:rgba(238,242,255,.86);
+      line-height:1.8;
+      font-size:14.5px;
+    }
+    .callout{
+      border-radius:18px;
+      border:1px solid rgba(216,178,90,.22);
+      background:rgba(255,255,255,.06);
+      box-shadow:0 12px 26px rgba(0,0,0,.18);
+      padding:14px;
+      margin:12px 0;
+    }
+    .callout strong{ color:rgba(255,255,255,.95); }
+    .mini-card{
+      border-radius:18px;
+      padding:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 12px 24px rgba(0,0,0,.16);
+      margin-bottom:12px;
+    }
+    .mini-card h4{
+      margin:0 0 8px;
+      font-size:14px;
+    }
+    .mini-card p, .mini-card li{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:13px;
+    }
+    .mini-card ul{
+      margin:8px 0 0;
+      padding-left:18px;
+    }
+    .disclaimer{
+      border-radius:16px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(19,8,30,.55);
+      color:rgba(238,242,255,.78);
+      font-size:12.5px;
+      line-height:1.6;
+    }
+
     .mono{font-family:var(--mono)}
     .small{font-size:12px; color:var(--muted)}
 
@@ -684,11 +774,10 @@
       .cta-block{ grid-template-columns:1fr; }
       .cats{ grid-template-columns: repeat(2, 1fr); }
       .post{ grid-column: span 6; }
+      .article-body{ grid-template-columns:1fr; }
     }
     @media (max-width: 680px){
-      .topbar-inner{
-        align-items:stretch;
-      }
+      .topbar-inner{ align-items:stretch; }
       .nav-actions{
         width:100%;
         flex-wrap:nowrap;
@@ -696,22 +785,18 @@
         padding-bottom:2px;
       }
       .nav-actions::-webkit-scrollbar{height:0}
-      .pill,.cta{
-        flex:0 0 auto;
-        white-space:nowrap;
-      }
+      .pill,.cta{ flex:0 0 auto; white-space:nowrap; }
 
       .hero{ padding:16px; }
       .hero h2{ font-size:30px; }
-      .toolbar{
-        grid-template-columns: 1fr;
-      }
+      .toolbar{ grid-template-columns: 1fr; }
       .select{ min-width: unset; }
       .post{ grid-column: span 12; }
       .cats{ grid-template-columns: 1fr; }
       .featured-media{ min-height:220px; }
       .featured-media h4{ font-size:22px; }
       .thumb{ height:160px; }
+      .article-head h2{ font-size:24px; }
     }
     @media (prefers-reduced-motion: reduce){
       *{ scroll-behavior:auto !important; }
@@ -736,7 +821,8 @@
         <a class="pill" href="#articulos">Artículos</a>
         <a class="pill" href="#categorias">Categorías</a>
         <a class="pill" href="#contacto-blog">Contacto</a>
-        <a class="cta" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Actualicé tu WhatsApp al número nuevo -->
+        <a class="cta" href="https://wa.me/5215658984223" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
     </div>
   </header>
@@ -756,7 +842,7 @@
         <div class="hero-actions">
           <a class="btn primary" href="#articulos">Ver artículos</a>
           <a class="btn" href="../#diplomado">Ir a diplomado</a>
-          <a class="btn green" href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+          <a class="btn green" href="https://wa.me/5215658984223?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
             Solicitar información
           </a>
         </div>
@@ -795,39 +881,37 @@
     <section id="destacado">
       <div class="section-head">
         <h3><span class="mark"></span> Artículo destacado</h3>
-        <p>Bloque principal para tu entrada top</p>
+        <p>Entrada principal de alto valor</p>
       </div>
 
       <div class="card featured">
         <div class="featured-media">
-          <h4 class="gold-title">SOP, resistencia a la insulina y estrategias reales de nutrición</h4>
+          <h4 class="gold-title">¿Qué es el SOP y cuál es su prevalencia en México?</h4>
         </div>
 
         <div class="featured-content">
           <div class="meta">
             <span class="tag">SOP</span>
-            <span class="tag">Salud hormonal</span>
+            <span class="tag">Epidemiología</span>
             <span>•</span>
-            <span>Lectura estimada: 8 min</span>
+            <span>Lectura estimada: 7–9 min</span>
           </div>
 
           <p>
-            Puedes usar este espacio para una entrada principal de alto valor: explicación práctica,
-            contexto fisiológico, errores comunes y recomendaciones aplicadas. Ideal para enlazar a tus
-            servicios, diplomado o evaluadores.
+            Primer artículo completo del blog: definición clara, criterios diagnósticos de referencia, por qué se
+            subdiagnostica y cómo entender el tema de prevalencia (especialmente en México).
           </p>
 
           <p>
-            <strong>Tip visual:</strong> cuando tengas portada real, después te adapto este bloque para usar imagen
-            de fondo (JPG/PNG/WebP) y botones como “Leer artículo completo” + “Compartir”.
+            <strong>Bonus:</strong> al final te dejo una mini guía de “cuándo sospechar SOP” + qué estudios suelen pedirse.
           </p>
 
           <div class="post-actions">
-            <a class="link-btn" href="#">Leer artículo</a>
-            <a class="link-btn" href="https://wa.me/5218132216529" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            <a class="link-btn" href="#post-sop-prevalencia">Leer artículo</a>
+            <a class="link-btn" href="https://wa.me/5215658984223" target="_blank" rel="noopener">Consultar por WhatsApp</a>
           </div>
 
-          <p class="small">* Placeholder visual: este botón puede dirigir a una entrada real en el futuro (ej. /blog/sop-resistencia-insulina.html).</p>
+          <p class="small">* Este artículo ya es contenido real dentro de esta misma página (sin crear archivo extra).</p>
         </div>
       </div>
     </section>
@@ -858,47 +942,47 @@
         </div>
 
         <div class="posts-grid">
-          <!-- POST 1 -->
+          <!-- POST 1 (real) -->
           <article class="post">
             <div class="thumb">
-              <span class="chip">SOP · METABÓLICO</span>
+              <span class="chip">SOP · FUNDAMENTOS</span>
             </div>
             <div class="post-body">
               <div class="post-meta">
                 <span class="tag">SOP</span>
-                <span class="tag">Insulina</span>
+                <span class="tag">Prevalencia</span>
                 <span>•</span>
-                <span>12 feb 2026</span>
+                <span>25 feb 2026</span>
               </div>
-              <h4>Señales clínicas frecuentes en SOP que sí cambian la estrategia nutricional</h4>
+              <h4>¿Qué es el SOP y cuál es su prevalencia en México? (Guía clara)</h4>
               <p>
-                Ejemplo de entrada educativa: cómo interpretar patrones clínicos, síntomas y objetivos para personalizar un plan.
+                Un artículo directo y bien explicado: qué es el SOP, por qué se confunde, criterios diagnósticos y cómo interpretar cifras de prevalencia en México.
               </p>
               <div class="post-actions">
-                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="#post-sop-prevalencia">Leer más</a>
                 <a class="link-btn" href="../#servicios">Ver servicios</a>
               </div>
             </div>
           </article>
 
-          <!-- POST 2 -->
+          <!-- POST 2 (FIX: "Leer más" ahora lleva al artículo completo #002) -->
           <article class="post">
             <div class="thumb">
-              <span class="chip">HIPERTROFIA · FITNESS</span>
+              <span class="chip">SOP · FENOTIPOS A–D · NUTRICIÓN + TRAINING</span>
             </div>
             <div class="post-body">
               <div class="post-meta">
-                <span class="tag">Hipertrofia</span>
-                <span class="tag">Entrenamiento</span>
+                <span class="tag">Identificar fenotipos</span>
+                <span class="tag">Abordaje individual</span>
                 <span>•</span>
                 <span>10 feb 2026</span>
               </div>
-              <h4>Cómo estructurar una fase de aumento muscular sin “comer por comer”</h4>
+              <h4>¿Por qué es importante conocer el fenotipo de SOP antes de iniciar un abordaje?</h4>
               <p>
-                Base de entrenamiento + nutrición + adherencia para subir músculo con control de grasa y mejor rendimiento.
+                Fenotipos A–B–C–D en modo práctico de consulta: qué cambia en nutrición y entrenamiento, y por qué “lo metabólico manda el plan”.
               </p>
               <div class="post-actions">
-                <a class="link-btn" href="#">Leer más</a>
+                <a class="link-btn" href="#post-sop-fenotipos">Leer más</a>
                 <a class="link-btn" href="../#contacto">Contacto</a>
               </div>
             </div>
@@ -922,7 +1006,7 @@
               </p>
               <div class="post-actions">
                 <a class="link-btn" href="#">Leer más</a>
-                <a class="link-btn" href="https://wa.me/5218132216529" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="link-btn" href="https://wa.me/5215658984223" target="_blank" rel="noopener">WhatsApp</a>
               </div>
             </div>
           </article>
@@ -999,6 +1083,277 @@
       </div>
     </section>
 
+    <!-- ARTÍCULO COMPLETO (001) -->
+    <section id="post-sop-prevalencia">
+      <div class="section-head">
+        <h3><span class="mark"></span> Artículo completo</h3>
+        <p>Entrada #001 del blog</p>
+      </div>
+
+      <article class="card article">
+        <div class="article-head">
+          <div class="kicker"><span class="dot"></span> SOP · FUNDAMENTOS · MÉXICO</div>
+          <h2 class="gold-title">¿Qué es el Síndrome de Ovario Poliquístico (SOP) y cuál es su prevalencia en México?</h2>
+          <div class="article-meta">
+            <span class="tag">SOP</span>
+            <span class="tag">Epidemiología</span>
+            <span class="tag">Salud hormonal</span>
+            <span>•</span>
+            <span>Actualizado: 25 feb 2026</span>
+            <span>•</span>
+            <span>Lectura: 7–9 min</span>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <div class="prose">
+            <p>
+              El <strong>Síndrome de Ovario Poliquístico (SOP)</strong> es una condición <strong>endocrino-metabólica</strong> frecuente en mujeres en edad reproductiva.
+              No es “solo ovarios con quistes”: el SOP se relaciona con <strong>alteraciones hormonales (andrógenos)</strong>,
+              cambios en la <strong>ovulación</strong> y, en muchas pacientes, con <strong>resistencia a la insulina</strong> y riesgo cardiometabólico.
+            </p>
+
+            <div class="callout">
+              <p style="margin:0;">
+                <strong>Idea clave:</strong> el SOP es un <strong>síndrome</strong> (un conjunto de hallazgos).
+                Dos mujeres pueden “tener SOP” y verse totalmente distintas.
+              </p>
+            </div>
+
+            <h3>1) ¿Cómo se define el SOP? (en palabras claras)</h3>
+            <p>
+              En clínica, SOP significa que existe una combinación de:
+              <strong>(a) hiperandrogenismo</strong> (clínico y/o bioquímico),
+              <strong>(b) disfunción ovulatoria</strong> (ciclos irregulares/anovulación),
+              y/o <strong>(c) morfología poliquística ovárica</strong> en ultrasonido,
+              <em>después de descartar otras causas</em>.
+            </p>
+
+            <h3>2) ¿Por qué se subdiagnostica tanto?</h3>
+            <ul>
+              <li><strong>Se confunde</strong> con “estrés”, “es normal que se atrase”, “son quistes” o solo “acné”.</li>
+              <li>La evaluación a veces se queda solo en USG (y eso NO es suficiente).</li>
+              <li>En adolescentes, la frontera entre “pubertad normal” y SOP puede ser tricky.</li>
+              <li>Hay SOP con peso normal, entonces se pasa de largo.</li>
+            </ul>
+
+            <h3>3) Prevalencia: ¿qué significa y por qué cambia tanto?</h3>
+            <p>
+              “Prevalencia” es <strong>cuántas personas tienen</strong> una condición en un grupo específico en un momento.
+              Con SOP, la prevalencia varía por criterio diagnóstico, población, edad y contexto metabólico.
+            </p>
+
+            <h3>4) Entonces… ¿cuál es la prevalencia en México?</h3>
+            <p>
+              En México, <strong>no existe una cifra única nacional perfecta</strong>. La mayoría de cifras vienen de
+              <strong>estudios locales</strong> y <strong>series clínicas</strong>.
+            </p>
+
+            <div class="callout">
+              <p style="margin:0;">
+                <strong>Interpretación útil:</strong> el SOP es <strong>muy frecuente</strong>. En población general suele ubicarse en rangos de
+                <strong>un dígito a teens</strong> (aprox. 6–15% en muchos escenarios), y en clínicas la proporción suele ser mucho mayor.
+              </p>
+            </div>
+
+            <h3>5) Señales típicas (para sospechar SOP)</h3>
+            <ul>
+              <li><strong>SAHA</strong>: seborrea, acné, hirsutismo, alopecia (y/o irregularidades menstruales).</li>
+              <li><strong>Ciclos irregulares</strong>: oligomenorrea, amenorrea, ovulación irregular.</li>
+              <li><strong>Datos metabólicos</strong>: grasa abdominal, acantosis nigricans, dislipidemia, RI.</li>
+              <li><strong>Fertilidad</strong>: dificultad para concebir por anovulación (no siempre).</li>
+            </ul>
+
+            <h3>6) Estudios que suelen pedirse (orientativo)</h3>
+            <ul>
+              <li><strong>Perfil androgénico</strong> (según caso): androstenediona, testosterona total/libre, DHEA, DHEA-S, SHBG.</li>
+              <li><strong>Eje gonadal</strong>: LH, FSH, prolactina, TSH (según caso).</li>
+              <li><strong>Metabólico</strong>: glucosa, insulina (si aplica), HbA1c, lípidos, ALT/AST.</li>
+              <li><strong>Ultrasonido</strong> (apoya, pero no reemplaza clínica).</li>
+            </ul>
+
+            <p class="small">
+              Si quieres, el siguiente artículo lo hago tipo “SOP por fenotipos (A-B-C-D) + qué cambia en nutrición y entrenamiento en cada uno”.
+            </p>
+          </div>
+
+          <aside>
+            <div class="mini-card">
+              <h4>Resumen rápido (TL;DR)</h4>
+              <ul>
+                <li>El SOP es un síndrome endocrino-metabólico frecuente.</li>
+                <li>No es “solo quistes”: hay hormonas, ovulación y metabolismo.</li>
+                <li>La prevalencia cambia por criterios y población.</li>
+                <li>En México no hay un número único; es muy común en consulta real.</li>
+              </ul>
+            </div>
+
+            <div class="mini-card">
+              <h4>Palabras clave (SEO)</h4>
+              <p>SOP, ovario poliquístico, prevalencia México, resistencia a la insulina, hiperandrogenismo, ciclos irregulares.</p>
+            </div>
+
+            <div class="mini-card">
+              <h4>¿Quieres evaluación?</h4>
+              <p>Si sospechas SOP o quieres plan, te dejo acceso directo:</p>
+              <div class="cta-stack" style="margin-top:10px;">
+                <a class="btn green" href="https://wa.me/5215658984223?text=Hola%20Ra%C3%BAl%2C%20le%C3%AD%20tu%20art%C3%ADculo%20de%20SOP%20y%20quiero%20una%20evaluaci%C3%B3n%20personalizada." target="_blank" rel="noopener">WhatsApp</a>
+                <a class="btn" href="../#servicios">Ver servicios</a>
+              </div>
+            </div>
+
+            <div class="disclaimer">
+              ⚠️ <strong>Disclaimer:</strong> Este contenido es informativo y médico-educativo. No sustituye consulta médica. El diagnóstico de SOP y su manejo
+              deben individualizarse con evaluación clínica completa.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </section>
+
+    <!-- ARTÍCULO COMPLETO (002) — FENOTIPOS -->
+    <section id="post-sop-fenotipos">
+      <div class="section-head">
+        <h3><span class="mark"></span> Artículo completo</h3>
+        <p>Entrada #002 del blog</p>
+      </div>
+
+      <article class="card article">
+        <div class="article-head">
+          <div class="kicker"><span class="dot"></span> SOP · FENOTIPOS A–D · NUTRICIÓN + TRAINING</div>
+          <h2 class="gold-title">SOP por fenotipos (A–B–C–D): qué cambia en nutrición y entrenamiento en cada uno</h2>
+          <div class="article-meta">
+            <span class="tag">SOP</span>
+            <span class="tag">Fenotipos</span>
+            <span class="tag">Nutrición</span>
+            <span class="tag">Entrenamiento</span>
+            <span>•</span>
+            <span>Actualizado: 25 feb 2026</span>
+            <span>•</span>
+            <span>Lectura: 9–12 min</span>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <div class="prose">
+            <p>
+              Este artículo está en modo <strong>práctico de consulta</strong>: los fenotipos A–B–C–D (derivados de la lógica de Rotterdam)
+              te ayudan a entender <strong>qué domina</strong> en cada paciente y por qué, aunque todas “tengan SOP”, la estrategia puede cambiar.
+            </p>
+
+            <div class="callout">
+              <p style="margin:0;">
+                <strong>Antes de entrar:</strong> “Fenotipo” no es etiqueta para encasillar; es una forma de ordenar el caso.
+                Lo que manda es: <strong>síntomas + objetivos + datos metabólicos + laboratorio</strong>.
+              </p>
+            </div>
+
+            <h3>1) Las 3 “piezas” del rompecabezas</h3>
+            <ul>
+              <li><strong>HA</strong> = hiperandrogenismo (acné/hirsutismo/alopecia y/o andrógenos elevados)</li>
+              <li><strong>OD</strong> = disfunción ovulatoria (ciclos irregulares, anovulación)</li>
+              <li><strong>PCOM</strong> = morfología poliquística ovárica por ultrasonido</li>
+            </ul>
+
+            <h3>2) Fenotipos A–B–C–D (qué incluye cada uno)</h3>
+            <ul>
+              <li><strong>Fenotipo A (clásico):</strong> HA + OD + PCOM</li>
+              <li><strong>Fenotipo B (clásico sin PCOM):</strong> HA + OD</li>
+              <li><strong>Fenotipo C (ovulatorio):</strong> HA + PCOM</li>
+              <li><strong>Fenotipo D (no hiperandrogénico):</strong> OD + PCOM</li>
+            </ul>
+
+            <div class="callout">
+              <p style="margin:0;">
+                <strong>Traducción PRO:</strong> A y B suelen ser más intensos; C puede verse “fit” y aun así tener HA; D confunde porque no siempre hay acné/hirsutismo.
+              </p>
+            </div>
+
+            <h3>3) Regla de oro para nutrición y training</h3>
+            <p>
+              Aunque el fenotipo oriente, <strong>lo metabólico manda el plan</strong>. Si hay resistencia a la insulina, adiposidad visceral, NAFLD,
+              dislipidemia o sueño roto, la estrategia debe priorizar <strong>bajar hiperinsulinemia</strong> y mejorar composición corporal.
+            </p>
+
+            <h3>4) Ajustes por fenotipo: qué priorizar</h3>
+
+            <h3>Fenotipo A (HA + OD + PCOM)</h3>
+            <ul>
+              <li><strong>Objetivo #1:</strong> sensibilidad a la insulina (si aplica) + composición corporal.</li>
+              <li><strong>Nutrición:</strong> proteína alta, fibra diaria, carbohidrato inteligente (calidad + timing), déficit moderado si hay exceso de grasa.</li>
+              <li><strong>Entrenamiento:</strong> fuerza 3–5 días/semana + 2–4 sesiones zona 2; HIIT dosificado si hay estrés/sueño fatal.</li>
+            </ul>
+
+            <h3>Fenotipo B (HA + OD)</h3>
+            <ul>
+              <li><strong>Objetivo #1:</strong> regularidad del eje (ciclos/ovulación) + control de HA.</li>
+              <li><strong>Nutrición:</strong> estabilidad glucémica si hay picos/antojos; evitar extremos de restricción que rompen adherencia.</li>
+              <li><strong>Entrenamiento:</strong> fuerza como pilar; cardio como herramienta (no castigo).</li>
+            </ul>
+
+            <h3>Fenotipo C (HA + PCOM)</h3>
+            <ul>
+              <li><strong>Objetivo #1:</strong> bajar HA sin romper rendimiento.</li>
+              <li><strong>Nutrición:</strong> cuidado con “volumen sucio”; subir calorías con estructura y vigilar señales de empeoramiento de HA.</li>
+              <li><strong>Entrenamiento:</strong> gran respuesta a fuerza/hipertrofia; ojo con sobreentreno + sueño malo.</li>
+            </ul>
+
+            <h3>Fenotipo D (OD + PCOM)</h3>
+            <ul>
+              <li><strong>Objetivo #1:</strong> recuperar señales de ovulación/ciclo + descartar diferenciales.</li>
+              <li><strong>Nutrición:</strong> evitar déficits agresivos prolongados si hay estrés alto o % graso bajo.</li>
+              <li><strong>Entrenamiento:</strong> fuerza sí, pero sin vivir en rojo; demasiada intensidad + poco sueño + poca comida = peor eje.</li>
+            </ul>
+
+            <div class="callout">
+              <p style="margin:0;">
+                <strong>Checklist PRO:</strong> ¿acantosis? ¿visceral alto? ¿TG altos/HDL bajo? ¿ALT elevada? Si sí → plan centrado en insulina y composición (sea el fenotipo que sea).
+              </p>
+            </div>
+
+            <h3>5) Plantilla rápida de intervención</h3>
+            <ul>
+              <li><strong>Proteína:</strong> suficiente para objetivo (masa magra/saciedad).</li>
+              <li><strong>Fibra:</strong> diario.</li>
+              <li><strong>Carbohidrato:</strong> calidad + timing (peri-entreno si aplica).</li>
+              <li><strong>Fuerza:</strong> 3–5 días/semana, progresión real.</li>
+              <li><strong>Zona 2:</strong> 2–4 sesiones según adherencia.</li>
+              <li><strong>Sueño:</strong> si no se arregla, el SOP se vuelve más ruidoso.</li>
+            </ul>
+
+            <h3>6) Cierre</h3>
+            <p>
+              Frase para diplomado: <strong>“El fenotipo orienta; lo metabólico y el estilo de vida dictan la estrategia.”</strong>
+            </p>
+          </div>
+
+          <aside>
+            <div class="mini-card">
+              <h4>Resumen rápido</h4>
+              <ul>
+                <li>Fenotipo = forma de ordenar el caso, no etiqueta.</li>
+                <li>Lo metabólico manda el plan.</li>
+                <li>Fuerza + zona 2 + nutrición estructurada = base.</li>
+              </ul>
+            </div>
+
+            <div class="mini-card">
+              <h4>¿Quieres evaluación?</h4>
+              <p>Te dejo acceso directo:</p>
+              <div class="cta-stack" style="margin-top:10px;">
+                <a class="btn green" href="https://wa.me/5215658984223?text=Hola%20Ra%C3%BAl%2C%20quiero%20evaluaci%C3%B3n%20de%20SOP%20por%20fenotipo%20(A-B-C-D)%20y%20plan%20de%20nutrici%C3%B3n%20%2B%20training." target="_blank" rel="noopener">WhatsApp</a>
+                <a class="btn" href="../#servicios">Ver servicios</a>
+              </div>
+            </div>
+
+            <div class="disclaimer">
+              ⚠️ <strong>Disclaimer:</strong> Contenido informativo y médico-educativo. No sustituye consulta médica.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </section>
+
     <!-- CATEGORÍAS -->
     <section id="categorias">
       <div class="section-head">
@@ -1049,7 +1404,7 @@
           </p>
 
           <div class="cta-stack">
-            <a class="btn green" href="https://wa.me/5218132216529?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+            <a class="btn green" href="https://wa.me/5215658984223?text=Hola%20Ra%C3%BAl%2C%20vi%20tu%20blog%20de%20PRO%20EHN%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
               Contactar por WhatsApp
             </a>
             <a class="btn" href="../#contacto">Ir al formulario de contacto</a>
@@ -1059,8 +1414,8 @@
         <div class="cta-box">
           <h4>Próximo paso recomendado</h4>
           <p>
-            Después te puedo dejar este blog en versión <strong>multiartículo real</strong> con páginas individuales:
-            <span class="mono">/blog/sop-insulina.html</span>, <span class="mono">/blog/hipertrofia-volumen.html</span>, etc.
+            Si luego quieres versión “blog real” con páginas por artículo, te lo armo en estructura tipo:
+            <span class="mono">/blog/sop-prevalencia-mexico.html</span>, <span class="mono">/blog/sop-insulina.html</span>, etc.
           </p>
 
           <div class="cta-stack">
@@ -1087,7 +1442,7 @@
   </main>
 
   <!-- Float buttons -->
-  <a class="wa-float" href="https://wa.me/5218132216529" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="wa-float" href="https://wa.me/5215658984223" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.89.756 5.707 2.192 8.19L0 32l7.61-2.145a15.94 15.94 0 0 0 8.39 2.33c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.09a13.02 13.02 0 0 1-6.62-1.81l-.474-.28-4.52 1.27 1.21-4.41-.31-.45A13.02 13.02 0 0 1 2.98 16.4c0-7.19 5.84-13.02 13.02-13.02 7.19 0 13.02 5.83 13.02 13.02 0 7.18-5.83 13.02-13.02 13.02z"/>
     </svg>
