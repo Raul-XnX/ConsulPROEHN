@@ -513,21 +513,41 @@
       gap:14px;
       align-items:stretch;
     }
+
+    /* ✅ NUEVO: el destacado ahora soporta imagen como portada igual que los posts */
     .featured-media{
       border-radius:18px;
       border:1px solid rgba(216,178,90,.28);
+      min-height:260px;
+      box-shadow:0 14px 34px rgba(0,0,0,.20);
+      position:relative;
+      overflow:hidden;
+
+      /* fallback si no hay imagen */
       background:
         radial-gradient(650px 220px at 15% 15%, rgba(255,106,0,.20), transparent 62%),
         radial-gradient(650px 220px at 85% 85%, rgba(255,62,165,.16), transparent 62%),
         rgba(255,255,255,.04);
-      min-height:260px;
-      padding:16px;
+
       display:flex;
       align-items:flex-end;
-      box-shadow:0 14px 34px rgba(0,0,0,.20);
-      position:relative;
-      overflow:hidden;
+      padding:16px;
+      background-size:cover;
+      background-position:center;
     }
+
+    /* overlay para que el texto se lea encima de la foto */
+    .featured-media::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55)),
+        radial-gradient(700px 280px at 10% 0%, rgba(243,223,155,.10), transparent 55%),
+        radial-gradient(700px 280px at 90% 0%, rgba(255,62,165,.10), transparent 58%);
+      pointer-events:none;
+    }
+
     .featured-media::after{
       content:"PRO EHN BLOG";
       position:absolute;
@@ -540,13 +560,19 @@
       font:900 10px/1 var(--mono);
       letter-spacing:.7px;
       box-shadow:0 10px 24px rgba(0,0,0,.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index:2;
     }
+
     .featured-media h4{
       margin:0;
       font-size:28px;
       line-height:1.05;
       max-width:22ch;
-      text-shadow:0 12px 28px rgba(0,0,0,.55);
+      text-shadow:0 12px 28px rgba(0,0,0,.65);
+      position:relative;
+      z-index:2;
     }
 
     .featured-content{
@@ -879,7 +905,8 @@
       </div>
 
       <div class="card featured">
-        <div class="featured-media">
+        <!-- ✅ AQUÍ: ahora el destacado usa la MISMA portada que el post (igual que tus cards) -->
+        <div class="featured-media thumb-photo" style="background-image:url('assets/img/sop-mexico.png');">
           <h4 class="gold-title">¿Qué es el SOP y cuál es su prevalencia en México?</h4>
         </div>
 
@@ -1165,9 +1192,7 @@
               <li><strong>Ultrasonido</strong> (apoya, pero no reemplaza clínica).</li>
             </ul>
 
-            <p class="small">
-           
-            </p>
+            <p class="small"></p>
           </div>
 
           <aside>
